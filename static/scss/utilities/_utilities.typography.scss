@@ -1,0 +1,136 @@
+.u-a3 {
+    font-family: $font-primary;
+    $font-size: (
+        $breakpoint-sm: 35px,
+        $breakpoint-xl: 78px,
+        $breakpoint-xxl: 78px,
+    );
+    @include poly-fluid-sizing("font-size", $font-size);
+    $line-height: (
+        $breakpoint-sm: 43px,
+        $breakpoint-xl: 86px,
+        $breakpoint-xxl: 86px,
+    );
+    @include poly-fluid-sizing("line-height", $line-height);
+    letter-spacing: 2px;
+    font-weight: normal;
+
+    @include mq(sm) {
+        letter-spacing: 0;
+    }
+}
+
+.u-a2 {
+    font-family: $font-primary;
+    $font-size: (
+        $breakpoint-sm: 35px,
+        $breakpoint-xl: 50px,
+        $breakpoint-xxl: 50px,
+    );
+    @include poly-fluid-sizing("font-size", $font-size);
+    $line-height: (
+        $breakpoint-sm: 43px,
+        $breakpoint-xl: 66px,
+        $breakpoint-xxl: 56px,
+    );
+    @include poly-fluid-sizing("line-height", $line-height);
+    font-weight: normal;
+}
+
+.u-a1 {
+    font-family: $font-secondary;
+    $font-size: (
+        $breakpoint-sm: 14px,
+        $breakpoint-xl: 18px,
+        $breakpoint-xxl: 18px,
+    );
+    @include poly-fluid-sizing("font-size", $font-size);
+    $line-height: (
+        $breakpoint-sm: 20px,
+        $breakpoint-xl: 26px,
+        $breakpoint-xxl: 26px,
+    );
+    @include poly-fluid-sizing("line-height", $line-height);
+    letter-spacing: 0.3px;
+    font-weight: normal;
+
+    @include mq(sm) {
+        letter-spacing: 0;
+    }
+}
+
+.u-b0 {
+    font-family: $font-primary;
+    $font-size: (
+        $breakpoint-sm: 16px,
+        $breakpoint-xl: 16px,
+    );
+    @include poly-fluid-sizing("font-size", $font-size);
+    $line-height: (
+        $breakpoint-sm: 23px,
+        $breakpoint-xl: 23px,
+    );
+    @include poly-fluid-sizing("line-height", $line-height);
+    font-weight: normal;
+}
+
+.u-b1 {
+    font-family: $font-secondary;
+    font-size: 13px;
+    line-height: 19px;
+    font-weight: normal;
+}
+
+.u-uppercase {
+    text-transform: uppercase;
+}
+
+.u-text-center {
+    text-align: center;
+}
+
+.u-fw-thin,
+.u-fw-100 {
+    font-weight: 100;
+}
+
+.u-fw-extra-light,
+.u-fw-200 {
+    font-weight: 200;
+}
+
+.u-fw-light,
+.u-fw-300 {
+    font-weight: 300;
+}
+
+.u-fw-regular,
+.u-fw-normal,
+.u-fw-400 {
+    font-weight: 400;
+}
+
+.u-fw-medium,
+.u-fw-500 {
+    font-weight: 500;
+}
+
+.u-fw-semi-bold,
+.u-fw-600 {
+    font-weight: 600;
+}
+
+.u-fw-bold,
+.u-fw-700 {
+    font-weight: 700;
+}
+
+.u-fw-extra-bold,
+.u-fw-800 {
+    font-weight: 800;
+}
+
+.u-fw-black,
+.u-fw-900 {
+    font-weight: 900;
+}

@@ -1,0 +1,70 @@
+/**
+ * Font face mixin
+ * @param {string} $font-name - Name of the font
+ * @param {string} $font-filename - Name of the file without extension
+ * @param {number} $version - Font version
+ * @param {number} $font-weight - Font weight value
+ * @param {string} $font-name - Font style property (if the font is italic)
+ * usage:
+ * @include font-face("Hanken-Grotesk", "HankenGrotesk-Regular");
+ * @include font-face(
+ *  "Hanken-Grotesk",
+ *  "HankenGrotesk-SemiBold",
+ *  $font-weight: 600,
+ *  $font-style: italic
+ * );
+ */
+@mixin font-face(
+    $font-name,
+    $font-filename: $font-name,
+    $version: 1,
+    $font-weight: normal,
+    $font-style: normal
+) {
+    @font-face {
+        font-family: "#{$font-name}";
+        src: url("../fonts/#{$font-filename}.woff2?#{$version}") format("woff2"),
+            url("../fonts/#{$font-filename}.woff?#{$version}") format("woff");
+        font-weight: $font-weight;
+        font-style: $font-style;
+        font-display: swap;
+    }
+}
+
+/**
+ * Mixin for setting default font size and line height
+ */
+@mixin default-font-size {
+    font-size: $base-size + px;
+    line-height: ($base-line-height / $base-size) + em;
+}
+
+/**
+ * Mixin for setting default font family and font weight
+ */
+@mixin font-default($fontWeight: "default") {
+    font-family: $font-primary;
+    font-weight: normal;
+}
+
+/**
+ * Convert font-size from px to rem
+ * 1. Default font size on html element is 100%, equivalent to 16px;
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: rem(20px);
+ */
+@function rem($size) {
+    @return $size / 16px * 1rem; /* 1 */
+}
+
+/**
+ * Convert font-size from px to em
+ * 1. Default font size on html element is 100%, equivalent to 16px;
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: em(20px);
+ */
+@function em($size) {
+    @return $size / 16px * 1em; /* 1 */
+}

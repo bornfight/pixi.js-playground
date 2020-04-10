@@ -1,0 +1,47 @@
+/**
+ * Get breakpoint from breakpoints settings map
+ */
+@function getBreakpoint($breakpointKey) {
+    @return map-get($settings-breakpoints, $breakpointKey);
+}
+
+/**
+ * Media query mixin
+ * @param {} $to - Value from $settings-breakpoints
+ * available breakpoints can be found in _settings.breakpoints.scss
+ * usage:
+ * @include mq(md){};
+ */
+@mixin mq($to: null, $from: null, $and: null) {
+    @if $from != null and $to != null {
+        @if $and != null {
+            @media (min-width: getBreakpoint($from)) and (max-width: getBreakpoint($to)) and ($and) {
+                @content;
+            }
+        } @else {
+            @media (min-width: getBreakpoint($from)) and (max-width: getBreakpoint($to)) {
+                @content;
+            }
+        }
+    } @else if $to != null {
+        @if $and != null {
+            @media (max-width: getBreakpoint($to)) and ($and) {
+                @content;
+            }
+        } @else {
+            @media (max-width: getBreakpoint($to)) {
+                @content;
+            }
+        }
+    } @else if $from != null {
+        @if $and != null {
+            @media (min-width: getBreakpoint($from)) and ($and) {
+                @content;
+            }
+        } @else {
+            @media (min-width: getBreakpoint($from)) {
+                @content;
+            }
+        }
+    }
+}

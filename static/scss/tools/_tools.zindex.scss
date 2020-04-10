@@ -1,0 +1,7 @@
+/**
+ * Get z-index from $settings-zindex
+ * usage: todo
+ */
+@function getZindex($zIndex: default, $modifier: 0) {
+    @return map-get($settings-zindex, $zIndex) + $modifier;
+}

@@ -1,0 +1,18 @@
+/**
+ * Hanken Grotesk
+ */
+@include font-face("Hanken-Grotesk", "HankenGrotesk-Regular");
+@include font-face(
+    "Hanken-Grotesk",
+    "HankenGrotesk-SemiBold",
+    $font-weight: 600
+);
+
+/**
+ * Font variables
+ */
+$hanken: "Hanken-Grotesk", sans-serif;
+$base-size: 18;
+$base-line-height: 26;
+$font-primary: $hanken;
+$font-secondary: $hanken;

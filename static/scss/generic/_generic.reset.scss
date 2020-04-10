@@ -1,0 +1,318 @@
+/**
+ * Consists of best CSS reset practices combined into one file.
+ */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Tells the browser to account for any border and padding in the values you specify for an element's width and height
+ */
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    box-sizing: border-box; /* 3 */
+}
+
+/**
+ * All elements inherit box model
+ */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/**
+ * Reset elements in all browsers
+ */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/**
+ * Set core body defaults
+ * 1. sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scrolling APIs.
+ * 2. The browser emphasizes rendering speed over legibility and geometric precision when drawing text.
+ * 3. Disables the browser's inflation algorithm on some smart phones and tablets.
+ * 4. Font smoothing
+ */
+body {
+    scroll-behavior: smooth; /* 1 */
+    text-rendering: optimizeSpeed; /* 2 */
+    -webkit-text-size-adjust: none; /* 3 */
+    -webkit-font-smoothing: antialiased; /* 4 */
+    -moz-osx-font-smoothing: grayscale; /* 4 */
+}
+
+/**
+ * Remove list style from lists
+ */
+ul {
+    list-style: none;
+}
+
+/**
+ * Make media easier to work with
+ */
+img,
+iframe,
+video,
+object,
+embed {
+    display: block;
+    max-width: 100%;
+}
+
+/**
+ * Remove outline from tabindex -1
+ */
+[tabindex="-1"] {
+    outline: none !important;
+}
+
+/**
+ * Add the correct height in Firefox.
+ */
+hr {
+    height: 0;
+}
+
+/**
+ * Add the correct text decoration in Chrome, Edge, and Safari.
+ */
+abbr[title] {
+    text-decoration: underline dotted;
+}
+
+/**
+ * Add the correct font weight in Edge and Safari.
+ */
+b,
+strong {
+    font-weight: bold;
+}
+
+/**
+ * 1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+ * 2. Correct the odd 'em' font sizing in all browsers.
+ */
+code,
+kbd,
+samp,
+pre {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+ */
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+}
+
+/**
+ * Remove the inheritance of text transform in Edge and Firefox.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+    text-transform: none; /* 1 */
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome and Firefox.
+ */
+progress {
+    vertical-align: baseline;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Safari.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to 'inherit' in Safari.
+ */
+::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+}
+
+/**
+ * Add the correct display in Chrome and Safari.
+ */
+summary {
+    display: list-item;
+}
+
+/**
+ * Remove all animations and transitions for people that prefer not to see them
+ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

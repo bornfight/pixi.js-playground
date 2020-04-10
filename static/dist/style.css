@@ -1,0 +1,710 @@
+/**
+ * Tools
+ */
+/**
+ * Get breakpoint from breakpoints settings map
+ */
+/**
+ * Media query mixin
+ * @param {} $to - Value from $settings-breakpoints
+ * available breakpoints can be found in _settings.breakpoints.scss
+ * usage:
+ * @include mq(md){};
+ */
+/**
+ * Font face mixin
+ * @param {string} $font-name - Name of the font
+ * @param {string} $font-filename - Name of the file without extension
+ * @param {number} $version - Font version
+ * @param {number} $font-weight - Font weight value
+ * @param {string} $font-name - Font style property (if the font is italic)
+ * usage:
+ * @include font-face("Hanken-Grotesk", "HankenGrotesk-Regular");
+ * @include font-face(
+ *  "Hanken-Grotesk",
+ *  "HankenGrotesk-SemiBold",
+ *  $font-weight: 600,
+ *  $font-style: italic
+ * );
+ */
+/**
+ * Mixin for setting default font size and line height
+ */
+/**
+ * Mixin for setting default font family and font weight
+ */
+/**
+ * Convert font-size from px to rem
+ * 1. Default font size on html element is 100%, equivalent to 16px;
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: rem(20px);
+ */
+/**
+ * Convert font-size from px to em
+ * 1. Default font size on html element is 100%, equivalent to 16px;
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: em(20px);
+ */
+/**
+ * Get transition easing from $settings-transitions-easing
+ */
+/**
+ * Transition function
+ * @param {string} $transitionName - Name of the transition from $settings-transitions
+ * @param {string} $transitionEasing - get transition easing from $settings-transitions-easing
+ * usage:
+ * transition: getTransition;
+ * transition: getTransition(slide, ease-in-quad);
+ */
+/**
+ * Context
+ */
+/**
+ * Viewport width function
+ * 1. 1 vw is equal to 1% of the viewport width
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: get-vw(100px);
+ */
+/**
+ * Viewport height function
+ * 1. 1 vh is equal to 1% of the viewport height
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: get-vh(100px);
+ */
+/**
+ * Get z-index from $settings-zindex
+ * usage: todo
+ */
+/**
+ * Third party tools
+ */
+/**
+ * Settings
+ */
+/**
+ * Breakpoints
+ */
+/**
+ * Breakpoints - map
+ */
+/**
+ * Colors
+ */
+/**
+ * Colors - re-assigning
+ */
+/**
+ * Colors - components
+ */
+/**
+ * Hanken Grotesk
+ */
+@font-face {
+  font-family: "Hanken-Grotesk";
+  src: url("../fonts/HankenGrotesk-Regular.woff2?1") format("woff2"), url("../fonts/HankenGrotesk-Regular.woff?1") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: "Hanken-Grotesk";
+  src: url("../fonts/HankenGrotesk-SemiBold.woff2?1") format("woff2"), url("../fonts/HankenGrotesk-SemiBold.woff?1") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap; }
+
+/**
+ * Font variables
+ */
+/**
+ * Transition easing map
+ */
+/**
+ * Transitions map
+ */
+/**
+ * Z-index map
+ */
+/**
+ * Generic
+ */
+/**
+ * Consists of best CSS reset practices combined into one file.
+ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Tells the browser to account for any border and padding in the values you specify for an element's width and height
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* 3 */ }
+
+/**
+ * All elements inherit box model
+ */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit; }
+
+/**
+ * Reset elements in all browsers
+ */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+/**
+ * Set core body defaults
+ * 1. sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scrolling APIs.
+ * 2. The browser emphasizes rendering speed over legibility and geometric precision when drawing text.
+ * 3. Disables the browser's inflation algorithm on some smart phones and tablets.
+ * 4. Font smoothing
+ */
+body {
+  scroll-behavior: smooth;
+  /* 1 */
+  text-rendering: optimizeSpeed;
+  /* 2 */
+  -webkit-text-size-adjust: none;
+  /* 3 */
+  -webkit-font-smoothing: antialiased;
+  /* 4 */
+  -moz-osx-font-smoothing: grayscale;
+  /* 4 */ }
+
+/**
+ * Remove list style from lists
+ */
+ul {
+  list-style: none; }
+
+/**
+ * Make media easier to work with
+ */
+img,
+iframe,
+video,
+object,
+embed {
+  display: block;
+  max-width: 100%; }
+
+/**
+ * Remove outline from tabindex -1
+ */
+[tabindex="-1"] {
+  outline: none !important; }
+
+/**
+ * Add the correct height in Firefox.
+ */
+hr {
+  height: 0; }
+
+/**
+ * Add the correct text decoration in Chrome, Edge, and Safari.
+ */
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; }
+
+/**
+ * Add the correct font weight in Edge and Safari.
+ */
+b,
+strong {
+  font-weight: bold; }
+
+/**
+ * 1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+ * 2. Correct the odd 'em' font sizing in all browsers.
+ */
+code,
+kbd,
+samp,
+pre {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */ }
+
+/**
+ * Remove the inheritance of text transform in Edge and Firefox.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+  /* 1 */ }
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; }
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+ * Add the correct vertical alignment in Chrome and Firefox.
+ */
+progress {
+  vertical-align: baseline; }
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Safari.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */ }
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to 'inherit' in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+/**
+ * Add the correct display in Chrome and Safari.
+ */
+summary {
+  display: list-item; }
+
+/**
+ * Remove all animations and transitions for people that prefer not to see them
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important; } }
+
+/**
+ * Elements
+ */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  -webkit-font-smoothing: antialiased; }
+
+html.is-locked {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed; }
+
+body {
+  font-family: "Hanken-Grotesk", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.44444em;
+  color: #000000;
+  background-color: #ffffff; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+/**
+ * Objects
+ */
+.o-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 4.16667%;
+  padding-right: 4.16667%; }
+
+.o-footer {
+  padding: 20px 0; }
+
+.o-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px 0;
+  z-index: 5;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s; }
+
+.o-navigation.has-scrolled {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.4s ease-out;
+  transition: background-color 0.3s, -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, background-color 0.3s;
+  transition: transform 0.4s ease-out, background-color 0.3s, -webkit-transform 0.4s ease-out; }
+
+.o-navigation.has-scrolled.slide-up {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%); }
+
+.o-page {
+  padding-top: 120px; }
+
+/**
+ * Components
+ */
+/**
+ * Pages
+ */
+/**
+ * Utilities
+ */
+.u-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor; }
+
+.u-a3 {
+  font-family: "Hanken-Grotesk", sans-serif;
+  font-size: 35px;
+  line-height: 43px;
+  letter-spacing: 2px;
+  font-weight: normal; }
+
+@media (min-width: 480px) {
+  .u-a3 {
+    font-size: calc(4.67391vw + 12.56522px); } }
+
+@media (min-width: 1400px) {
+  .u-a3 {
+    font-size: 78px; } }
+
+@media (min-width: 2000px) {
+  .u-a3 {
+    font-size: 78px; } }
+
+@media (min-width: 480px) {
+  .u-a3 {
+    line-height: calc(4.67391vw + 20.56522px); } }
+
+@media (min-width: 1400px) {
+  .u-a3 {
+    line-height: 86px; } }
+
+@media (min-width: 2000px) {
+  .u-a3 {
+    line-height: 86px; } }
+
+@media (max-width: 480px) {
+  .u-a3 {
+    letter-spacing: 0; } }
+
+.u-a2 {
+  font-family: "Hanken-Grotesk", sans-serif;
+  font-size: 35px;
+  line-height: 43px;
+  font-weight: normal; }
+
+@media (min-width: 480px) {
+  .u-a2 {
+    font-size: calc(1.63043vw + 27.17391px); } }
+
+@media (min-width: 1400px) {
+  .u-a2 {
+    font-size: 50px; } }
+
+@media (min-width: 2000px) {
+  .u-a2 {
+    font-size: 50px; } }
+
+@media (min-width: 480px) {
+  .u-a2 {
+    line-height: calc(2.5vw + 31px); } }
+
+@media (min-width: 1400px) {
+  .u-a2 {
+    line-height: calc(-1.66667vw + 89.33333px); } }
+
+@media (min-width: 2000px) {
+  .u-a2 {
+    line-height: 56px; } }
+
+.u-a1 {
+  font-family: "Hanken-Grotesk", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  font-weight: normal; }
+
+@media (min-width: 480px) {
+  .u-a1 {
+    font-size: calc(0.43478vw + 11.91304px); } }
+
+@media (min-width: 1400px) {
+  .u-a1 {
+    font-size: 18px; } }
+
+@media (min-width: 2000px) {
+  .u-a1 {
+    font-size: 18px; } }
+
+@media (min-width: 480px) {
+  .u-a1 {
+    line-height: calc(0.65217vw + 16.86957px); } }
+
+@media (min-width: 1400px) {
+  .u-a1 {
+    line-height: 26px; } }
+
+@media (min-width: 2000px) {
+  .u-a1 {
+    line-height: 26px; } }
+
+@media (max-width: 480px) {
+  .u-a1 {
+    letter-spacing: 0; } }
+
+.u-b0 {
+  font-family: "Hanken-Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: normal; }
+
+@media (min-width: 480px) {
+  .u-b0 {
+    font-size: 16px; } }
+
+@media (min-width: 1400px) {
+  .u-b0 {
+    font-size: 16px; } }
+
+@media (min-width: 480px) {
+  .u-b0 {
+    line-height: 23px; } }
+
+@media (min-width: 1400px) {
+  .u-b0 {
+    line-height: 23px; } }
+
+.u-b1 {
+  font-family: "Hanken-Grotesk", sans-serif;
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: normal; }
+
+.u-uppercase {
+  text-transform: uppercase; }
+
+.u-text-center {
+  text-align: center; }
+
+.u-fw-thin,
+.u-fw-100 {
+  font-weight: 100; }
+
+.u-fw-extra-light,
+.u-fw-200 {
+  font-weight: 200; }
+
+.u-fw-light,
+.u-fw-300 {
+  font-weight: 300; }
+
+.u-fw-regular,
+.u-fw-normal,
+.u-fw-400 {
+  font-weight: 400; }
+
+.u-fw-medium,
+.u-fw-500 {
+  font-weight: 500; }
+
+.u-fw-semi-bold,
+.u-fw-600 {
+  font-weight: 600; }
+
+.u-fw-bold,
+.u-fw-700 {
+  font-weight: 700; }
+
+.u-fw-extra-bold,
+.u-fw-800 {
+  font-weight: 800; }
+
+.u-fw-black,
+.u-fw-900 {
+  font-weight: 900; }
+
+/**
+ * Vendor
+ */
+
+/*# sourceMappingURL=style.css.map */

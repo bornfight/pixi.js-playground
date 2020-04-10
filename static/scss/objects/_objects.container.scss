@@ -1,0 +1,7 @@
+.o-container {
+    width: 100%;
+    max-width: $grid-column-count * $grid-column-width;
+    margin: 0 auto;
+    padding-left: percentage(1/24);
+    padding-right: percentage(1/24);
+}

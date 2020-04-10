@@ -1,0 +1,22 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    &.is-locked {
+        top: 0;
+        left: 0;
+        right: 0;
+        position: fixed;
+    }
+}
+
+body {
+    @include font-default;
+    @include default-font-size;
+    color: $black;
+    background-color: $white;
+}

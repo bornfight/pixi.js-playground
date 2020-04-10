@@ -1,0 +1,29 @@
+/**
+ * Context
+ */
+$max-width: 1440;
+$max-height: 900;
+
+/**
+ * Viewport width function
+ * 1. 1 vw is equal to 1% of the viewport width
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: get-vw(100px);
+ */
+@function get-vw($size) {
+    $vw-context: ($max-width * 0.01) * 1px; /* 1 */
+    @return ($size / $vw-context) * 1vw;
+}
+
+/**
+ * Viewport height function
+ * 1. 1 vh is equal to 1% of the viewport height
+ * @param {number} $size - the value in pixel you want to convert
+ * usage:
+ * padding-top: get-vh(100px);
+ */
+@function get-vh($size) {
+    $vw-context: ($max-height * 0.01) * 1px; /* 1 */
+    @return ($size / $vw-context) * 1vh;
+}

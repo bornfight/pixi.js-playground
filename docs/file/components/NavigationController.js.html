@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">components/NavigationController.js | gulp4-boilerplate</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Altered 8 frontend project template based on gulp, es6 and scss"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="gulp4-boilerplate"><meta property="twitter:description" content="Altered 8 frontend project template based on gulp, es6 and scss"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/Dummy.js~Dummy.html">Dummy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html">NavigationController</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/NavigationController.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * &quot;smart&quot; navigation which goes off screen when scrolling down for a better overview of content and UX
+ * navigation appears when scrolling up
+ */
+export default class NavigationController {
+    constructor() {
+        /**
+         * Navigation DOM selectors
+         * Navigation DOM state CSS classes
+         * @type {{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}}
+         */
+
+        this.DOM = {
+            navigation: &quot;.js-navigation-wrapper&quot;,
+            states: {
+                navigationScrolled: &quot;has-scrolled&quot;,
+                navigationFixed: &quot;is-fixed&quot;,
+                navigationSlideUp: &quot;slide-up&quot;,
+            },
+        };
+
+        /**
+         * flag, state variable for scrolling event
+         * @type {boolean}
+         */
+        this.scrolling = false;
+        /**
+         * amount of pixels to scroll from top for adding &quot;has-scrolled&quot; state class
+         * @type {number}
+         */
+        this.scrollNavigationOffset = 200;
+        /**
+         * variable for storing amount of scroll from top position value
+         * @type {number}
+         */
+        this.previousTop = 0;
+        /**
+         * variable for storing current scroll position value
+         * @type {number}
+         */
+        this.currentTop = 0;
+        this.scrollDelta = 0;
+        this.scrollOffset = 0;
+
+        /**
+         * fetch navigation element DOM element
+         * @type {Element}
+         */
+        this.navigation = document.querySelector(this.DOM.navigation);
+    }
+
+    //region methods
+    /**
+     *
+     */
+    init() {
+        console.log(&quot;Navigation init()&quot;);
+
+        if (this.navigation !== null) {
+            this.navigationController();
+        } else {
+            console.error(`${this.DOM.navigation} does not exist in the DOM!`);
+        }
+    }
+
+    /**
+     *
+     */
+    navigationController() {
+        document.addEventListener(&quot;scroll&quot;, () =&gt; {
+            if (!this.scrolling) {
+                this.scrolling = true;
+
+                if (!window.requestAnimationFrame) {
+                    setTimeout(this.checkScroll(), 250);
+                } else {
+                    requestAnimationFrame(() =&gt; this.checkScroll());
+                }
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    checkScroll() {
+        /**
+         *
+         * @type {number}
+         */
+        let currentTop = window.pageYOffset | document.body.scrollTop;
+
+        this.changeNavigationState(currentTop);
+
+        this.previousTop = currentTop;
+        this.scrolling = false;
+    }
+
+    /**
+     *
+     * @param currentTop
+     */
+    changeNavigationState(currentTop) {
+        if (currentTop &gt; this.scrollNavigationOffset) {
+            this.navigation.classList.add(this.DOM.states.navigationScrolled);
+        } else {
+            this.navigation.classList.remove(this.DOM.states.navigationScrolled);
+        }
+
+        if (this.previousTop &gt;= currentTop) {
+            this.scrollingUp(currentTop);
+        } else {
+            this.scrollingDown(currentTop);
+        }
+    }
+
+    /**
+     *
+     * @param currentTop
+     */
+    scrollingUp(currentTop) {
+        if (currentTop &lt; this.scrollNavigationOffset) {
+            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);
+        } else if (this.previousTop - currentTop &gt; this.scrollDelta) {
+            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);
+        }
+    }
+
+    /**
+     *
+     * @param currentTop
+     */
+    scrollingDown(currentTop) {
+        if (currentTop &gt; this.scrollNavigationOffset + this.scrollOffset) {
+            this.navigation.classList.add(this.DOM.states.navigationSlideUp);
+        } else if (currentTop &gt; this.scrollNavigationOffset) {
+            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);
+        }
+    }
+
+    //endregion
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

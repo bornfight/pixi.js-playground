@@ -1,0 +1,25 @@
+{
+  "coverage": "68.42%",
+  "expectCount": 19,
+  "actualCount": 13,
+  "files": {
+    "components/Dummy.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        4
+      ]
+    },
+    "components/NavigationController.js": {
+      "expectCount": 16,
+      "actualCount": 13,
+      "undocumentLines": [
+        6,
+        42,
+        43
+      ]
+    }
+  }
+}

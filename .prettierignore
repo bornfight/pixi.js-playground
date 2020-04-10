@@ -1,0 +1,6 @@
+package-lock.json
+node_modules/
+bower_components/
+.idea/
+.DS_Store
+static/dist/

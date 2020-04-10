@@ -1,0 +1,4 @@
+/static/scss/settings/**/*.scss
+/static/scss/tools/**/*.scss
+/static/scss/vendor/**/*.scss
+/static/dist/

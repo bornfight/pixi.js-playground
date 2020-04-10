@@ -1,0 +1,30 @@
+{
+  "extends": ["stylelint-prettier/recommended"],
+  "plugins": [
+    "stylelint-scss",
+    "@namics/stylelint-bem"
+  ],
+  "rules": {
+    "indentation": [4],
+    "plugin/stylelint-bem-namics": {
+      "patternPrefixes": [ "c", "o", "u"],
+      "helperPrefixes": [ "is", "has" ]
+    },
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global", "local", "@include"]
+    }],
+    "max-nesting-depth": [2, {
+      "ignore": [
+        "blockless-at-rules",
+        "pseudo-classes"
+      ]
+    }],
+    "max-empty-lines": 1,
+    "at-rule-no-unknown": null,
+    "no-duplicate-selectors": true,
+    "color-named": "always-where-possible",
+    "color-no-hex": true,
+    "color-no-invalid-hex": true,
+    "scss/at-rule-no-unknown": true
+  }
+}

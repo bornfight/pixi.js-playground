@@ -1,0 +1,950 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "components/.external-ecmascript.js",
+    "static": true,
+    "longname": "components/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "components/Dummy.js",
+    "content": "export default class Dummy {\n    constructor() {}\n\n    init() {\n        console.log(\"Loaded!\");\n    }\n}\n",
+    "static": true,
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/Dummy.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "name": "Dummy",
+    "memberof": "components/Dummy.js",
+    "static": true,
+    "longname": "components/Dummy.js~Dummy",
+    "access": "public",
+    "export": true,
+    "importPath": "gulp4-boilerplate/components/Dummy.js",
+    "importStyle": "Dummy",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "components/Dummy.js~Dummy",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/Dummy.js~Dummy#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "name": "init",
+    "memberof": "components/Dummy.js~Dummy",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/Dummy.js~Dummy#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 52,
+    "kind": "file",
+    "name": "components/NavigationController.js",
+    "content": "/**\n * \"smart\" navigation which goes off screen when scrolling down for a better overview of content and UX\n * navigation appears when scrolling up\n */\nexport default class NavigationController {\n    constructor() {\n        /**\n         * Navigation DOM selectors\n         * Navigation DOM state CSS classes\n         * @type {{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}}\n         */\n\n        this.DOM = {\n            navigation: \".js-navigation-wrapper\",\n            states: {\n                navigationScrolled: \"has-scrolled\",\n                navigationFixed: \"is-fixed\",\n                navigationSlideUp: \"slide-up\",\n            },\n        };\n\n        /**\n         * flag, state variable for scrolling event\n         * @type {boolean}\n         */\n        this.scrolling = false;\n        /**\n         * amount of pixels to scroll from top for adding \"has-scrolled\" state class\n         * @type {number}\n         */\n        this.scrollNavigationOffset = 200;\n        /**\n         * variable for storing amount of scroll from top position value\n         * @type {number}\n         */\n        this.previousTop = 0;\n        /**\n         * variable for storing current scroll position value\n         * @type {number}\n         */\n        this.currentTop = 0;\n        this.scrollDelta = 0;\n        this.scrollOffset = 0;\n\n        /**\n         * fetch navigation element DOM element\n         * @type {Element}\n         */\n        this.navigation = document.querySelector(this.DOM.navigation);\n    }\n\n    //region methods\n    /**\n     *\n     */\n    init() {\n        console.log(\"Navigation init()\");\n\n        if (this.navigation !== null) {\n            this.navigationController();\n        } else {\n            console.error(`${this.DOM.navigation} does not exist in the DOM!`);\n        }\n    }\n\n    /**\n     *\n     */\n    navigationController() {\n        document.addEventListener(\"scroll\", () => {\n            if (!this.scrolling) {\n                this.scrolling = true;\n\n                if (!window.requestAnimationFrame) {\n                    setTimeout(this.checkScroll(), 250);\n                } else {\n                    requestAnimationFrame(() => this.checkScroll());\n                }\n            }\n        });\n    }\n\n    /**\n     *\n     */\n    checkScroll() {\n        /**\n         *\n         * @type {number}\n         */\n        let currentTop = window.pageYOffset | document.body.scrollTop;\n\n        this.changeNavigationState(currentTop);\n\n        this.previousTop = currentTop;\n        this.scrolling = false;\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    changeNavigationState(currentTop) {\n        if (currentTop > this.scrollNavigationOffset) {\n            this.navigation.classList.add(this.DOM.states.navigationScrolled);\n        } else {\n            this.navigation.classList.remove(this.DOM.states.navigationScrolled);\n        }\n\n        if (this.previousTop >= currentTop) {\n            this.scrollingUp(currentTop);\n        } else {\n            this.scrollingDown(currentTop);\n        }\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    scrollingUp(currentTop) {\n        if (currentTop < this.scrollNavigationOffset) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        } else if (this.previousTop - currentTop > this.scrollDelta) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        }\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    scrollingDown(currentTop) {\n        if (currentTop > this.scrollNavigationOffset + this.scrollOffset) {\n            this.navigation.classList.add(this.DOM.states.navigationSlideUp);\n        } else if (currentTop > this.scrollNavigationOffset) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        }\n    }\n\n    //endregion\n}\n",
+    "static": true,
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/NavigationController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 53,
+    "kind": "class",
+    "name": "NavigationController",
+    "memberof": "components/NavigationController.js",
+    "static": true,
+    "longname": "components/NavigationController.js~NavigationController",
+    "access": "public",
+    "export": true,
+    "importPath": "gulp4-boilerplate/components/NavigationController.js",
+    "importStyle": "NavigationController",
+    "description": "\"smart\" navigation which goes off screen when scrolling down for a better overview of content and UX\nnavigation appears when scrolling up",
+    "lineNumber": 5,
+    "interface": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "member",
+    "name": "DOM",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#DOM",
+    "access": "public",
+    "description": "Navigation DOM selectors\nNavigation DOM state CSS classes",
+    "lineNumber": 13,
+    "type": {
+      "nullable": null,
+      "types": [
+        "{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "member",
+    "name": "scrolling",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#scrolling",
+    "access": "public",
+    "description": "flag, state variable for scrolling event",
+    "lineNumber": 26,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "member",
+    "name": "scrollNavigationOffset",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#scrollNavigationOffset",
+    "access": "public",
+    "description": "amount of pixels to scroll from top for adding \"has-scrolled\" state class",
+    "lineNumber": 31,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "member",
+    "name": "previousTop",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#previousTop",
+    "access": "public",
+    "description": "variable for storing amount of scroll from top position value",
+    "lineNumber": 36,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "name": "currentTop",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#currentTop",
+    "access": "public",
+    "description": "variable for storing current scroll position value",
+    "lineNumber": 41,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "member",
+    "name": "scrollDelta",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#scrollDelta",
+    "access": "public",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "name": "scrollOffset",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#scrollOffset",
+    "access": "public",
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "member",
+    "name": "navigation",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#navigation",
+    "access": "public",
+    "description": "fetch navigation element DOM element",
+    "lineNumber": 49,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Element"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "init",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#init",
+    "access": "public",
+    "description": "",
+    "lineNumber": 56,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "name": "navigationController",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#navigationController",
+    "access": "public",
+    "description": "",
+    "lineNumber": 69,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "checkScroll",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#checkScroll",
+    "access": "public",
+    "description": "",
+    "lineNumber": 86,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "changeNavigationState",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#changeNavigationState",
+    "access": "public",
+    "description": "",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentTop",
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "scrollingUp",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#scrollingUp",
+    "access": "public",
+    "description": "",
+    "lineNumber": 121,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentTop",
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "scrollingDown",
+    "memberof": "components/NavigationController.js~NavigationController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/NavigationController.js~NavigationController#scrollingDown",
+    "access": "public",
+    "description": "",
+    "lineNumber": 133,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentTop",
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "kind": "index",
+    "content": "# PIXI.js — playground\n\n#### Build system\n\n- [Gulp](https://gulpjs.com/) 4 used\n- [browsersync](https://browsersync.io/) for live reload\n\n#### Scripts\n\n-  dev environent with browsersync\n```bash\nnpm run dev\n```\n- build production\n```bash\nnpm run build\n```\n\n## License\n\nMIT\n",
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n    \"name\": \"gulp4-boilerplate\",\n    \"version\": \"0.1.0\",\n    \"description\": \"Altered 8 frontend project template based on gulp, es6 and scss\",\n    \"author\": \"Altered 8\",\n    \"email\": \"info@altrd8.com\",\n    \"private\": true,\n    \"engines\": {\n        \"node\": \">=12.16.1\",\n        \"npm\": \">=6.14.2\"\n    },\n    \"scripts\": {\n        \"build\": \"gulp build\",\n        \"dev\": \"gulp\",\n        \"esdoc\": \"./node_modules/.bin/esdoc\",\n        \"format\": \"prettier --write \\\"static/**/*.{scss,js}\\\"\",\n        \"lint:scss\": \"stylelint 'static/**/*.scss'\"\n    },\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"\"\n    },\n    \"browserslist\": [\n        \"> 0.5%\",\n        \"last 2 versions\"\n    ],\n    \"devDependencies\": {\n        \"@babel/core\": \"^7.8.7\",\n        \"@babel/plugin-proposal-class-properties\": \"^7.8.3\",\n        \"@babel/plugin-proposal-object-rest-spread\": \"^7.8.3\",\n        \"@babel/plugin-syntax-dynamic-import\": \"^7.8.3\",\n        \"@babel/preset-env\": \"^7.8.7\",\n        \"@babel/register\": \"^7.8.6\",\n        \"@namics/stylelint-bem\": \"^6.3.0\",\n        \"babelify\": \"^10.0.0\",\n        \"browser-sync\": \"^2.26.7\",\n        \"browserify\": \"^16.5.0\",\n        \"del\": \"^5.1.0\",\n        \"esdoc\": \"^1.1.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"eslint\": \"^6.8.0\",\n        \"eslint-config-prettier\": \"^6.10.0\",\n        \"eslint-plugin-prettier\": \"^3.1.2\",\n        \"esm\": \"^3.2.25\",\n        \"gulp\": \"^4.0.2\",\n        \"gulp-autoprefixer\": \"^7.0.1\",\n        \"gulp-babel\": \"^8.0.0\",\n        \"gulp-clean-css\": \"^4.2.0\",\n        \"gulp-concat\": \"^2.6.1\",\n        \"gulp-rename\": \"^2.0.0\",\n        \"gulp-sass\": \"^4.0.2\",\n        \"gulp-sourcemaps\": \"^2.6.5\",\n        \"gulp-uglify\": \"^3.0.2\",\n        \"prettier\": \"^1.19.1\",\n        \"stylelint\": \"^13.2.1\",\n        \"stylelint-config-prettier\": \"^8.0.1\",\n        \"stylelint-prettier\": \"^1.1.2\",\n        \"stylelint-scss\": \"^3.15.0\",\n        \"vinyl-buffer\": \"^1.0.1\",\n        \"vinyl-source-stream\": \"^2.0.0\"\n    },\n    \"dependencies\": {\n        \"gsap\": \"^3.2.4\",\n        \"poly-fluid-sizing\": \"^1.1.0\"\n    }\n}\n",
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

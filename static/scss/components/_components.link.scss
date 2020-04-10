@@ -1,0 +1,52 @@
+.c-link {
+	font-size: 14px;
+	line-height: 1em;
+	display: inline-flex;
+	padding: 10px 0;
+	align-items: center;
+	transition: getTransition();
+
+	&__prepend,
+	&__append {
+		font-size: 14px;
+	}
+
+	&__prepend {
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 8px;
+		transition: getTransition();
+	}
+
+	&__label {
+		display: inline-block;
+	}
+
+	&__append {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 8px;
+		transition: getTransition();
+	}
+
+	&:hover {
+		opacity: 0.4;
+
+		.c-link__prepend {
+			transform: translateX(-4px);
+		}
+
+		.c-link__append {
+			transform: translateX(4px);
+		}
+	}
+}
+
+.c-link-list {
+	&__item {
+
+		&:before {
+
+		}
+	}
+}

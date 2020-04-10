@@ -1,6 +1,11 @@
 .o-section {
 	&__heading {
 		padding-bottom: 20px;
+
+		//overrides
+		.u-b0 {
+			opacity: 0.4;
+		}
 	}
 
 	&__content {
@@ -8,10 +13,16 @@
 	}
 
 	//modifiers
-	&--portfolio {
+	&--portfolio,
+	&--hotspots {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		overflow: hidden;
+
+		.o-container {
+			position: relative;
+		}
 	}
 }

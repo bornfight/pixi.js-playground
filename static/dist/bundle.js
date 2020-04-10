@@ -50616,6 +50616,287 @@ window.PIXI = PIXI;
  * interactive portfolio list with webGL preview interaction powered by PIXI.js
  */
 
+var HotspotsController = /*#__PURE__*/function () {
+  /**
+   *
+   * @param options
+   */
+  function HotspotsController() {
+    _classCallCheck(this, HotspotsController);
+
+    /**
+     *
+     * @type {{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotCanvasContainer: string, hotspotContainer: string}}
+     * @private
+     */
+    this.DOM = {
+      hotspotContainer: ".js-hotspot-container",
+      hotspot: ".js-hotspot",
+      hotspotCanvasContainer: ".js-hotspot-lines-container",
+      hotspotCircle: ".js-hotspot-circle",
+      hotspotText: ".js-hotspot-text"
+    };
+    /**
+     *
+     * @returns {NodeListOf<Element>}
+     */
+
+    this.hotspotContainer = document.querySelectorAll(this.DOM.hotspotContainer);
+    /**
+     *
+     * @returns {NodeListOf<Element>}
+     */
+
+    this.hotspotCanvasContainer = document.querySelectorAll(this.DOM.hotspotCanvasContainer);
+  }
+
+  _createClass(HotspotsController, [{
+    key: "init",
+    value: function init() {
+      console.log("HotspotsController init()");
+
+      if (this.hotspotContainer !== null) {
+        this.initHotspotLines();
+      } else {
+        console.error("".concat(this.DOM.hotspotContainer, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "initHotspotLines",
+    value: function initHotspotLines() {
+      var _this = this;
+
+      var lineColor = 0xb1b1b1;
+      var lineGradient = ["#b1b1b1", "#ffffff"];
+      var lineEndingRadius = 2;
+      var gradientTexture = this.getGradientTexture(lineGradient[0], lineGradient[1]);
+      this.hotspotContainer.forEach(function (hotspotContainer) {
+        var hotspots = hotspotContainer.querySelectorAll(_this.DOM.hotspot); // CANVAS SIZE
+
+        var canvasWidth = hotspotContainer.clientWidth;
+        var canvasHeight = hotspotContainer.clientHeight; // CREATE PIXI APPLICATION
+
+        var app = new PIXI.Application({
+          width: canvasWidth,
+          height: canvasHeight,
+          antialias: true,
+          transparent: true,
+          //resolution: window.devicePixelRatio,
+          resizeTo: hotspotContainer
+        }); // ADD CANVAS TO CANVAS WRAPPER ELEMENT
+
+        hotspotContainer.appendChild(app.view);
+        hotspots.forEach(function (hotspot) {
+          var circle = hotspot.querySelector(_this.DOM.hotspotCircle);
+          var text = hotspot.querySelector(_this.DOM.hotspotText);
+          var line = new PIXI.Graphics();
+          line.alpha = 0;
+          app.stage.addChild(line);
+          app.ticker.add(function () {
+            line.clear();
+            line.beginFill(lineColor, 1);
+            line.drawCircle(_this.getPosition(circle)[0], _this.getPosition(circle)[1], lineEndingRadius);
+            line.endFill();
+            line.beginFill(lineColor, 1);
+            line.drawCircle(_this.getPosition(text)[0], _this.getPosition(text)[1], lineEndingRadius);
+            line.endFill();
+            line.moveTo(_this.getPosition(circle)[0], _this.getPosition(circle)[1]);
+            line.lineStyle(1, lineColor, 1);
+            line.lineTextureStyle({
+              width: 1,
+              texture: gradientTexture,
+              color: 0xffffff
+            });
+            line.lineTo(_this.getPosition(text)[0], _this.getPosition(text)[1]);
+          }); //hover
+
+          hotspot.addEventListener("mouseenter", function () {
+            _gsap.default.to(line, {
+              alpha: 1,
+              duration: 0.4,
+              onComplete: function onComplete() {}
+            });
+          });
+          hotspot.addEventListener("mouseleave", function () {
+            _gsap.default.to(line, {
+              alpha: 0,
+              duration: 0.4,
+              onComplete: function onComplete() {}
+            });
+          });
+        });
+      });
+    }
+    /**
+     *
+     * @param {HTMLElement} element - element which position we should get
+     * @returns {[number, number]} - position of element relative to viewport
+     */
+
+  }, {
+    key: "getPosition",
+    value: function getPosition(element) {
+      var posX = element.getBoundingClientRect().left - element.closest(this.DOM.hotspotContainer).getBoundingClientRect().left + element.clientWidth / 2;
+      var posY = element.getBoundingClientRect().top - element.closest(this.DOM.hotspotContainer).getBoundingClientRect().top + element.clientHeight / 2;
+      return [posX, posY];
+    }
+    /**
+     *
+     * @param {string} from - color in hex format
+     * @param {string} to - color in hex format
+     * @returns {PIXI.Texture}
+     */
+
+  }, {
+    key: "getGradientTexture",
+    value: function getGradientTexture(from, to) {
+      var textureWH = 600;
+      var canvas = document.createElement("canvas");
+      var context = canvas.getContext("2d");
+      var gradient = context.createLinearGradient(0, 0, textureWH, textureWH);
+      gradient.addColorStop(0, from);
+      gradient.addColorStop(1, to);
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, textureWH, textureWH);
+      return new PIXI.Texture.from(canvas);
+    }
+  }]);
+
+  return HotspotsController;
+}();
+
+exports.default = HotspotsController;
+
+},{"gsap":38,"pixi.js":44}],56:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var MagneticCtaController = /*#__PURE__*/function () {
+  function MagneticCtaController(element, innerElement) {
+    var _this = this;
+
+    _classCallCheck(this, MagneticCtaController);
+
+    this.innerEl = element.querySelectorAll(innerElement);
+    this.innerText = element.querySelectorAll("div");
+    element.addEventListener("mousemove", function (ev) {
+      ev.currentTarget.classList.add("is-active");
+
+      _this.mousemoveFn(ev, element);
+    });
+    element.addEventListener("mouseleave", function (ev) {
+      ev.currentTarget.classList.remove("is-active");
+
+      _this.mouseleaveFn(ev, element);
+    });
+  }
+
+  _createClass(MagneticCtaController, [{
+    key: "mousemoveFn",
+    value: function mousemoveFn(ev, element) {
+      // Get X-coordinate for the left button edge
+      var buttonPosX = element.getBoundingClientRect().left;
+      var buttonPosY = element.getBoundingClientRect().top; // Get position of the mouse inside element from left edge
+      // (current mouse X position - button x coordinate)
+
+      var pageX = ev.clientX;
+      var pageY = ev.clientY;
+      var xPosOfMouse = pageX - buttonPosX;
+      var yPosOfMouse = pageY - buttonPosY; // Get position of mouse relative to button center
+      // Mouse position inside element - button width / 2
+      // To get positive or negative movement
+
+      var xPosOfMouseInsideButton = xPosOfMouse - element.offsetWidth / 2;
+      var yPosOfMouseInsideButton = yPosOfMouse - element.offsetHeight / 2; // Button text divider to increase or decrease text path
+
+      var animationDivider = 3;
+      var animationDividerText = 1.5; // Animate button text positive or negative from center
+
+      _gsap.default.to(this.innerEl, 0.3, {
+        x: xPosOfMouseInsideButton / animationDivider,
+        y: yPosOfMouseInsideButton / animationDivider,
+        ease: "power3.out"
+      });
+
+      if (this.innerText.length > 0) {
+        _gsap.default.to(this.innerText, 0.2, {
+          x: xPosOfMouseInsideButton / animationDividerText,
+          y: yPosOfMouseInsideButton / animationDividerText,
+          ease: "power3.out"
+        });
+      }
+    } // On mouse leave
+
+  }, {
+    key: "mouseleaveFn",
+    value: function mouseleaveFn() {
+      // Animate button text reset to initial position (center)
+      _gsap.default.to(this.innerEl, 0.3, {
+        x: 0,
+        y: 0,
+        ease: "power3.out"
+      });
+
+      if (this.innerText.length > 0) {
+        _gsap.default.to(this.innerText, 0.5, {
+          x: 0,
+          y: 0,
+          ease: "power3.out"
+        });
+      }
+    }
+  }]);
+
+  return MagneticCtaController;
+}();
+
+exports.default = MagneticCtaController;
+
+},{"gsap":38}],57:[function(require,module,exports){
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var PIXI = _interopRequireWildcard(require("pixi.js"));
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+window.PIXI = PIXI;
+/**
+ * interactive portfolio list with webGL preview interaction powered by PIXI.js
+ */
+
 var PortfolioListController = /*#__PURE__*/function () {
   function PortfolioListController() {
     _classCallCheck(this, PortfolioListController);
@@ -50820,10 +51101,14 @@ var PortfolioListController = /*#__PURE__*/function () {
 
 exports.default = PortfolioListController;
 
-},{"gsap":38,"pixi.js":44}],56:[function(require,module,exports){
+},{"gsap":38,"pixi.js":44}],58:[function(require,module,exports){
 "use strict";
 
 var _PortfolioListController = _interopRequireDefault(require("./components/PortfolioListController"));
+
+var _MagneticCtaController = _interopRequireDefault(require("./components/MagneticCtaController"));
+
+var _HotspotsController = _interopRequireDefault(require("./components/HotspotsController"));
 
 var _Dummy = _interopRequireDefault(require("./components/Dummy"));
 
@@ -50862,10 +51147,21 @@ ready(function () {
   dummy.init(); // const navigation = new NavigationController();
   // navigation.init();
 
-  var portfolioList = new _PortfolioListController.default();
-  portfolioList.init();
+  if (document.getElementById("portfolio") !== null) {
+    var portfolioList = new _PortfolioListController.default();
+    portfolioList.init();
+  }
+
+  if (document.getElementById("hotspots") !== null) {
+    var magneticCta = document.querySelectorAll(".js-hotspot");
+    magneticCta.forEach(function (element) {
+      new _MagneticCtaController.default(element, "span");
+    });
+    var hotspots = new _HotspotsController.default();
+    hotspots.init();
+  }
 });
 
-},{"./components/Dummy":54,"./components/PortfolioListController":55}]},{},[56]);
+},{"./components/Dummy":54,"./components/HotspotsController":55,"./components/MagneticCtaController":56,"./components/PortfolioListController":57}]},{},[58]);
 
 //# sourceMappingURL=bundle.js.map

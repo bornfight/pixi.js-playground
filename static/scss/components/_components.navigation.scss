@@ -1,2 +1,8 @@
 .c-navigation {
+
+	//overrides
+	.o-container {
+		display: flex;
+		justify-content: flex-end;
+	}
 }

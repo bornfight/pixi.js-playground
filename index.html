@@ -27,10 +27,23 @@
     <link rel="stylesheet" href="static/dist/style.css"/>
 </head>
 
-<body>
+<body class="is-dark">
+<!-- LOADER -->
+<div class="o-loader"></div>
+<!-- //LOADER -->
+
+<!-- NAVIGATION -->
+<div class="o-navigation js-navigation-wrapper">
+    <div class="c-navigation">
+        <div class="o-container">
+
+        </div>
+    </div>
+</div>
+<!-- //NAVIGATION -->
 
 <!-- PAGE -->
-<div id="homepage" class="o-page o-page--portfolio">
+<div id="homepage" class="o-page o-page--homepage">
     <div class="o-page__inner">
 
         <section class="o-section o-section--portfolio js-portfolio">
@@ -38,144 +51,64 @@
             <div class="o-section__heading">
                 <div class="o-container">
                     <h2 class="u-a7">
-                        Featured work
+                        PIXI.js — playground
                     </h2>
                 </div>
             </div>
             <div class="o-section__content">
                 <div class="o-container">
-                    <div class="c-work">
-                        <ul class="c-work__list">
-
-                            <!-- WORK ITEM -->
-                            <li class="c-work__item">
-                                <div class="c-work-item js-portfolio-item">
-                                    <span class="c-work-item__number u-b1">
-                                        01
-                                    </span>
-                                    <div class="c-work-item__title">
-                                        <h3 class="u-a6">
-                                            Hone Products
-                                        </h3>
-                                    </div>
-                                    <span class="c-work-item__category u-b0">
-                                        <i>/</i>Website
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- //WORK ITEM -->
-                            <!-- WORK ITEM -->
-                            <li class="c-work__item">
-                                <div class="c-work-item js-portfolio-item">
-                                    <span class="c-work-item__number u-b1">
-                                        02
-                                    </span>
-                                    <div class="c-work-item__title">
-                                        <h3 class="u-a6">
-                                            Urban Culture
-                                        </h3>
-                                    </div>
-                                    <span class="c-work-item__category u-b0">
-                                        <i>/</i>Digital Presentation
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- //WORK ITEM -->
-                            <!-- WORK ITEM -->
-                            <li class="c-work__item">
-                                <div class="c-work-item js-portfolio-item">
-                                    <span class="c-work-item__number u-b1">
-                                        03
-                                    </span>
-                                    <div class="c-work-item__title">
-                                        <h3 class="u-a6">
-                                            X — 6
-                                        </h3>
-                                    </div>
-                                    <span class="c-work-item__category u-b0">
-                                        <i>/</i>Website
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- //WORK ITEM -->
-                            <!-- WORK ITEM -->
-                            <li class="c-work__item">
-                                <div class="c-work-item js-portfolio-item">
-                                    <span class="c-work-item__number u-b1">
-                                        04
-                                    </span>
-                                    <div class="c-work-item__title">
-                                        <h3 class="u-a6">
-                                            Difference
-                                        </h3>
-                                    </div>
-                                    <span class="c-work-item__category u-b0">
-                                        <i>/</i>Branding
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- //WORK ITEM -->
-                            <!-- WORK ITEM -->
-                            <li class="c-work__item">
-                                <div class="c-work-item js-portfolio-item">
-                                    <span class="c-work-item__number u-b1">
-                                        05
-                                    </span>
-                                    <div class="c-work-item__title">
-                                        <h3 class="u-a6">
-                                            Cali-Hype
-                                        </h3>
-                                    </div>
-                                    <span class="c-work-item__category u-b0">
-                                        <i>/</i>E-commerce
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- //WORK ITEM -->
-                            <!-- WORK ITEM -->
-                            <li class="c-work__item">
-                                <div class="c-work-item js-portfolio-item">
-                                    <span class="c-work-item__number u-b1">
-                                        06
-                                    </span>
-                                    <div class="c-work-item__title">
-                                        <h3 class="u-a6">
-                                            Prada x Diesel
-                                        </h3>
-                                    </div>
-                                    <span class="c-work-item__category u-b0">
-                                        <i>/</i>Website
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- //WORK ITEM -->
-                        </ul>
-                        <div class="c-work-preview">
-                            <div class="c-work-preview__canvas">
-                                <div class="c-canvas js-portfolio-canvas"
-                                     data-displacement-map="static/ui/displacement/map-02.jpg"></div>
-                            </div>
-                            <ul class="c-work-preview__list js-portfolio-preview-list">
-                                <li class="js-portfolio-preview-item" data-portfolio-preview="static/images/work-01.jpg"></li>
-
-                                <li class="js-portfolio-preview-item" data-portfolio-preview="static/images/work-02.jpg"></li>
-
-                                <li class="js-portfolio-preview-item" data-portfolio-preview="static/images/work-03.jpg"></li>
-
-                                <li class="js-portfolio-preview-item" data-portfolio-preview="static/images/work-04.jpg"></li>
-
-                                <li class="js-portfolio-preview-item" data-portfolio-preview="static/images/work-05.jpg"></li>
-
-                                <li class="js-portfolio-preview-item" data-portfolio-preview="static/images/work-06.jpg"></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <ul class="c-link-list">
+                       <li class="c-link-list__item">
+                           <a href="portfolio.html" class="c-link">
+                               <span class="c-link__label">
+                                   Portfolio list \w PIXI.js and gsap
+                               </span>
+                               <span class="c-link__append">
+                                   <svg class="u-icon u-icon--chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15">
+                                       <path d="M5.6 14.1l-1.4-1.4 5-5.2-5-5.2L5.7.9l6.2 6.6-6.3 6.6z"></path>
+                                   </svg>
+                               </span>
+                           </a>
+                       </li>
+                        <li class="c-link-list__item">
+                            <a href="hotspots.html" class="c-link">
+                                <span class="c-link__label">
+                                    Magnetic Hotspots with connecting lines \w PIXI.js
+                                </span>
+                                <span class="c-link__append">
+                                    <svg class="u-icon u-icon--chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15">
+                                        <path d="M5.6 14.1l-1.4-1.4 5-5.2-5-5.2L5.7.9l6.2 6.6-6.3 6.6z"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </li>
+                       <li class="c-link-list__item">
+                           <a href="faux-3d.html" class="c-link">
+                               <span class="c-link__label">
+                                   Faux 3D effect \w PIXI.js
+                               </span>
+                               <span class="c-link__append">
+                                   <svg class="u-icon u-icon--chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15">
+                                       <path d="M5.6 14.1l-1.4-1.4 5-5.2-5-5.2L5.7.9l6.2 6.6-6.3 6.6z"></path>
+                                   </svg>
+                               </span>
+                           </a>
+                       </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
     </div>
 </div>
+<!-- FOOTER -->
+<div class="o-footer">
+    <footer class="c-footer">
+        <div class="o-container">
+        </div>
+    </footer>
+</div>
+<!-- //FOOTER -->
 <!-- //PAGE -->
 <script src="static/dist/bundle.js" defer></script>
 </body>

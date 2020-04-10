@@ -61,6 +61,7 @@ export default class PortfolioListController {
 
         //gsap stuff
         this.displacementTimeline = null;
+
     }
 
     //region methods

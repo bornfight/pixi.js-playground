@@ -20,4 +20,9 @@ body {
     background-color: $black;
     color: $white;
     position: relative;
+
+    &.is-light {
+        background-color: $white;
+        color: $black;
+    }
 }

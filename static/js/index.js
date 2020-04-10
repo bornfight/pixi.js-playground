@@ -1,5 +1,7 @@
 // import NavigationController from "./components/NavigationController";
 import PortfolioListController from "./components/PortfolioListController";
+import MagneticCtaController from "./components/MagneticCtaController";
+import HotspotsController from "./components/HotspotsController";
 import Dummy from "./components/Dummy";
 
 function ready(callbackFunc) {
@@ -35,6 +37,21 @@ ready(function() {
     // const navigation = new NavigationController();
     // navigation.init();
 
-    const portfolioList = new PortfolioListController();
-    portfolioList.init();
+    if (document.getElementById("portfolio") !== null) {
+        const portfolioList = new PortfolioListController();
+        portfolioList.init();
+    }
+
+    if(document.getElementById("hotspots") !== null) {
+
+        const magneticCta = document.querySelectorAll(".js-hotspot");
+
+        magneticCta.forEach((element) => {
+            new MagneticCtaController(element, "span");
+        });
+
+        const hotspots = new HotspotsController();
+        hotspots.init();
+
+    }
 });

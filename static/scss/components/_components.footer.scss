@@ -1,2 +1,8 @@
 .c-footer {
+	//overrides
+	.o-container {
+		display: flex;
+		justify-content: flex-end;
+		text-align: right;
+	}
 }

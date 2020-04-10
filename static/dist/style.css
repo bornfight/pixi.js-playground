@@ -483,6 +483,7 @@ a {
 .o-footer {
   padding: 20px 0;
   position: fixed;
+  width: 100%;
   bottom: 0;
   left: 0;
   z-index: 5; }
@@ -840,6 +841,15 @@ a {
   100% {
     -webkit-box-shadow: 0 0 0 0 rgba(216, 32, 43, 0);
             box-shadow: 0 0 0 0 rgba(216, 32, 43, 0); } }
+
+.c-footer .o-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  text-align: right; }
 
 .c-navigation .o-container {
   display: -webkit-box;

@@ -1,9 +1,9 @@
 {
     "name": "gulp4-boilerplate",
     "version": "0.1.0",
-    "description": "Altered 8 frontend project template based on gulp, es6 and scss",
-    "author": "Altered 8",
-    "email": "info@altrd8.com",
+    "description": "frontend project template based on gulp, es6 and scss",
+    "author": "",
+    "email": "",
     "private": true,
     "engines": {
         "node": ">=12.16.1",

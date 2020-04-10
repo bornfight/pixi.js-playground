@@ -1,18 +1,12 @@
 /**
  * Hanken Grotesk
  */
-@include font-face("Hanken-Grotesk", "HankenGrotesk-Regular");
-@include font-face(
-    "Hanken-Grotesk",
-    "HankenGrotesk-SemiBold",
-    $font-weight: 600
-);
+@include font-face("RobotoMono-Regular", "RobotoMono-Regular");
 
 /**
  * Font variables
  */
-$hanken: "Hanken-Grotesk", sans-serif;
+$roboto-mono: "RobotoMono-Regular", sans-serif;
 $base-size: 18;
 $base-line-height: 26;
-$font-primary: $hanken;
-$font-secondary: $hanken;
+$font-primary: $roboto-mono;

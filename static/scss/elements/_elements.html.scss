@@ -1,7 +1,8 @@
 html,
 body {
+    font-family: $font-primary;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -15,8 +16,8 @@ html {
 }
 
 body {
-    @include font-default;
-    @include default-font-size;
-    color: $black;
-    background-color: $white;
+    font-family: $font-primary;
+    background-color: $black;
+    color: $white;
+    position: relative;
 }

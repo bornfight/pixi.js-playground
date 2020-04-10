@@ -1,15 +1,14 @@
-.u-a3 {
+.u-a7 {
     font-family: $font-primary;
+    margin-bottom: 0.6em;
     $font-size: (
-        $breakpoint-sm: 35px,
-        $breakpoint-xl: 78px,
-        $breakpoint-xxl: 78px,
+        $breakpoint-sm: 32px,
+        $breakpoint-xl: 42px,
     );
     @include poly-fluid-sizing("font-size", $font-size);
     $line-height: (
-        $breakpoint-sm: 43px,
-        $breakpoint-xl: 86px,
-        $breakpoint-xxl: 86px,
+        $breakpoint-sm: 40px,
+        $breakpoint-xl: 50px,
     );
     @include poly-fluid-sizing("line-height", $line-height);
     letter-spacing: 2px;
@@ -20,38 +19,20 @@
     }
 }
 
-.u-a2 {
+.u-a6 {
     font-family: $font-primary;
+    margin-bottom: 0;
     $font-size: (
-        $breakpoint-sm: 35px,
-        $breakpoint-xl: 50px,
-        $breakpoint-xxl: 50px,
-    );
-    @include poly-fluid-sizing("font-size", $font-size);
-    $line-height: (
-        $breakpoint-sm: 43px,
-        $breakpoint-xl: 66px,
-        $breakpoint-xxl: 56px,
-    );
-    @include poly-fluid-sizing("line-height", $line-height);
-    font-weight: normal;
-}
-
-.u-a1 {
-    font-family: $font-secondary;
-    $font-size: (
-        $breakpoint-sm: 14px,
-        $breakpoint-xl: 18px,
-        $breakpoint-xxl: 18px,
+        $breakpoint-sm: 16px,
+        $breakpoint-xl: 26px,
     );
     @include poly-fluid-sizing("font-size", $font-size);
     $line-height: (
         $breakpoint-sm: 20px,
-        $breakpoint-xl: 26px,
-        $breakpoint-xxl: 26px,
+        $breakpoint-xl: 34px,
     );
     @include poly-fluid-sizing("line-height", $line-height);
-    letter-spacing: 0.3px;
+    letter-spacing: 2px;
     font-weight: normal;
 
     @include mq(sm) {
@@ -62,22 +43,22 @@
 .u-b0 {
     font-family: $font-primary;
     $font-size: (
-        $breakpoint-sm: 16px,
-        $breakpoint-xl: 16px,
+        $breakpoint-sm: 14px,
+        $breakpoint-xl: 14px,
     );
     @include poly-fluid-sizing("font-size", $font-size);
     $line-height: (
-        $breakpoint-sm: 23px,
-        $breakpoint-xl: 23px,
+        $breakpoint-sm: 20px,
+        $breakpoint-xl: 20px,
     );
     @include poly-fluid-sizing("line-height", $line-height);
     font-weight: normal;
 }
 
 .u-b1 {
-    font-family: $font-secondary;
-    font-size: 13px;
-    line-height: 19px;
+    font-family: $font-primary;
+    font-size: 10px;
+    line-height: 14px;
     font-weight: normal;
 }
 

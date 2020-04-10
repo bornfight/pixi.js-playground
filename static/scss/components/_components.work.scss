@@ -1,0 +1,138 @@
+//SETTINGS
+//grid
+$settings-grid-column-width: $grid-column-width;
+//transitions
+$settings-hover: all 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$settings-hover-delay: all 0.2s 0.1s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+//WORK LIST
+.c-work {
+	width: 100%;
+	display: flex;
+	align-items: center;
+
+	&__list {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__item {
+		display: block;
+	}
+}
+
+.c-work-item {
+	position: relative;
+	display: block;
+	cursor: pointer;
+	padding: 15px 0;
+	transition: $settings-hover;
+
+	&__number {
+		position: absolute;
+		display: inline-block;
+		right: 100%;
+		top: 20px;
+		margin-right: 25px;
+		pointer-events: none;
+		transition: $settings-hover-delay;
+		will-change: transform, opacity;
+	}
+
+	&__title {
+		transition: $settings-hover;
+		will-change: transform;
+	}
+
+	&__category {
+		display: inline-block;
+		transition: $settings-hover-delay;
+		will-change: transform;
+
+		i {
+			font-style: normal;
+			display: inline-block;
+			margin-right: 8px;
+		}
+	}
+
+	&:hover {
+		opacity: 0.3;
+
+		//overrides
+		.c-work-item__title {
+			transform: translateX(10px);
+		}
+
+		.c-work-item__number {
+			opacity: 0;
+			transform: translateX(20px);
+		}
+
+		.c-work-item__category {
+			transform: translateX(10px);
+		}
+	}
+}
+
+
+//WORK PREVIEW
+.c-work-preview {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	right: 0;
+	padding-right: $settings-grid-column-width;
+	pointer-events: none;
+	z-index: 1;
+
+	&__canvas {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: percentage(14/24);
+		height: 100%;
+
+		.c-canvas {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			left: 0;
+			height: 0;
+			padding-bottom: percentage(9/16);
+			overflow: hidden;
+			background-size: 0;
+		}
+
+		canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__list {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: percentage(14/24);
+		height: 100%;
+
+		li {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			left: 0;
+			height: 0;
+			padding-bottom: percentage(9/16);
+			overflow: hidden;
+		}
+	}
+}

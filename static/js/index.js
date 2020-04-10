@@ -1,4 +1,5 @@
-import NavigationController from "./components/NavigationController";
+// import NavigationController from "./components/NavigationController";
+import PortfolioListController from "./components/PortfolioListController";
 import Dummy from "./components/Dummy";
 
 function ready(callbackFunc) {
@@ -31,6 +32,9 @@ ready(function() {
     const dummy = new Dummy();
     dummy.init();
 
-    const navigation = new NavigationController();
-    navigation.init();
+    // const navigation = new NavigationController();
+    // navigation.init();
+
+    const portfolioList = new PortfolioListController();
+    portfolioList.init();
 });

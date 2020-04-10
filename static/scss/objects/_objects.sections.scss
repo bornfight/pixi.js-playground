@@ -1,2 +1,17 @@
 .o-section {
+	&__heading {
+		padding-bottom: 20px;
+	}
+
+	&__content {
+
+	}
+
+	//modifiers
+	&--portfolio {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 }

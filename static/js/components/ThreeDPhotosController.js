@@ -3,10 +3,6 @@ import * as PIXI from "pixi.js";
 import gsap from "gsap";
 
 export default class ThreeDPhotosController {
-    /**
-     *
-     * @param {object} options
-     */
     constructor() {
         this.DOM = {
             threeDPhotoContainer: ".js-3d-photo-container",

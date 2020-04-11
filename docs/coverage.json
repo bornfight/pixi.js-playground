@@ -1,7 +1,7 @@
 {
-  "coverage": "46.55%",
+  "coverage": "44.82%",
   "expectCount": 58,
-  "actualCount": 27,
+  "actualCount": 26,
   "files": {
     "components/Dummy.js": {
       "expectCount": 3,
@@ -61,13 +61,14 @@
     },
     "components/ThreeDPhotosController.js": {
       "expectCount": 7,
-      "actualCount": 2,
+      "actualCount": 1,
       "undocumentLines": [
         5,
-        11,
-        17,
-        20,
-        30
+        6,
+        7,
+        13,
+        16,
+        26
       ]
     }
   }

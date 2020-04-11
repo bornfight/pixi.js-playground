@@ -1595,7 +1595,7 @@
     "__docId__": 109,
     "kind": "file",
     "name": "components/ThreeDPhotosController.js",
-    "content": "import * as PIXI from \"pixi.js\";\n\nimport gsap from \"gsap\";\n\nexport default class ThreeDPhotosController {\n    /**\n     *\n     * @param {object} options\n     */\n    constructor() {\n        this.DOM = {\n            threeDPhotoContainer: \".js-3d-photo-container\",\n            threeDPhoto: \".js-3d-photo\",\n            threeDPhotoCanvas: \".js-3d-photo-canvas\",\n        };\n\n        this.threeDPhotos = document.querySelectorAll(this.DOM.threeDPhoto);\n    }\n\n    init() {\n        console.log(\"ThreeDPhotos init()\");\n\n        if (this.threeDPhotos !== null) {\n            this.threeDPhotosController();\n        } else {\n            console.error(`${this.DOM.threeDPhoto} does not exist in the DOM!`);\n        }\n    }\n\n    threeDPhotosController() {\n        for (let i = 0; i < this.threeDPhotos.length; i++) {\n            //MOUSEMOVE CONTAINER\n            const container = this.threeDPhotos[i].closest(\n                this.DOM.threeDPhotoContainer,\n            );\n\n            //THRESHOLD\n            const verticalThreshold = this.threeDPhotos[i].getAttribute(\n                \"data-vertical-threshold\",\n            );\n            const horizontalThreshold = this.threeDPhotos[i].getAttribute(\n                \"data-horizontal-threshold\",\n            );\n\n            // CANVAS SIZE\n            const canvasWidth = this.threeDPhotos[i].clientWidth;\n            const canvasHeight = this.threeDPhotos[i].clientHeight;\n\n            // CREATE PIXI APPLICATION\n            const app = new PIXI.Application({\n                width: canvasWidth,\n                height: canvasHeight,\n                transparent: true,\n                resolution: window.devicePixelRatio,\n                resizeTo: this.threeDPhotos[i],\n            });\n\n            // ADD CANVAS TO CANVAS WRAPPER ELEMENT\n            this.threeDPhotos[i].appendChild(app.view);\n\n            //IMAGE\n            const image = PIXI.Sprite.from(\n                this.threeDPhotos[i].getAttribute(\"data-image\"),\n            );\n\n            image.width = canvasWidth;\n            image.height = canvasHeight;\n\n            image.anchor.set(0.5);\n\n            image.position.x = canvasWidth / 2;\n            image.position.y = canvasHeight / 2;\n\n            app.stage.addChild(image);\n\n            // //DEPTH MAP\n            const depthMap = PIXI.Sprite.from(\n                this.threeDPhotos[i].getAttribute(\"data-depth-map\"),\n            );\n            const depthMapFilter = new PIXI.filters.DisplacementFilter(\n                depthMap,\n            );\n\n            app.stage.addChild(depthMap);\n            app.stage.filters = [depthMapFilter];\n\n            depthMap.width = canvasWidth;\n            depthMap.height = canvasHeight;\n\n            depthMap.anchor.set(0.5);\n\n            depthMap.position.y = canvasHeight / 2;\n            depthMap.position.x = canvasWidth / 2;\n\n            depthMapFilter.scale.x = 2;\n            depthMapFilter.scale.y = 2;\n\n            //EVENTS\n            this.initThreeDEvents(\n                container,\n                depthMapFilter,\n                horizontalThreshold,\n                verticalThreshold,\n            );\n        }\n    }\n\n    /**\n     *\n     * @param {HTMLElement} container\n     * @param {PIXI.filters.DisplacementFilter} displacementFilter\n     * @param {number} horizontalThreshold\n     * @param {number} verticalThreshold\n     */\n    initThreeDEvents(\n        container,\n        displacementFilter,\n        horizontalThreshold,\n        verticalThreshold,\n    ) {\n        container.addEventListener(\"mousemove\", (ev) => {\n            let yAmount = ev.clientY / window.innerHeight - 0.5;\n            let xAmount = ev.clientX / window.innerWidth - 0.5;\n\n            gsap.to(displacementFilter.scale, {\n                duration: 2,\n                y: yAmount * verticalThreshold,\n                x: xAmount * horizontalThreshold,\n                ease: \"power3.out\",\n            });\n\n            // displacementFilter.scale.x = xAmount * horizontalThreshold;\n            // displacementFilter.scale.y = yAmount * verticalThreshold;\n        });\n    }\n}\n",
+    "content": "import * as PIXI from \"pixi.js\";\n\nimport gsap from \"gsap\";\n\nexport default class ThreeDPhotosController {\n    constructor() {\n        this.DOM = {\n            threeDPhotoContainer: \".js-3d-photo-container\",\n            threeDPhoto: \".js-3d-photo\",\n            threeDPhotoCanvas: \".js-3d-photo-canvas\",\n        };\n\n        this.threeDPhotos = document.querySelectorAll(this.DOM.threeDPhoto);\n    }\n\n    init() {\n        console.log(\"ThreeDPhotos init()\");\n\n        if (this.threeDPhotos !== null) {\n            this.threeDPhotosController();\n        } else {\n            console.error(`${this.DOM.threeDPhoto} does not exist in the DOM!`);\n        }\n    }\n\n    threeDPhotosController() {\n        for (let i = 0; i < this.threeDPhotos.length; i++) {\n            //MOUSEMOVE CONTAINER\n            const container = this.threeDPhotos[i].closest(\n                this.DOM.threeDPhotoContainer,\n            );\n\n            //THRESHOLD\n            const verticalThreshold = this.threeDPhotos[i].getAttribute(\n                \"data-vertical-threshold\",\n            );\n            const horizontalThreshold = this.threeDPhotos[i].getAttribute(\n                \"data-horizontal-threshold\",\n            );\n\n            // CANVAS SIZE\n            const canvasWidth = this.threeDPhotos[i].clientWidth;\n            const canvasHeight = this.threeDPhotos[i].clientHeight;\n\n            // CREATE PIXI APPLICATION\n            const app = new PIXI.Application({\n                width: canvasWidth,\n                height: canvasHeight,\n                transparent: true,\n                resolution: window.devicePixelRatio,\n                resizeTo: this.threeDPhotos[i],\n            });\n\n            // ADD CANVAS TO CANVAS WRAPPER ELEMENT\n            this.threeDPhotos[i].appendChild(app.view);\n\n            //IMAGE\n            const image = PIXI.Sprite.from(\n                this.threeDPhotos[i].getAttribute(\"data-image\"),\n            );\n\n            image.width = canvasWidth;\n            image.height = canvasHeight;\n\n            image.anchor.set(0.5);\n\n            image.position.x = canvasWidth / 2;\n            image.position.y = canvasHeight / 2;\n\n            app.stage.addChild(image);\n\n            // //DEPTH MAP\n            const depthMap = PIXI.Sprite.from(\n                this.threeDPhotos[i].getAttribute(\"data-depth-map\"),\n            );\n            const depthMapFilter = new PIXI.filters.DisplacementFilter(\n                depthMap,\n            );\n\n            app.stage.addChild(depthMap);\n            app.stage.filters = [depthMapFilter];\n\n            depthMap.width = canvasWidth;\n            depthMap.height = canvasHeight;\n\n            depthMap.anchor.set(0.5);\n\n            depthMap.position.y = canvasHeight / 2;\n            depthMap.position.x = canvasWidth / 2;\n\n            depthMapFilter.scale.x = 2;\n            depthMapFilter.scale.y = 2;\n\n            //EVENTS\n            this.initThreeDEvents(\n                container,\n                depthMapFilter,\n                horizontalThreshold,\n                verticalThreshold,\n            );\n        }\n    }\n\n    /**\n     *\n     * @param {HTMLElement} container\n     * @param {PIXI.filters.DisplacementFilter} displacementFilter\n     * @param {number} horizontalThreshold\n     * @param {number} verticalThreshold\n     */\n    initThreeDEvents(\n        container,\n        displacementFilter,\n        horizontalThreshold,\n        verticalThreshold,\n    ) {\n        container.addEventListener(\"mousemove\", (ev) => {\n            let yAmount = ev.clientY / window.innerHeight - 0.5;\n            let xAmount = ev.clientX / window.innerWidth - 0.5;\n\n            gsap.to(displacementFilter.scale, {\n                duration: 2,\n                y: yAmount * verticalThreshold,\n                x: xAmount * horizontalThreshold,\n                ease: \"power3.out\",\n            });\n\n            // displacementFilter.scale.x = xAmount * horizontalThreshold;\n            // displacementFilter.scale.y = yAmount * verticalThreshold;\n        });\n    }\n}\n",
     "static": true,
     "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/ThreeDPhotosController.js",
     "access": "public",
@@ -1628,20 +1628,9 @@
     "static": false,
     "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#constructor",
     "access": "public",
-    "description": "",
-    "lineNumber": 10,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "object"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "options",
-        "description": ""
-      }
-    ]
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true
   },
   {
     "__docId__": 112,
@@ -1652,7 +1641,7 @@
     "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#DOM",
     "access": "public",
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 7,
     "undocument": true,
     "type": {
       "types": [
@@ -1669,7 +1658,7 @@
     "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#threeDPhotos",
     "access": "public",
     "description": null,
-    "lineNumber": 17,
+    "lineNumber": 13,
     "undocument": true,
     "type": {
       "types": [
@@ -1688,7 +1677,7 @@
     "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#init",
     "access": "public",
     "description": null,
-    "lineNumber": 20,
+    "lineNumber": 16,
     "undocument": true,
     "params": [],
     "return": null
@@ -1704,7 +1693,7 @@
     "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#threeDPhotosController",
     "access": "public",
     "description": null,
-    "lineNumber": 30,
+    "lineNumber": 26,
     "undocument": true,
     "params": [],
     "return": null
@@ -1720,7 +1709,7 @@
     "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#initThreeDEvents",
     "access": "public",
     "description": "",
-    "lineNumber": 115,
+    "lineNumber": 111,
     "params": [
       {
         "nullable": null,

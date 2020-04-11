@@ -894,7 +894,7 @@ a {
   bottom: 0;
   padding: 40px 0;
   pointer-events: none;
-  max-width: 480px;
+  max-width: 540px;
   color: #ffffff; }
 
 .c-3d-photo-heading .u-b1 {
@@ -936,7 +936,7 @@ a {
   bottom: 0;
   padding: 40px 0;
   pointer-events: none;
-  max-width: 480px; }
+  max-width: 720px; }
 
 .c-rgb-splitting-heading .u-b1 {
   display: inline-block;

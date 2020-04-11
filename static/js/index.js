@@ -3,6 +3,7 @@ import PortfolioListController from "./components/PortfolioListController";
 import MagneticCtaController from "./components/MagneticCtaController";
 import HotspotsController from "./components/HotspotsController";
 import ThreeDPhotosController from "./components/ThreeDPhotosController";
+import RGBSplittingController from "./components/RGBSplittingController";
 import Dummy from "./components/Dummy";
 
 function ready(callbackFunc) {
@@ -32,11 +33,23 @@ function ready(callbackFunc) {
  * Document ready callback
  */
 ready(function () {
-    const dummy = new Dummy();
-    dummy.init();
+    // const dummy = new Dummy();
+    // dummy.init();
 
     // const navigation = new NavigationController();
     // navigation.init();
+
+    var consoleLogStyle = [
+        "background-color: #000000",
+        "color: white",
+        "display: block",
+        "line-height: 24px",
+        "text-align: center",
+        "border: 1px solid #ffffff",
+        "font-weight: bold",
+    ].join(";");
+
+    console.log("dev by: %c Bornfight ", consoleLogStyle);
 
     if (document.getElementById("portfolio") !== null) {
         const portfolioList = new PortfolioListController();
@@ -54,5 +67,10 @@ ready(function () {
     if (document.getElementById("faux-3d") !== null) {
         const threeDPhotos = new ThreeDPhotosController();
         threeDPhotos.init();
+    }
+
+    if (document.getElementById("rgb-splitting") !== null) {
+        const RGBSplitting = new RGBSplittingController();
+        RGBSplitting.init();
     }
 });

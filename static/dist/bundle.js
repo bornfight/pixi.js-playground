@@ -51150,6 +51150,163 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+window.PIXI = PIXI;
+
+var RGBSplittingController = /*#__PURE__*/function () {
+  function RGBSplittingController() {
+    _classCallCheck(this, RGBSplittingController);
+
+    this.DOM = {
+      RGBSplittingContainer: ".js-rgb-splitting-container"
+    };
+    this.options = {
+      canvasWidth: 1600,
+      canvasHeight: 900
+    };
+    this.RGBSplittingContainer = document.querySelector(this.DOM.RGBSplittingContainer);
+    this.canvasWidth = innerWidth > 800 ? this.options.canvasWidth : this.options.canvasWidth / 2;
+    this.canvasHeight = innerHeight > 800 ? this.options.canvasHeight : this.options.canvasHeight / 2; //PIXI stuff
+
+    this.app = null;
+  }
+
+  _createClass(RGBSplittingController, [{
+    key: "init",
+    value: function init() {
+      console.log("RGBSplittingController init()");
+
+      if (this.RGBSplittingContainer !== null) {
+        this.RGBSplittingController();
+      } else {
+        console.error("".concat(this.DOM.RGBSplittingContainer, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "RGBSplittingController",
+    value: function RGBSplittingController() {
+      var _this = this;
+
+      var rt = [],
+          bg,
+          bgs = [],
+          rts = [],
+          containers = [],
+          channelsContainer = [],
+          displacementFilters = [],
+          brushes = []; // CHANNEL FILTERS
+
+      var redChannelFilter = new PIXI.filters.ColorMatrixFilter();
+      redChannelFilter.matrix = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0];
+      var greenChannelFilter = new PIXI.filters.ColorMatrixFilter();
+      greenChannelFilter.matrix = [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0];
+      var blueChannelFilter = new PIXI.filters.ColorMatrixFilter();
+      blueChannelFilter.matrix = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0];
+      channelsContainer.push(redChannelFilter, greenChannelFilter, blueChannelFilter);
+      this.app = new PIXI.Application({
+        width: this.canvasWidth,
+        height: this.canvasHeight,
+        autoStart: false,
+        transparent: true //resizeTo: this.RGBSplittingContainer,
+
+      }); // ADD CANVAS TO CANVAS WRAPPER ELEMENT
+
+      this.RGBSplittingContainer.appendChild(this.app.view);
+
+      for (var i = 0; i < 3; i++) {
+        rt.push(PIXI.RenderTexture.create(this.app.screen.width, this.app.screen.height));
+        rts.push(rt);
+      } // CONTAINERS //
+
+
+      var containerRed = new PIXI.Container();
+      containerRed.position.x = 0;
+      var containerGreen = new PIXI.Container();
+      containerGreen.position.x = 0;
+      var containerBlue = new PIXI.Container();
+      containerBlue.position.x = 0;
+      containers.push(containerRed, containerGreen, containerBlue); // LOAD TEXTURES //
+
+      this.app.loader.add("bg", this.RGBSplittingContainer.getAttribute("data-image"));
+      this.app.loader.add("displacement", this.RGBSplittingContainer.getAttribute("data-displacement-image")); // LOADER //
+
+      this.app.loader.load(function (loader, resources) {
+        var tempBg = new PIXI.Sprite(resources.bg.texture);
+        tempBg.width = _this.app.screen.width;
+        tempBg.height = _this.app.screen.height;
+
+        _this.app.renderer.render(tempBg, rt[0]);
+
+        for (var _i = 0, len = containers.length; _i < len; _i++) {
+          _this.app.stage.addChild(containers[_i]);
+
+          brushes.push(new PIXI.Sprite(resources.displacement.texture));
+          displacementFilters.push(new PIXI.filters.DisplacementFilter(brushes[_i]));
+          bg = new PIXI.Sprite(rts[0][0]);
+          bgs.push(bg);
+          containers[_i].filters = [channelsContainer[_i], displacementFilters[_i]];
+
+          containers[_i].addChild(bgs[_i], brushes[_i]);
+        }
+
+        brushes[0].anchor.set(0.5);
+        brushes[1].anchor.set(0.6);
+        brushes[2].anchor.set(0.4);
+        containers[1].filters[1].blendMode = PIXI.BLEND_MODES.ADD;
+        containers[2].filters[1].blendMode = PIXI.BLEND_MODES.ADD;
+        _this.app.stage.interactive = true;
+
+        _this.app.stage.on("pointermove", function (ev) {
+          var x = ev.data.global.x;
+          var y = ev.data.global.y;
+
+          for (var _i2 = 0, _len = containers.length; _i2 < _len; _i2++) {
+            _gsap.default.to(displacementFilters[_i2].scale, {
+              duration: 0.2,
+              x: Math.atan(x - brushes[_i2].x) * 40,
+              y: Math.atan(y - brushes[_i2].y) * 40,
+              ease: "power2.out"
+            });
+
+            brushes[_i2].position = ev.data.global;
+          }
+        });
+
+        _this.app.start();
+      });
+    }
+  }]);
+
+  return RGBSplittingController;
+}();
+
+exports.default = RGBSplittingController;
+
+},{"gsap":38,"pixi.js":44}],59:[function(require,module,exports){
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var PIXI = _interopRequireWildcard(require("pixi.js"));
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 var ThreeDPhotosController = /*#__PURE__*/function () {
   function ThreeDPhotosController() {
     _classCallCheck(this, ThreeDPhotosController);
@@ -51251,7 +51408,7 @@ var ThreeDPhotosController = /*#__PURE__*/function () {
 
 exports.default = ThreeDPhotosController;
 
-},{"gsap":38,"pixi.js":44}],59:[function(require,module,exports){
+},{"gsap":38,"pixi.js":44}],60:[function(require,module,exports){
 "use strict";
 
 var _PortfolioListController = _interopRequireDefault(require("./components/PortfolioListController"));
@@ -51261,6 +51418,8 @@ var _MagneticCtaController = _interopRequireDefault(require("./components/Magnet
 var _HotspotsController = _interopRequireDefault(require("./components/HotspotsController"));
 
 var _ThreeDPhotosController = _interopRequireDefault(require("./components/ThreeDPhotosController"));
+
+var _RGBSplittingController = _interopRequireDefault(require("./components/RGBSplittingController"));
 
 var _Dummy = _interopRequireDefault(require("./components/Dummy"));
 
@@ -51295,9 +51454,12 @@ function ready(callbackFunc) {
 
 
 ready(function () {
-  var dummy = new _Dummy.default();
-  dummy.init(); // const navigation = new NavigationController();
+  // const dummy = new Dummy();
+  // dummy.init();
+  // const navigation = new NavigationController();
   // navigation.init();
+  var consoleLogStyle = ["background-color: #000000", "color: white", "display: block", "line-height: 24px", "text-align: center", "border: 1px solid #ffffff", "font-weight: bold"].join(";");
+  console.log("dev by: %c Bornfight ", consoleLogStyle);
 
   if (document.getElementById("portfolio") !== null) {
     var portfolioList = new _PortfolioListController.default();
@@ -51315,8 +51477,13 @@ ready(function () {
     var threeDPhotos = new _ThreeDPhotosController.default();
     threeDPhotos.init();
   }
+
+  if (document.getElementById("rgb-splitting") !== null) {
+    var RGBSplitting = new _RGBSplittingController.default();
+    RGBSplitting.init();
+  }
 });
 
-},{"./components/Dummy":54,"./components/HotspotsController":55,"./components/MagneticCtaController":56,"./components/PortfolioListController":57,"./components/ThreeDPhotosController":58}]},{},[59]);
+},{"./components/Dummy":54,"./components/HotspotsController":55,"./components/MagneticCtaController":56,"./components/PortfolioListController":57,"./components/RGBSplittingController":58,"./components/ThreeDPhotosController":59}]},{},[60]);
 
 //# sourceMappingURL=bundle.js.map

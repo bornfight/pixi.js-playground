@@ -50617,22 +50617,16 @@ window.PIXI = PIXI;
  */
 
 var HotspotsController = /*#__PURE__*/function () {
-  /**
-   *
-   * @param options
-   */
   function HotspotsController() {
     _classCallCheck(this, HotspotsController);
 
     /**
      *
      * @type {{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotCanvasContainer: string, hotspotContainer: string}}
-     * @private
      */
     this.DOM = {
       hotspotContainer: ".js-hotspot-container",
       hotspot: ".js-hotspot",
-      hotspotCanvasContainer: ".js-hotspot-lines-container",
       hotspotCircle: ".js-hotspot-circle",
       hotspotText: ".js-hotspot-text"
     };
@@ -50642,12 +50636,6 @@ var HotspotsController = /*#__PURE__*/function () {
      */
 
     this.hotspotContainer = document.querySelectorAll(this.DOM.hotspotContainer);
-    /**
-     *
-     * @returns {NodeListOf<Element>}
-     */
-
-    this.hotspotCanvasContainer = document.querySelectorAll(this.DOM.hotspotCanvasContainer);
   }
 
   _createClass(HotspotsController, [{
@@ -50656,76 +50644,89 @@ var HotspotsController = /*#__PURE__*/function () {
       console.log("HotspotsController init()");
 
       if (this.hotspotContainer !== null) {
-        this.initHotspotLines();
+        this.hotspotLines();
       } else {
         console.error("".concat(this.DOM.hotspotContainer, " does not exist in the DOM!"));
       }
     }
   }, {
-    key: "initHotspotLines",
-    value: function initHotspotLines() {
+    key: "hotspotLines",
+    value: function hotspotLines() {
       var _this = this;
 
       var lineColor = 0xb1b1b1;
       var lineGradient = ["#b1b1b1", "#ffffff"];
       var lineEndingRadius = 2;
-      var gradientTexture = this.getGradientTexture(lineGradient[0], lineGradient[1]);
-      this.hotspotContainer.forEach(function (hotspotContainer) {
-        var hotspots = hotspotContainer.querySelectorAll(_this.DOM.hotspot); // CANVAS SIZE
+      var gradientTexture = this.createGradientTexture(lineGradient[0], lineGradient[1]);
 
-        var canvasWidth = hotspotContainer.clientWidth;
-        var canvasHeight = hotspotContainer.clientHeight; // CREATE PIXI APPLICATION
+      for (var i = 0; i < this.hotspotContainer.length; i++) {
+        var hotspots = this.hotspotContainer[i].querySelectorAll(this.DOM.hotspot); // CANVAS SIZE
+
+        var canvasWidth = this.hotspotContainer[i].clientWidth;
+        var canvasHeight = this.hotspotContainer[i].clientHeight; // CREATE PIXI APPLICATION
 
         var app = new PIXI.Application({
           width: canvasWidth,
           height: canvasHeight,
           antialias: true,
           transparent: true,
-          //resolution: window.devicePixelRatio,
-          resizeTo: hotspotContainer
+          resolution: window.devicePixelRatio,
+          resizeTo: this.hotspotContainer[i]
         }); // ADD CANVAS TO CANVAS WRAPPER ELEMENT
 
-        hotspotContainer.appendChild(app.view);
-        hotspots.forEach(function (hotspot) {
-          var circle = hotspot.querySelector(_this.DOM.hotspotCircle);
-          var text = hotspot.querySelector(_this.DOM.hotspotText);
+        this.hotspotContainer[i].appendChild(app.view);
+
+        var _loop = function _loop(_i) {
+          var circle = hotspots[_i].querySelector(_this.DOM.hotspotCircle);
+
+          var text = hotspots[_i].querySelector(_this.DOM.hotspotText);
+
           var line = new PIXI.Graphics();
           line.alpha = 0;
           app.stage.addChild(line);
           app.ticker.add(function () {
             line.clear();
             line.beginFill(lineColor, 1);
-            line.drawCircle(_this.getPosition(circle)[0], _this.getPosition(circle)[1], lineEndingRadius);
+            line.drawCircle(_this.getElementPosition(circle)[0], _this.getElementPosition(circle)[1], lineEndingRadius);
             line.endFill();
             line.beginFill(lineColor, 1);
-            line.drawCircle(_this.getPosition(text)[0], _this.getPosition(text)[1], lineEndingRadius);
+            line.drawCircle(_this.getElementPosition(text)[0], _this.getElementPosition(text)[1], lineEndingRadius);
             line.endFill();
-            line.moveTo(_this.getPosition(circle)[0], _this.getPosition(circle)[1]);
+            line.moveTo(_this.getElementPosition(circle)[0], _this.getElementPosition(circle)[1]);
             line.lineStyle(1, lineColor, 1);
             line.lineTextureStyle({
               width: 1,
               texture: gradientTexture,
               color: 0xffffff
             });
-            line.lineTo(_this.getPosition(text)[0], _this.getPosition(text)[1]);
+            line.lineTo(_this.getElementPosition(text)[0], _this.getElementPosition(text)[1]);
           }); //hover
 
-          hotspot.addEventListener("mouseenter", function () {
+          hotspots[_i].addEventListener("mouseenter", function () {
             _gsap.default.to(line, {
               alpha: 1,
               duration: 0.4,
               onComplete: function onComplete() {}
             });
           });
-          hotspot.addEventListener("mouseleave", function () {
+
+          hotspots[_i].addEventListener("mouseleave", function () {
             _gsap.default.to(line, {
               alpha: 0,
               duration: 0.4,
               onComplete: function onComplete() {}
             });
           });
-        });
-      });
+        };
+
+        for (var _i = 0; _i < hotspots.length; _i++) {
+          _loop(_i);
+        }
+
+        ;
+      }
+
+      ;
     }
     /**
      *
@@ -50734,8 +50735,8 @@ var HotspotsController = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "getPosition",
-    value: function getPosition(element) {
+    key: "getElementPosition",
+    value: function getElementPosition(element) {
       var posX = element.getBoundingClientRect().left - element.closest(this.DOM.hotspotContainer).getBoundingClientRect().left + element.clientWidth / 2;
       var posY = element.getBoundingClientRect().top - element.closest(this.DOM.hotspotContainer).getBoundingClientRect().top + element.clientHeight / 2;
       return [posX, posY];
@@ -50748,8 +50749,8 @@ var HotspotsController = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "getGradientTexture",
-    value: function getGradientTexture(from, to) {
+    key: "createGradientTexture",
+    value: function createGradientTexture(from, to) {
       var textureWH = 600;
       var canvas = document.createElement("canvas");
       var context = canvas.getContext("2d");
@@ -50786,73 +50787,93 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var MagneticCtaController = /*#__PURE__*/function () {
-  function MagneticCtaController(element, innerElement) {
-    var _this = this;
-
+  function MagneticCtaController() {
     _classCallCheck(this, MagneticCtaController);
 
-    this.innerEl = element.querySelectorAll(innerElement);
-    this.innerText = element.querySelectorAll("div");
-    element.addEventListener("mousemove", function (ev) {
-      ev.currentTarget.classList.add("is-active");
-
-      _this.mousemoveFn(ev, element);
-    });
-    element.addEventListener("mouseleave", function (ev) {
-      ev.currentTarget.classList.remove("is-active");
-
-      _this.mouseleaveFn(ev, element);
-    });
+    this.DOM = {
+      ctaContainer: ".js-magnetic-cta-container",
+      cta: ".js-magnetic-cta",
+      ctaContent: ".js-magnetic-cta-content"
+    };
+    this.ctaContainer = document.querySelectorAll(this.DOM.ctaContainer);
   }
 
   _createClass(MagneticCtaController, [{
-    key: "mousemoveFn",
-    value: function mousemoveFn(ev, element) {
-      // Get X-coordinate for the left button edge
-      var buttonPosX = element.getBoundingClientRect().left;
-      var buttonPosY = element.getBoundingClientRect().top; // Get position of the mouse inside element from left edge
+    key: "init",
+    value: function init() {
+      console.log("MagneticCtaController init()");
+
+      if (this.ctaContainer !== null) {
+        this.magneticCtaEvents();
+      } else {
+        console.error("".concat(this.DOM.ctaContainer, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "magneticCtaEvents",
+    value: function magneticCtaEvents() {
+      var _this = this;
+
+      for (var i = 0; i < this.ctaContainer.length; i++) {
+        this.ctaContainer[i].addEventListener("mousemove", function (ev) {
+          _this.magneticMousemove(ev);
+        });
+        this.ctaContainer[i].addEventListener("mouseleave", function (ev) {
+          _this.magneticMouseleave(ev);
+        });
+      }
+    }
+  }, {
+    key: "magneticMousemove",
+    value: function magneticMousemove(ev) {
+      ev.currentTarget.classList.add("is-hovered"); // Get X-coordinate for the left container edge
+
+      var containerPosX = ev.currentTarget.getBoundingClientRect().left;
+      var containerPosY = ev.currentTarget.getBoundingClientRect().top; // Get position of the mouse inside element from left edge
       // (current mouse X position - button x coordinate)
 
       var pageX = ev.clientX;
       var pageY = ev.clientY;
-      var xPosOfMouse = pageX - buttonPosX;
-      var yPosOfMouse = pageY - buttonPosY; // Get position of mouse relative to button center
-      // Mouse position inside element - button width / 2
+      var xPosOfMouse = pageX - containerPosX;
+      var yPosOfMouse = pageY - containerPosY; // Get position of mouse relative to container center
+      // Mouse position inside element - container width / 2
       // To get positive or negative movement
 
-      var xPosOfMouseInsideButton = xPosOfMouse - element.offsetWidth / 2;
-      var yPosOfMouseInsideButton = yPosOfMouse - element.offsetHeight / 2; // Button text divider to increase or decrease text path
+      var xPosOfMouseInsideContainer = xPosOfMouse - ev.currentTarget.offsetWidth / 2;
+      var yPosOfMouseInsideContainer = yPosOfMouse - ev.currentTarget.offsetHeight / 2; // Button text divider to increase or decrease text path
 
       var animationDivider = 3;
       var animationDividerText = 1.5; // Animate button text positive or negative from center
 
-      _gsap.default.to(this.innerEl, 0.3, {
-        x: xPosOfMouseInsideButton / animationDivider,
-        y: yPosOfMouseInsideButton / animationDivider,
+      _gsap.default.to(ev.currentTarget.querySelector(this.DOM.cta), 0.3, {
+        x: xPosOfMouseInsideContainer / animationDivider,
+        y: yPosOfMouseInsideContainer / animationDivider,
         ease: "power3.out"
       });
 
-      if (this.innerText.length > 0) {
-        _gsap.default.to(this.innerText, 0.2, {
-          x: xPosOfMouseInsideButton / animationDividerText,
-          y: yPosOfMouseInsideButton / animationDividerText,
+      if (ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null) {
+        _gsap.default.to(ev.currentTarget.querySelector(this.DOM.ctaContent), 0.2, {
+          x: xPosOfMouseInsideContainer / animationDividerText,
+          y: yPosOfMouseInsideContainer / animationDividerText,
           ease: "power3.out"
         });
       }
-    } // On mouse leave
-
+    }
   }, {
-    key: "mouseleaveFn",
-    value: function mouseleaveFn() {
-      // Animate button text reset to initial position (center)
-      _gsap.default.to(this.innerEl, 0.3, {
+    key: "magneticMouseleave",
+    value: function magneticMouseleave(ev) {
+      ev.currentTarget.classList.remove("is-hovered"); // Animate button text reset to initial position (center)
+
+      _gsap.default.to(ev.currentTarget.querySelector(this.DOM.cta), {
+        duration: 0.3,
         x: 0,
         y: 0,
         ease: "power3.out"
       });
 
-      if (this.innerText.length > 0) {
-        _gsap.default.to(this.innerText, 0.5, {
+      if (ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null) {
+        _gsap.default.to(ev.currentTarget.querySelector(this.DOM.ctaContent), {
+          duration: 0.5,
           x: 0,
           y: 0,
           ease: "power3.out"
@@ -50969,15 +50990,7 @@ var PortfolioListController = /*#__PURE__*/function () {
 
       var _loop = function _loop(i) {
         _this.portfolioItems[i].addEventListener("mousemove", function (ev) {
-          var decimalX = ev.clientX / window.innerWidth - 0.5;
-          var decimalY = ev.clientY / window.innerHeight - 0.5;
-
-          _gsap.default.to(_this.portfolioCanvas, {
-            duration: 0.4,
-            x: 300 * decimalX,
-            y: 150 * decimalY,
-            ease: "power3.out"
-          });
+          _this.portfolioMousemove(ev);
         });
 
         _this.portfolioItems[i].addEventListener("mouseenter", function () {
@@ -51004,6 +51017,7 @@ var PortfolioListController = /*#__PURE__*/function () {
       this.app = new PIXI.Application({
         width: canvasWidth,
         height: canvasHeight,
+        resolution: window.devicePixelRatio,
         transparent: true
       }); // add PIXI canvas element to our DOM element
 
@@ -51067,6 +51081,19 @@ var PortfolioListController = /*#__PURE__*/function () {
         ease: "power3.out",
         onComplete: function onComplete() {}
       }, "start");
+    }
+  }, {
+    key: "portfolioMousemove",
+    value: function portfolioMousemove(ev) {
+      var decimalX = ev.clientX / window.innerWidth - 0.5;
+      var decimalY = ev.clientY / window.innerHeight - 0.5;
+
+      _gsap.default.to(this.portfolioCanvas, {
+        duration: 0.4,
+        x: 300 * decimalX,
+        y: 150 * decimalY,
+        ease: "power3.out"
+      });
     }
   }, {
     key: "portfolioItemMouseenter",
@@ -51153,10 +51180,8 @@ ready(function () {
   }
 
   if (document.getElementById("hotspots") !== null) {
-    var magneticCta = document.querySelectorAll(".js-hotspot");
-    magneticCta.forEach(function (element) {
-      new _MagneticCtaController.default(element, "span");
-    });
+    var magneticCta = new _MagneticCtaController.default();
+    magneticCta.init();
     var hotspots = new _HotspotsController.default();
     hotspots.init();
   }

@@ -2,8 +2,8 @@
 	font-size: 14px;
 	line-height: 1em;
 	display: inline-flex;
-	padding: 10px 0;
 	align-items: center;
+	padding: 10px 0;
 	transition: getTransition();
 
 	&__prepend,
@@ -19,6 +19,10 @@
 	}
 
 	&__label {
+		display: inline-block;
+	}
+
+	&__icon {
 		display: inline-block;
 	}
 
@@ -39,6 +43,18 @@
 		.c-link__append {
 			transform: translateX(4px);
 		}
+	}
+}
+
+.c-social-link {
+	font-size: 18px;
+	line-height: 1em;
+	display: inline-flex;
+	align-items: center;
+	transition: getTransition();
+
+	&:hover {
+		opacity: 0.4;
 	}
 }
 

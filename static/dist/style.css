@@ -515,6 +515,9 @@ a {
 .o-section__heading {
   padding-bottom: 20px; }
 
+.o-section__heading .u-a7 {
+  max-width: 60%; }
+
 .o-section__heading .u-b0 {
   opacity: 0.4; }
 
@@ -664,9 +667,24 @@ a {
   padding-bottom: 56.25%;
   overflow: hidden; }
 
+.c-hotspot-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
+
+.c-hotspot-text {
+  width: 30%; }
+
 .c-hotspot-image {
   position: relative;
-  width: 100%;
+  width: 70%;
   max-width: 840px;
   margin: 0 auto; }
 
@@ -846,10 +864,12 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  text-align: right; }
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 .c-navigation .o-container {
   display: -webkit-box;
@@ -865,10 +885,10 @@ a {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  padding: 10px 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 10px 0;
   -webkit-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53); }
 
@@ -883,6 +903,9 @@ a {
   transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53); }
 
 .c-link__label {
+  display: inline-block; }
+
+.c-link__icon {
   display: inline-block; }
 
 .c-link__append {
@@ -902,6 +925,21 @@ a {
 .c-link:hover .c-link__append {
   -webkit-transform: translateX(4px);
           transform: translateX(4px); }
+
+.c-social-link {
+  font-size: 18px;
+  line-height: 1em;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53); }
+
+.c-social-link:hover {
+  opacity: 0.4; }
 
 /**
  * Pages

@@ -7,21 +7,15 @@ window.PIXI = PIXI;
  * interactive portfolio list with webGL preview interaction powered by PIXI.js
  */
 export default class HotspotsController {
-    /**
-     *
-     * @param options
-     */
     constructor() {
+
         /**
          *
          * @type {{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotCanvasContainer: string, hotspotContainer: string}}
-         * @private
          */
-
         this.DOM = {
             hotspotContainer: ".js-hotspot-container",
             hotspot: ".js-hotspot",
-            hotspotCanvasContainer: ".js-hotspot-lines-container",
             hotspotCircle: ".js-hotspot-circle",
             hotspotText: ".js-hotspot-text",
         };
@@ -33,14 +27,6 @@ export default class HotspotsController {
         this.hotspotContainer = document.querySelectorAll(
             this.DOM.hotspotContainer,
         );
-
-        /**
-         *
-         * @returns {NodeListOf<Element>}
-         */
-        this.hotspotCanvasContainer = document.querySelectorAll(
-            this.DOM.hotspotCanvasContainer,
-        );
     }
 
     init() {
@@ -49,30 +35,30 @@ export default class HotspotsController {
 
         if (this.hotspotContainer !== null) {
 
-            this.initHotspotLines();
+            this.hotspotLines();
         } else {
             console.error(`${this.DOM.hotspotContainer} does not exist in the DOM!`);
         }
     }
 
-    initHotspotLines() {
+    hotspotLines() {
         const lineColor = 0xb1b1b1;
         const lineGradient = ["#b1b1b1", "#ffffff"];
         const lineEndingRadius = 2;
 
-        const gradientTexture = this.getGradientTexture(
+        const gradientTexture = this.createGradientTexture(
             lineGradient[0],
             lineGradient[1],
         );
 
-        this.hotspotContainer.forEach((hotspotContainer) => {
-            const hotspots = hotspotContainer.querySelectorAll(
+        for (let i = 0; i < this.hotspotContainer.length; i++) {
+            const hotspots = this.hotspotContainer[i].querySelectorAll(
                 this.DOM.hotspot,
             );
 
             // CANVAS SIZE
-            const canvasWidth = hotspotContainer.clientWidth;
-            const canvasHeight = hotspotContainer.clientHeight;
+            const canvasWidth = this.hotspotContainer[i].clientWidth;
+            const canvasHeight = this.hotspotContainer[i].clientHeight;
 
             // CREATE PIXI APPLICATION
             const app = new PIXI.Application({
@@ -80,18 +66,18 @@ export default class HotspotsController {
                 height: canvasHeight,
                 antialias: true,
                 transparent: true,
-                //resolution: window.devicePixelRatio,
-                resizeTo: hotspotContainer,
+                resolution: window.devicePixelRatio,
+                resizeTo: this.hotspotContainer[i],
             });
 
             // ADD CANVAS TO CANVAS WRAPPER ELEMENT
-            hotspotContainer.appendChild(app.view);
+            this.hotspotContainer[i].appendChild(app.view);
 
-            hotspots.forEach((hotspot) => {
-                const circle = hotspot.querySelector(
+            for (let i = 0; i < hotspots.length; i++) {
+                const circle = hotspots[i].querySelector(
                     this.DOM.hotspotCircle,
                 );
-                const text = hotspot.querySelector(this.DOM.hotspotText);
+                const text = hotspots[i].querySelector(this.DOM.hotspotText);
 
                 const line = new PIXI.Graphics();
                 line.alpha = 0;
@@ -102,21 +88,21 @@ export default class HotspotsController {
                     line.clear();
                     line.beginFill(lineColor, 1);
                     line.drawCircle(
-                        this.getPosition(circle)[0],
-                        this.getPosition(circle)[1],
+                        this.getElementPosition(circle)[0],
+                        this.getElementPosition(circle)[1],
                         lineEndingRadius,
                     );
                     line.endFill();
                     line.beginFill(lineColor, 1);
                     line.drawCircle(
-                        this.getPosition(text)[0],
-                        this.getPosition(text)[1],
+                        this.getElementPosition(text)[0],
+                        this.getElementPosition(text)[1],
                         lineEndingRadius,
                     );
                     line.endFill();
                     line.moveTo(
-                        this.getPosition(circle)[0],
-                        this.getPosition(circle)[1],
+                        this.getElementPosition(circle)[0],
+                        this.getElementPosition(circle)[1],
                     );
                     line.lineStyle(1, lineColor, 1);
                     line.lineTextureStyle({
@@ -125,13 +111,13 @@ export default class HotspotsController {
                         color: 0xffffff,
                     });
                     line.lineTo(
-                        this.getPosition(text)[0],
-                        this.getPosition(text)[1],
+                        this.getElementPosition(text)[0],
+                        this.getElementPosition(text)[1],
                     );
                 });
 
                 //hover
-                hotspot.addEventListener("mouseenter", () => {
+                hotspots[i].addEventListener("mouseenter", () => {
                     gsap.to(line, {
                         alpha: 1,
                         duration: 0.4,
@@ -139,15 +125,15 @@ export default class HotspotsController {
                     });
                 });
 
-                hotspot.addEventListener("mouseleave", () => {
+                hotspots[i].addEventListener("mouseleave", () => {
                     gsap.to(line, {
                         alpha: 0,
                         duration: 0.4,
                         onComplete: () => {},
                     });
                 });
-            });
-        });
+            };
+        };
     }
 
     /**
@@ -155,7 +141,7 @@ export default class HotspotsController {
      * @param {HTMLElement} element - element which position we should get
      * @returns {[number, number]} - position of element relative to viewport
      */
-    getPosition(element) {
+    getElementPosition(element) {
         const posX =
             element.getBoundingClientRect().left -
             element
@@ -179,7 +165,7 @@ export default class HotspotsController {
      * @param {string} to - color in hex format
      * @returns {PIXI.Texture}
      */
-    getGradientTexture(from, to) {
+    createGradientTexture(from, to) {
         const textureWH = 600;
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");

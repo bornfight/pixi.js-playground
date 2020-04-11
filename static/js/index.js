@@ -44,11 +44,8 @@ ready(function() {
 
     if(document.getElementById("hotspots") !== null) {
 
-        const magneticCta = document.querySelectorAll(".js-hotspot");
-
-        magneticCta.forEach((element) => {
-            new MagneticCtaController(element, "span");
-        });
+        const magneticCta = new MagneticCtaController();
+        magneticCta.init();
 
         const hotspots = new HotspotsController();
         hotspots.init();

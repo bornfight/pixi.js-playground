@@ -1,7 +1,17 @@
 //HOTSPOTS
+.c-hotspot-wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+}
+
+.c-hotspot-text {
+	width: percentage(6/20);
+}
+
 .c-hotspot-image {
 	position: relative;
-	width: 100%;
+	width: percentage(14/20);
 	max-width: 840px;
 	margin: 0 auto;
 

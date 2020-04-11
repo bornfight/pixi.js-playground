@@ -82,15 +82,7 @@ export default class PortfolioListController {
         for (let i = 0; i < this.portfolioItems.length; i++) {
 
             this.portfolioItems[i].addEventListener("mousemove", (ev) => {
-                const decimalX = ev.clientX / window.innerWidth - 0.5;
-                const decimalY = ev.clientY / window.innerHeight - 0.5;
-
-                gsap.to(this.portfolioCanvas, {
-                    duration: 0.4,
-                    x: 300 * decimalX,
-                    y: 150 * decimalY,
-                    ease: "power3.out",
-                });
+                this.portfolioMousemove(ev);
             });
 
             this.portfolioItems[i].addEventListener("mouseenter", () => {
@@ -112,6 +104,7 @@ export default class PortfolioListController {
         this.app = new PIXI.Application({
             width: canvasWidth,
             height: canvasHeight,
+            resolution: window.devicePixelRatio,
             transparent: true,
         });
 
@@ -217,6 +210,19 @@ export default class PortfolioListController {
                 },
                 "start",
             );
+    }
+
+    portfolioMousemove(ev) {
+        const decimalX = ev.clientX / window.innerWidth - 0.5;
+        const decimalY = ev.clientY / window.innerHeight - 0.5;
+
+        gsap.to(this.portfolioCanvas, {
+            duration: 0.4,
+            x: 300 * decimalX,
+            y: 150 * decimalY,
+            ease: "power3.out",
+        });
+
     }
 
     portfolioItemMouseenter(index) {

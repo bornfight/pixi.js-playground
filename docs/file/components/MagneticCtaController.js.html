@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">components/MagneticCtaController.js | gulp4-boilerplate</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="frontend project template based on gulp, es6 and scss"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="gulp4-boilerplate"><meta property="twitter:description" content="frontend project template based on gulp, es6 and scss"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/Dummy.js~Dummy.html">Dummy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/HotspotsController.js~HotspotsController.html">HotspotsController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/MagneticCtaController.js~MagneticCtaController.html">MagneticCtaController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html">NavigationController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html">PortfolioListController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/ThreeDPhotosController.js~ThreeDPhotosController.html">ThreeDPhotosController</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/MagneticCtaController.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import gsap from &quot;gsap&quot;;
+
+export default class MagneticCtaController {
+    constructor() {
+        this.DOM = {
+            ctaContainer: &quot;.js-magnetic-cta-container&quot;,
+            cta: &quot;.js-magnetic-cta&quot;,
+            ctaContent: &quot;.js-magnetic-cta-content&quot;,
+        };
+
+        this.ctaContainer = document.querySelectorAll(this.DOM.ctaContainer);
+    }
+
+    init() {
+        console.log(&quot;MagneticCtaController init()&quot;);
+
+        if (this.ctaContainer !== null) {
+            this.magneticCtaEvents();
+        } else {
+            console.error(
+                `${this.DOM.ctaContainer} does not exist in the DOM!`,
+            );
+        }
+    }
+
+    magneticCtaEvents() {
+        for (let i = 0; i &lt; this.ctaContainer.length; i++) {
+            this.ctaContainer[i].addEventListener(&quot;mousemove&quot;, (ev) =&gt; {
+                this.magneticMousemove(ev);
+            });
+
+            this.ctaContainer[i].addEventListener(&quot;mouseleave&quot;, (ev) =&gt; {
+                this.magneticMouseleave(ev);
+            });
+        }
+    }
+
+    magneticMousemove(ev) {
+        ev.currentTarget.classList.add(&quot;is-hovered&quot;);
+
+        // Get X-coordinate for the left container edge
+        const containerPosX = ev.currentTarget.getBoundingClientRect().left;
+        const containerPosY = ev.currentTarget.getBoundingClientRect().top;
+
+        // Get position of the mouse inside element from left edge
+        // (current mouse X position - button x coordinate)
+        const pageX = ev.clientX;
+        const pageY = ev.clientY;
+
+        const xPosOfMouse = pageX - containerPosX;
+        const yPosOfMouse = pageY - containerPosY;
+
+        // Get position of mouse relative to container center
+        // Mouse position inside element - container width / 2
+        // To get positive or negative movement
+        const xPosOfMouseInsideContainer =
+            xPosOfMouse - ev.currentTarget.offsetWidth / 2;
+        const yPosOfMouseInsideContainer =
+            yPosOfMouse - ev.currentTarget.offsetHeight / 2;
+
+        // Button text divider to increase or decrease text path
+        const animationDivider = 3;
+        const animationDividerText = 1.5;
+
+        // Animate button text positive or negative from center
+        gsap.to(ev.currentTarget.querySelector(this.DOM.cta), 0.3, {
+            x: xPosOfMouseInsideContainer / animationDivider,
+            y: yPosOfMouseInsideContainer / animationDivider,
+            ease: &quot;power3.out&quot;,
+        });
+
+        if (
+            ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null
+        ) {
+            gsap.to(ev.currentTarget.querySelector(this.DOM.ctaContent), 0.2, {
+                x: xPosOfMouseInsideContainer / animationDividerText,
+                y: yPosOfMouseInsideContainer / animationDividerText,
+                ease: &quot;power3.out&quot;,
+            });
+        }
+    }
+
+    magneticMouseleave(ev) {
+        ev.currentTarget.classList.remove(&quot;is-hovered&quot;);
+
+        // Animate button text reset to initial position (center)
+        gsap.to(ev.currentTarget.querySelector(this.DOM.cta), {
+            duration: 0.3,
+            x: 0,
+            y: 0,
+            ease: &quot;power3.out&quot;,
+        });
+
+        if (
+            ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null
+        ) {
+            gsap.to(ev.currentTarget.querySelector(this.DOM.ctaContent), {
+                duration: 0.5,
+                x: 0,
+                y: 0,
+                ease: &quot;power3.out&quot;,
+            });
+        }
+    }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

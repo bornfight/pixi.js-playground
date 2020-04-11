@@ -1,5 +1,47 @@
-import * as PIXI from "pixi.js";
-import gsap from "gsap";
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">components/PortfolioListController.js | gulp4-boilerplate</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="frontend project template based on gulp, es6 and scss"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="gulp4-boilerplate"><meta property="twitter:description" content="frontend project template based on gulp, es6 and scss"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/Dummy.js~Dummy.html">Dummy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/HotspotsController.js~HotspotsController.html">HotspotsController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/MagneticCtaController.js~MagneticCtaController.html">MagneticCtaController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html">NavigationController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html">PortfolioListController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/ThreeDPhotosController.js~ThreeDPhotosController.html">ThreeDPhotosController</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/PortfolioListController.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as PIXI from &quot;pixi.js&quot;;
+import gsap from &quot;gsap&quot;;
 
 window.PIXI = PIXI;
 
@@ -15,11 +57,11 @@ export default class PortfolioListController {
          */
 
         this.DOM = {
-            portfolio: ".js-portfolio",
-            portfolioItem: ".js-portfolio-item",
-            portfolioPreviewList: ".js-portfolio-preview-list",
-            portfolioPreviewItem: ".js-portfolio-preview-item",
-            portfolioCanvas: ".js-portfolio-canvas",
+            portfolio: &quot;.js-portfolio&quot;,
+            portfolioItem: &quot;.js-portfolio-item&quot;,
+            portfolioPreviewList: &quot;.js-portfolio-preview-list&quot;,
+            portfolioPreviewItem: &quot;.js-portfolio-preview-item&quot;,
+            portfolioCanvas: &quot;.js-portfolio-canvas&quot;,
         };
 
         /**
@@ -30,7 +72,7 @@ export default class PortfolioListController {
 
         /**
          *
-         * @type {NodeListOf<Element>}
+         * @type {NodeListOf&lt;Element&gt;}
          */
         this.portfolioItems = document.querySelectorAll(this.DOM.portfolioItem);
 
@@ -44,7 +86,7 @@ export default class PortfolioListController {
 
         /**
          *
-         * @type {NodeListOf<Element>}
+         * @type {NodeListOf&lt;Element&gt;}
          */
         this.portfolioPreviewItems = document.querySelectorAll(
             this.DOM.portfolioPreviewItem,
@@ -66,7 +108,7 @@ export default class PortfolioListController {
     //region methods
 
     init() {
-        console.log("PortfolioListController init()");
+        console.log(&quot;PortfolioListController init()&quot;);
 
         if (this.portfolio !== null) {
             this.portfolioEvents();
@@ -77,16 +119,16 @@ export default class PortfolioListController {
     }
 
     portfolioEvents() {
-        for (let i = 0; i < this.portfolioItems.length; i++) {
-            this.portfolioItems[i].addEventListener("mousemove", (ev) => {
+        for (let i = 0; i &lt; this.portfolioItems.length; i++) {
+            this.portfolioItems[i].addEventListener(&quot;mousemove&quot;, (ev) =&gt; {
                 this.portfolioMousemove(ev);
             });
 
-            this.portfolioItems[i].addEventListener("mouseenter", () => {
+            this.portfolioItems[i].addEventListener(&quot;mouseenter&quot;, () =&gt; {
                 this.portfolioItemMouseenter(i + 1); // why +1? Hint: PIXI related
             });
 
-            this.portfolioItems[i].addEventListener("mouseleave", () => {
+            this.portfolioItems[i].addEventListener(&quot;mouseleave&quot;, () =&gt; {
                 this.portfolioItemMouseleave();
             });
         }
@@ -109,7 +151,7 @@ export default class PortfolioListController {
         this.portfolioCanvas.appendChild(this.app.view);
 
         const displacementMapImage = this.portfolioCanvas.getAttribute(
-            "data-displacement-map",
+            &quot;data-displacement-map&quot;,
         );
 
         // create displacement texture
@@ -136,11 +178,11 @@ export default class PortfolioListController {
         this.app.stage.addChild(displacementMap);
 
         // load images from DOM to PIXI container
-        for (let i = 0; i < this.portfolioItems.length; i++) {
+        for (let i = 0; i &lt; this.portfolioItems.length; i++) {
             //create texture
             const texture = new PIXI.Texture.from(
                 this.portfolioPreviewItems[i].getAttribute(
-                    "data-portfolio-preview",
+                    &quot;data-portfolio-preview&quot;,
                 ),
             );
 
@@ -149,7 +191,7 @@ export default class PortfolioListController {
 
             //set sprites properties
             image.name = this.portfolioPreviewItems[i].getAttribute(
-                "data-portfolio-preview",
+                &quot;data-portfolio-preview&quot;,
             );
             image.alpha = 1;
             image.width = canvasWidth;
@@ -164,10 +206,10 @@ export default class PortfolioListController {
             paused: true,
         });
 
-        const canvasElement = this.portfolioCanvas.querySelector("canvas");
+        const canvasElement = this.portfolioCanvas.querySelector(&quot;canvas&quot;);
 
         this.displacementTimeline
-            .add("start")
+            .add(&quot;start&quot;)
             .fromTo(
                 canvasElement,
                 {
@@ -176,9 +218,9 @@ export default class PortfolioListController {
                 {
                     duration: 0.4,
                     autoAlpha: 1,
-                    ease: "power3.out",
+                    ease: &quot;power3.out&quot;,
                 },
-                "start",
+                &quot;start&quot;,
             )
             .fromTo(
                 canvasElement,
@@ -188,9 +230,9 @@ export default class PortfolioListController {
                 {
                     duration: 0.8,
                     scale: 1,
-                    ease: "power3.out",
+                    ease: &quot;power3.out&quot;,
                 },
-                "start",
+                &quot;start&quot;,
             )
             .fromTo(
                 displacementFilter.scale,
@@ -202,10 +244,10 @@ export default class PortfolioListController {
                     duration: 1.6,
                     x: 0,
                     y: 0,
-                    ease: "power3.out",
-                    onComplete: () => {},
+                    ease: &quot;power3.out&quot;,
+                    onComplete: () =&gt; {},
                 },
-                "start",
+                &quot;start&quot;,
             );
     }
 
@@ -217,7 +259,7 @@ export default class PortfolioListController {
             duration: 0.4,
             x: 300 * decimalX,
             y: 150 * decimalY,
-            ease: "power3.out",
+            ease: &quot;power3.out&quot;,
         });
     }
 
@@ -225,8 +267,8 @@ export default class PortfolioListController {
         gsap.to(this.app.stage.children[index], {
             duration: 0.4,
             alpha: 1,
-            ease: "power3.out",
-            onStart: () => {
+            ease: &quot;power3.out&quot;,
+            onStart: () =&gt; {
                 this.displacementTimeline.restart().pause();
                 this.displacementTimeline.play();
             },
@@ -237,9 +279,26 @@ export default class PortfolioListController {
         gsap.to(this.app.stage.children, {
             duration: 0.4,
             alpha: 0,
-            ease: "power3.out",
+            ease: &quot;power3.out&quot;,
         });
     }
 
     //endregion
 }
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,68 +1,66 @@
 .c-link {
-	font-size: 14px;
-	line-height: 1em;
-	display: inline-flex;
-	align-items: center;
-	padding: 10px 0;
-	transition: getTransition();
+    font-size: 14px;
+    line-height: 1em;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+    transition: getTransition();
 
-	&__prepend,
-	&__append {
-		font-size: 14px;
-	}
+    &__prepend,
+    &__append {
+        font-size: 14px;
+    }
 
-	&__prepend {
-		display: inline-block;
-		vertical-align: middle;
-		margin-right: 8px;
-		transition: getTransition();
-	}
+    &__prepend {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+        transition: getTransition();
+    }
 
-	&__label {
-		display: inline-block;
-	}
+    &__label {
+        display: inline-block;
+    }
 
-	&__icon {
-		display: inline-block;
-	}
+    &__icon {
+        display: inline-block;
+    }
 
-	&__append {
-		display: inline-block;
-		vertical-align: middle;
-		margin-left: 8px;
-		transition: getTransition();
-	}
+    &__append {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 8px;
+        transition: getTransition();
+    }
 
-	&:hover {
-		opacity: 0.4;
+    &:hover {
+        opacity: 0.4;
 
-		.c-link__prepend {
-			transform: translateX(-4px);
-		}
+        .c-link__prepend {
+            transform: translateX(-4px);
+        }
 
-		.c-link__append {
-			transform: translateX(4px);
-		}
-	}
+        .c-link__append {
+            transform: translateX(4px);
+        }
+    }
 }
 
 .c-social-link {
-	font-size: 18px;
-	line-height: 1em;
-	display: inline-flex;
-	align-items: center;
-	transition: getTransition();
+    font-size: 18px;
+    line-height: 1em;
+    display: inline-flex;
+    align-items: center;
+    transition: getTransition();
 
-	&:hover {
-		opacity: 0.4;
-	}
+    &:hover {
+        opacity: 0.4;
+    }
 }
 
 .c-link-list {
-	&__item {
-
-		&:before {
-
-		}
-	}
+    &__item {
+        &:before {
+        }
+    }
 }

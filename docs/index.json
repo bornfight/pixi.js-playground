@@ -623,8 +623,370 @@
   {
     "__docId__": 52,
     "kind": "file",
+    "name": "components/HotspotsController.js",
+    "content": "import * as PIXI from \"pixi.js\";\nimport gsap from \"gsap\";\n\nwindow.PIXI = PIXI;\n\n/**\n * interactive portfolio list with webGL preview interaction powered by PIXI.js\n */\nexport default class HotspotsController {\n    constructor() {\n        /**\n         *\n         * @type {{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotCanvasContainer: string, hotspotContainer: string}}\n         */\n        this.DOM = {\n            hotspotContainer: \".js-hotspot-container\",\n            hotspot: \".js-hotspot\",\n            hotspotCircle: \".js-hotspot-circle\",\n            hotspotText: \".js-hotspot-text\",\n        };\n\n        /**\n         *\n         * @returns {NodeListOf<Element>}\n         */\n        this.hotspotContainer = document.querySelectorAll(\n            this.DOM.hotspotContainer,\n        );\n    }\n\n    init() {\n        console.log(\"HotspotsController init()\");\n\n        if (this.hotspotContainer !== null) {\n            this.hotspotLines();\n        } else {\n            console.error(\n                `${this.DOM.hotspotContainer} does not exist in the DOM!`,\n            );\n        }\n    }\n\n    hotspotLines() {\n        const lineColor = 0xb1b1b1;\n        const lineGradient = [\"#b1b1b1\", \"#ffffff\"];\n        const lineEndingRadius = 2;\n\n        const gradientTexture = this.createGradientTexture(\n            lineGradient[0],\n            lineGradient[1],\n        );\n\n        for (let i = 0; i < this.hotspotContainer.length; i++) {\n            const hotspots = this.hotspotContainer[i].querySelectorAll(\n                this.DOM.hotspot,\n            );\n\n            // CANVAS SIZE\n            const canvasWidth = this.hotspotContainer[i].clientWidth;\n            const canvasHeight = this.hotspotContainer[i].clientHeight;\n\n            // CREATE PIXI APPLICATION\n            const app = new PIXI.Application({\n                width: canvasWidth,\n                height: canvasHeight,\n                antialias: true,\n                transparent: true,\n                resolution: window.devicePixelRatio,\n                resizeTo: this.hotspotContainer[i],\n            });\n\n            // ADD CANVAS TO CANVAS WRAPPER ELEMENT\n            this.hotspotContainer[i].appendChild(app.view);\n\n            for (let i = 0; i < hotspots.length; i++) {\n                const circle = hotspots[i].querySelector(\n                    this.DOM.hotspotCircle,\n                );\n                const text = hotspots[i].querySelector(this.DOM.hotspotText);\n\n                const line = new PIXI.Graphics();\n                line.alpha = 0;\n\n                app.stage.addChild(line);\n\n                app.ticker.add(() => {\n                    line.clear();\n                    line.beginFill(lineColor, 1);\n                    line.drawCircle(\n                        this.getElementPosition(circle)[0],\n                        this.getElementPosition(circle)[1],\n                        lineEndingRadius,\n                    );\n                    line.endFill();\n                    line.beginFill(lineColor, 1);\n                    line.drawCircle(\n                        this.getElementPosition(text)[0],\n                        this.getElementPosition(text)[1],\n                        lineEndingRadius,\n                    );\n                    line.endFill();\n                    line.moveTo(\n                        this.getElementPosition(circle)[0],\n                        this.getElementPosition(circle)[1],\n                    );\n                    line.lineStyle(1, lineColor, 1);\n                    line.lineTextureStyle({\n                        width: 1,\n                        texture: gradientTexture,\n                        color: 0xffffff,\n                    });\n                    line.lineTo(\n                        this.getElementPosition(text)[0],\n                        this.getElementPosition(text)[1],\n                    );\n                });\n\n                //hover\n                hotspots[i].addEventListener(\"mouseenter\", () => {\n                    gsap.to(line, {\n                        alpha: 1,\n                        duration: 0.4,\n                        onComplete: () => {},\n                    });\n                });\n\n                hotspots[i].addEventListener(\"mouseleave\", () => {\n                    gsap.to(line, {\n                        alpha: 0,\n                        duration: 0.4,\n                        onComplete: () => {},\n                    });\n                });\n            }\n        }\n    }\n\n    /**\n     *\n     * @param {HTMLElement} element - element which position we should get\n     * @returns {[number, number]} - position of element relative to viewport\n     */\n    getElementPosition(element) {\n        const posX =\n            element.getBoundingClientRect().left -\n            element.closest(this.DOM.hotspotContainer).getBoundingClientRect()\n                .left +\n            element.clientWidth / 2;\n\n        const posY =\n            element.getBoundingClientRect().top -\n            element.closest(this.DOM.hotspotContainer).getBoundingClientRect()\n                .top +\n            element.clientHeight / 2;\n\n        return [posX, posY];\n    }\n\n    /**\n     *\n     * @param {string} from - color in hex format\n     * @param {string} to - color in hex format\n     * @returns {PIXI.Texture}\n     */\n    createGradientTexture(from, to) {\n        const textureWH = 600;\n        const canvas = document.createElement(\"canvas\");\n        const context = canvas.getContext(\"2d\");\n        const gradient = context.createLinearGradient(\n            0,\n            0,\n            textureWH,\n            textureWH,\n        );\n        gradient.addColorStop(0, from);\n        gradient.addColorStop(1, to);\n        context.fillStyle = gradient;\n        context.fillRect(0, 0, textureWH, textureWH);\n\n        return new PIXI.Texture.from(canvas);\n    }\n}\n",
+    "static": true,
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/HotspotsController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 53,
+    "kind": "class",
+    "name": "HotspotsController",
+    "memberof": "components/HotspotsController.js",
+    "static": true,
+    "longname": "components/HotspotsController.js~HotspotsController",
+    "access": "public",
+    "export": true,
+    "importPath": "gulp4-boilerplate/components/HotspotsController.js",
+    "importStyle": "HotspotsController",
+    "description": "interactive portfolio list with webGL preview interaction powered by PIXI.js",
+    "lineNumber": 9,
+    "interface": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "member",
+    "name": "DOM",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#DOM",
+    "access": "public",
+    "description": "",
+    "lineNumber": 15,
+    "type": {
+      "nullable": null,
+      "types": [
+        "{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotCanvasContainer: string, hotspotContainer: string}"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "member",
+    "name": "hotspotContainer",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#hotspotContainer",
+    "access": "public",
+    "description": "",
+    "lineNumber": 26,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{NodeListOf<Element>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "NodeListOf<Element>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "init",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "hotspotLines",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#hotspotLines",
+    "access": "public",
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "getElementPosition",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#getElementPosition",
+    "access": "public",
+    "description": "",
+    "lineNumber": 143,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{[number, number]} - position of element relative to viewport"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "element",
+        "description": "element which position we should get"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "[number, number]"
+      ],
+      "spread": false,
+      "description": "position of element relative to viewport"
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "createGradientTexture",
+    "memberof": "components/HotspotsController.js~HotspotsController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/HotspotsController.js~HotspotsController#createGradientTexture",
+    "access": "public",
+    "description": "",
+    "lineNumber": 165,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{PIXI.Texture}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "from",
+        "description": "color in hex format"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "to",
+        "description": "color in hex format"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "PIXI.Texture"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "file",
+    "name": "components/MagneticCtaController.js",
+    "content": "import gsap from \"gsap\";\n\nexport default class MagneticCtaController {\n    constructor() {\n        this.DOM = {\n            ctaContainer: \".js-magnetic-cta-container\",\n            cta: \".js-magnetic-cta\",\n            ctaContent: \".js-magnetic-cta-content\",\n        };\n\n        this.ctaContainer = document.querySelectorAll(this.DOM.ctaContainer);\n    }\n\n    init() {\n        console.log(\"MagneticCtaController init()\");\n\n        if (this.ctaContainer !== null) {\n            this.magneticCtaEvents();\n        } else {\n            console.error(\n                `${this.DOM.ctaContainer} does not exist in the DOM!`,\n            );\n        }\n    }\n\n    magneticCtaEvents() {\n        for (let i = 0; i < this.ctaContainer.length; i++) {\n            this.ctaContainer[i].addEventListener(\"mousemove\", (ev) => {\n                this.magneticMousemove(ev);\n            });\n\n            this.ctaContainer[i].addEventListener(\"mouseleave\", (ev) => {\n                this.magneticMouseleave(ev);\n            });\n        }\n    }\n\n    magneticMousemove(ev) {\n        ev.currentTarget.classList.add(\"is-hovered\");\n\n        // Get X-coordinate for the left container edge\n        const containerPosX = ev.currentTarget.getBoundingClientRect().left;\n        const containerPosY = ev.currentTarget.getBoundingClientRect().top;\n\n        // Get position of the mouse inside element from left edge\n        // (current mouse X position - button x coordinate)\n        const pageX = ev.clientX;\n        const pageY = ev.clientY;\n\n        const xPosOfMouse = pageX - containerPosX;\n        const yPosOfMouse = pageY - containerPosY;\n\n        // Get position of mouse relative to container center\n        // Mouse position inside element - container width / 2\n        // To get positive or negative movement\n        const xPosOfMouseInsideContainer =\n            xPosOfMouse - ev.currentTarget.offsetWidth / 2;\n        const yPosOfMouseInsideContainer =\n            yPosOfMouse - ev.currentTarget.offsetHeight / 2;\n\n        // Button text divider to increase or decrease text path\n        const animationDivider = 3;\n        const animationDividerText = 1.5;\n\n        // Animate button text positive or negative from center\n        gsap.to(ev.currentTarget.querySelector(this.DOM.cta), 0.3, {\n            x: xPosOfMouseInsideContainer / animationDivider,\n            y: yPosOfMouseInsideContainer / animationDivider,\n            ease: \"power3.out\",\n        });\n\n        if (\n            ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null\n        ) {\n            gsap.to(ev.currentTarget.querySelector(this.DOM.ctaContent), 0.2, {\n                x: xPosOfMouseInsideContainer / animationDividerText,\n                y: yPosOfMouseInsideContainer / animationDividerText,\n                ease: \"power3.out\",\n            });\n        }\n    }\n\n    magneticMouseleave(ev) {\n        ev.currentTarget.classList.remove(\"is-hovered\");\n\n        // Animate button text reset to initial position (center)\n        gsap.to(ev.currentTarget.querySelector(this.DOM.cta), {\n            duration: 0.3,\n            x: 0,\n            y: 0,\n            ease: \"power3.out\",\n        });\n\n        if (\n            ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null\n        ) {\n            gsap.to(ev.currentTarget.querySelector(this.DOM.ctaContent), {\n                duration: 0.5,\n                x: 0,\n                y: 0,\n                ease: \"power3.out\",\n            });\n        }\n    }\n}\n",
+    "static": true,
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/MagneticCtaController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 62,
+    "kind": "class",
+    "name": "MagneticCtaController",
+    "memberof": "components/MagneticCtaController.js",
+    "static": true,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController",
+    "access": "public",
+    "export": true,
+    "importPath": "gulp4-boilerplate/components/MagneticCtaController.js",
+    "importStyle": "MagneticCtaController",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 63,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "name": "DOM",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#DOM",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"ctaContainer\": string, \"cta\": string, \"ctaContent\": string}"
+      ]
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "name": "ctaContainer",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#ctaContainer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "init",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "magneticCtaEvents",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#magneticCtaEvents",
+    "access": "public",
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "magneticMousemove",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#magneticMousemove",
+    "access": "public",
+    "description": null,
+    "lineNumber": 38,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ev",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "magneticMouseleave",
+    "memberof": "components/MagneticCtaController.js~MagneticCtaController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/MagneticCtaController.js~MagneticCtaController#magneticMouseleave",
+    "access": "public",
+    "description": null,
+    "lineNumber": 83,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ev",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
+    "kind": "file",
     "name": "components/NavigationController.js",
-    "content": "/**\n * \"smart\" navigation which goes off screen when scrolling down for a better overview of content and UX\n * navigation appears when scrolling up\n */\nexport default class NavigationController {\n    constructor() {\n        /**\n         * Navigation DOM selectors\n         * Navigation DOM state CSS classes\n         * @type {{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}}\n         */\n\n        this.DOM = {\n            navigation: \".js-navigation-wrapper\",\n            states: {\n                navigationScrolled: \"has-scrolled\",\n                navigationFixed: \"is-fixed\",\n                navigationSlideUp: \"slide-up\",\n            },\n        };\n\n        /**\n         * flag, state variable for scrolling event\n         * @type {boolean}\n         */\n        this.scrolling = false;\n        /**\n         * amount of pixels to scroll from top for adding \"has-scrolled\" state class\n         * @type {number}\n         */\n        this.scrollNavigationOffset = 200;\n        /**\n         * variable for storing amount of scroll from top position value\n         * @type {number}\n         */\n        this.previousTop = 0;\n        /**\n         * variable for storing current scroll position value\n         * @type {number}\n         */\n        this.currentTop = 0;\n        this.scrollDelta = 0;\n        this.scrollOffset = 0;\n\n        /**\n         * fetch navigation element DOM element\n         * @type {Element}\n         */\n        this.navigation = document.querySelector(this.DOM.navigation);\n    }\n\n    //region methods\n    /**\n     *\n     */\n    init() {\n        console.log(\"Navigation init()\");\n\n        if (this.navigation !== null) {\n            this.navigationController();\n        } else {\n            console.error(`${this.DOM.navigation} does not exist in the DOM!`);\n        }\n    }\n\n    /**\n     *\n     */\n    navigationController() {\n        document.addEventListener(\"scroll\", () => {\n            if (!this.scrolling) {\n                this.scrolling = true;\n\n                if (!window.requestAnimationFrame) {\n                    setTimeout(this.checkScroll(), 250);\n                } else {\n                    requestAnimationFrame(() => this.checkScroll());\n                }\n            }\n        });\n    }\n\n    /**\n     *\n     */\n    checkScroll() {\n        /**\n         *\n         * @type {number}\n         */\n        let currentTop = window.pageYOffset | document.body.scrollTop;\n\n        this.changeNavigationState(currentTop);\n\n        this.previousTop = currentTop;\n        this.scrolling = false;\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    changeNavigationState(currentTop) {\n        if (currentTop > this.scrollNavigationOffset) {\n            this.navigation.classList.add(this.DOM.states.navigationScrolled);\n        } else {\n            this.navigation.classList.remove(this.DOM.states.navigationScrolled);\n        }\n\n        if (this.previousTop >= currentTop) {\n            this.scrollingUp(currentTop);\n        } else {\n            this.scrollingDown(currentTop);\n        }\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    scrollingUp(currentTop) {\n        if (currentTop < this.scrollNavigationOffset) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        } else if (this.previousTop - currentTop > this.scrollDelta) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        }\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    scrollingDown(currentTop) {\n        if (currentTop > this.scrollNavigationOffset + this.scrollOffset) {\n            this.navigation.classList.add(this.DOM.states.navigationSlideUp);\n        } else if (currentTop > this.scrollNavigationOffset) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        }\n    }\n\n    //endregion\n}\n",
+    "content": "/**\n * \"smart\" navigation which goes off screen when scrolling down for a better overview of content and UX\n * navigation appears when scrolling up\n */\nexport default class NavigationController {\n    constructor() {\n        /**\n         * Navigation DOM selectors\n         * Navigation DOM state CSS classes\n         * @type {{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}}\n         */\n\n        this.DOM = {\n            navigation: \".js-navigation-wrapper\",\n            states: {\n                navigationScrolled: \"has-scrolled\",\n                navigationFixed: \"is-fixed\",\n                navigationSlideUp: \"slide-up\",\n            },\n        };\n\n        /**\n         * flag, state variable for scrolling event\n         * @type {boolean}\n         */\n        this.scrolling = false;\n        /**\n         * amount of pixels to scroll from top for adding \"has-scrolled\" state class\n         * @type {number}\n         */\n        this.scrollNavigationOffset = 200;\n        /**\n         * variable for storing amount of scroll from top position value\n         * @type {number}\n         */\n        this.previousTop = 0;\n        /**\n         * variable for storing current scroll position value\n         * @type {number}\n         */\n        this.currentTop = 0;\n        this.scrollDelta = 0;\n        this.scrollOffset = 0;\n\n        /**\n         * fetch navigation element DOM element\n         * @type {Element}\n         */\n        this.navigation = document.querySelector(this.DOM.navigation);\n    }\n\n    //region methods\n    /**\n     *\n     */\n    init() {\n        console.log(\"Navigation init()\");\n\n        if (this.navigation !== null) {\n            this.navigationController();\n        } else {\n            console.error(`${this.DOM.navigation} does not exist in the DOM!`);\n        }\n    }\n\n    /**\n     *\n     */\n    navigationController() {\n        document.addEventListener(\"scroll\", () => {\n            if (!this.scrolling) {\n                this.scrolling = true;\n\n                if (!window.requestAnimationFrame) {\n                    setTimeout(this.checkScroll(), 250);\n                } else {\n                    requestAnimationFrame(() => this.checkScroll());\n                }\n            }\n        });\n    }\n\n    /**\n     *\n     */\n    checkScroll() {\n        /**\n         *\n         * @type {number}\n         */\n        let currentTop = window.pageYOffset | document.body.scrollTop;\n\n        this.changeNavigationState(currentTop);\n\n        this.previousTop = currentTop;\n        this.scrolling = false;\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    changeNavigationState(currentTop) {\n        if (currentTop > this.scrollNavigationOffset) {\n            this.navigation.classList.add(this.DOM.states.navigationScrolled);\n        } else {\n            this.navigation.classList.remove(\n                this.DOM.states.navigationScrolled,\n            );\n        }\n\n        if (this.previousTop >= currentTop) {\n            this.scrollingUp(currentTop);\n        } else {\n            this.scrollingDown(currentTop);\n        }\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    scrollingUp(currentTop) {\n        if (currentTop < this.scrollNavigationOffset) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        } else if (this.previousTop - currentTop > this.scrollDelta) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        }\n    }\n\n    /**\n     *\n     * @param currentTop\n     */\n    scrollingDown(currentTop) {\n        if (currentTop > this.scrollNavigationOffset + this.scrollOffset) {\n            this.navigation.classList.add(this.DOM.states.navigationSlideUp);\n        } else if (currentTop > this.scrollNavigationOffset) {\n            this.navigation.classList.remove(this.DOM.states.navigationSlideUp);\n        }\n    }\n\n    //endregion\n}\n",
     "static": true,
     "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/NavigationController.js",
     "access": "public",
@@ -632,7 +994,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 53,
+    "__docId__": 71,
     "kind": "class",
     "name": "NavigationController",
     "memberof": "components/NavigationController.js",
@@ -647,7 +1009,7 @@
     "interface": false
   },
   {
-    "__docId__": 54,
+    "__docId__": 72,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -661,7 +1023,7 @@
     "undocument": true
   },
   {
-    "__docId__": 55,
+    "__docId__": 73,
     "kind": "member",
     "name": "DOM",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -680,7 +1042,7 @@
     }
   },
   {
-    "__docId__": 56,
+    "__docId__": 74,
     "kind": "member",
     "name": "scrolling",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -699,7 +1061,7 @@
     }
   },
   {
-    "__docId__": 57,
+    "__docId__": 75,
     "kind": "member",
     "name": "scrollNavigationOffset",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -718,7 +1080,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 76,
     "kind": "member",
     "name": "previousTop",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -737,7 +1099,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 77,
     "kind": "member",
     "name": "currentTop",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -756,7 +1118,7 @@
     }
   },
   {
-    "__docId__": 60,
+    "__docId__": 78,
     "kind": "member",
     "name": "scrollDelta",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -773,7 +1135,7 @@
     }
   },
   {
-    "__docId__": 61,
+    "__docId__": 79,
     "kind": "member",
     "name": "scrollOffset",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -790,7 +1152,7 @@
     }
   },
   {
-    "__docId__": 62,
+    "__docId__": 80,
     "kind": "member",
     "name": "navigation",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -809,7 +1171,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 81,
     "kind": "method",
     "name": "init",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -824,7 +1186,7 @@
     "return": null
   },
   {
-    "__docId__": 64,
+    "__docId__": 82,
     "kind": "method",
     "name": "navigationController",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -839,7 +1201,7 @@
     "return": null
   },
   {
-    "__docId__": 66,
+    "__docId__": 84,
     "kind": "method",
     "name": "checkScroll",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -854,7 +1216,7 @@
     "return": null
   },
   {
-    "__docId__": 69,
+    "__docId__": 87,
     "kind": "method",
     "name": "changeNavigationState",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -880,7 +1242,7 @@
     "return": null
   },
   {
-    "__docId__": 70,
+    "__docId__": 88,
     "kind": "method",
     "name": "scrollingUp",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -890,7 +1252,7 @@
     "longname": "components/NavigationController.js~NavigationController#scrollingUp",
     "access": "public",
     "description": "",
-    "lineNumber": 121,
+    "lineNumber": 123,
     "params": [
       {
         "nullable": null,
@@ -906,7 +1268,7 @@
     "return": null
   },
   {
-    "__docId__": 71,
+    "__docId__": 89,
     "kind": "method",
     "name": "scrollingDown",
     "memberof": "components/NavigationController.js~NavigationController",
@@ -916,7 +1278,7 @@
     "longname": "components/NavigationController.js~NavigationController#scrollingDown",
     "access": "public",
     "description": "",
-    "lineNumber": 133,
+    "lineNumber": 135,
     "params": [
       {
         "nullable": null,
@@ -926,6 +1288,478 @@
         "spread": false,
         "optional": false,
         "name": "currentTop",
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 90,
+    "kind": "file",
+    "name": "components/PortfolioListController.js",
+    "content": "import * as PIXI from \"pixi.js\";\nimport gsap from \"gsap\";\n\nwindow.PIXI = PIXI;\n\n/**\n * interactive portfolio list with webGL preview interaction powered by PIXI.js\n */\nexport default class PortfolioListController {\n    constructor() {\n        /**\n         * Navigation DOM selectors\n         * Navigation DOM state CSS classes\n         * @type {{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}}\n         */\n\n        this.DOM = {\n            portfolio: \".js-portfolio\",\n            portfolioItem: \".js-portfolio-item\",\n            portfolioPreviewList: \".js-portfolio-preview-list\",\n            portfolioPreviewItem: \".js-portfolio-preview-item\",\n            portfolioCanvas: \".js-portfolio-canvas\",\n        };\n\n        /**\n         *\n         * @type {Element}\n         */\n        this.portfolio = document.querySelector(this.DOM.portfolio);\n\n        /**\n         *\n         * @type {NodeListOf<Element>}\n         */\n        this.portfolioItems = document.querySelectorAll(this.DOM.portfolioItem);\n\n        /**\n         *\n         * @type {Element}\n         */\n        this.portfolioPreviewList = document.querySelector(\n            this.DOM.portfolioPreviewList,\n        );\n\n        /**\n         *\n         * @type {NodeListOf<Element>}\n         */\n        this.portfolioPreviewItems = document.querySelectorAll(\n            this.DOM.portfolioPreviewItem,\n        );\n\n        /**\n         *\n         * @type {Element}\n         */\n        this.portfolioCanvas = document.querySelector(this.DOM.portfolioCanvas);\n\n        //PIXI stuff\n        this.app = null;\n\n        //gsap stuff\n        this.displacementTimeline = null;\n    }\n\n    //region methods\n\n    init() {\n        console.log(\"PortfolioListController init()\");\n\n        if (this.portfolio !== null) {\n            this.portfolioEvents();\n            this.portfolioController();\n        } else {\n            console.error(`${this.DOM.portfolio} does not exist in the DOM!`);\n        }\n    }\n\n    portfolioEvents() {\n        for (let i = 0; i < this.portfolioItems.length; i++) {\n            this.portfolioItems[i].addEventListener(\"mousemove\", (ev) => {\n                this.portfolioMousemove(ev);\n            });\n\n            this.portfolioItems[i].addEventListener(\"mouseenter\", () => {\n                this.portfolioItemMouseenter(i + 1); // why +1? Hint: PIXI related\n            });\n\n            this.portfolioItems[i].addEventListener(\"mouseleave\", () => {\n                this.portfolioItemMouseleave();\n            });\n        }\n    }\n\n    portfolioController() {\n        // predefine canvas element dimensions in px 16:9\n        const canvasWidth = 1000;\n        const canvasHeight = 563;\n\n        // assign/create new PIXI application which automatically creates the renderer, ticker, and root container/stage\n        this.app = new PIXI.Application({\n            width: canvasWidth,\n            height: canvasHeight,\n            resolution: window.devicePixelRatio,\n            transparent: true,\n        });\n\n        // add PIXI canvas element to our DOM element\n        this.portfolioCanvas.appendChild(this.app.view);\n\n        const displacementMapImage = this.portfolioCanvas.getAttribute(\n            \"data-displacement-map\",\n        );\n\n        // create displacement texture\n        const displacementMap = new PIXI.Sprite.from(displacementMapImage);\n\n        // create PIXI displacement filter and pass the texture\n        const displacementFilter = new PIXI.filters.DisplacementFilter(\n            displacementMap,\n        );\n\n        // set displacement texture properties\n        displacementMap.name = displacementMapImage;\n        displacementMap.anchor.set(0.5);\n        displacementMap.scale.set(1);\n        displacementMap.width = canvasWidth;\n        displacementMap.height = canvasHeight;\n        displacementMap.position.set(canvasWidth / 2, canvasHeight / 2);\n\n        // set stage properties for filter\n        this.app.stage.filterArea = this.app.screen;\n        this.app.stage.filters = [displacementFilter];\n\n        // add filter to root container/stage\n        this.app.stage.addChild(displacementMap);\n\n        // load images from DOM to PIXI container\n        for (let i = 0; i < this.portfolioItems.length; i++) {\n            //create texture\n            const texture = new PIXI.Texture.from(\n                this.portfolioPreviewItems[i].getAttribute(\n                    \"data-portfolio-preview\",\n                ),\n            );\n\n            // create sprite and pass the texture\n            const image = new PIXI.Sprite(texture);\n\n            //set sprites properties\n            image.name = this.portfolioPreviewItems[i].getAttribute(\n                \"data-portfolio-preview\",\n            );\n            image.alpha = 1;\n            image.width = canvasWidth;\n            image.height = canvasHeight;\n\n            // add sprites to root container/stage\n            this.app.stage.addChild(image);\n        }\n\n        // DISPLACE TIMELINE\n        this.displacementTimeline = gsap.timeline({\n            paused: true,\n        });\n\n        const canvasElement = this.portfolioCanvas.querySelector(\"canvas\");\n\n        this.displacementTimeline\n            .add(\"start\")\n            .fromTo(\n                canvasElement,\n                {\n                    autoAlpha: 0,\n                },\n                {\n                    duration: 0.4,\n                    autoAlpha: 1,\n                    ease: \"power3.out\",\n                },\n                \"start\",\n            )\n            .fromTo(\n                canvasElement,\n                {\n                    scale: 1.5,\n                },\n                {\n                    duration: 0.8,\n                    scale: 1,\n                    ease: \"power3.out\",\n                },\n                \"start\",\n            )\n            .fromTo(\n                displacementFilter.scale,\n                {\n                    x: 150,\n                    y: 150,\n                },\n                {\n                    duration: 1.6,\n                    x: 0,\n                    y: 0,\n                    ease: \"power3.out\",\n                    onComplete: () => {},\n                },\n                \"start\",\n            );\n    }\n\n    portfolioMousemove(ev) {\n        const decimalX = ev.clientX / window.innerWidth - 0.5;\n        const decimalY = ev.clientY / window.innerHeight - 0.5;\n\n        gsap.to(this.portfolioCanvas, {\n            duration: 0.4,\n            x: 300 * decimalX,\n            y: 150 * decimalY,\n            ease: \"power3.out\",\n        });\n    }\n\n    portfolioItemMouseenter(index) {\n        gsap.to(this.app.stage.children[index], {\n            duration: 0.4,\n            alpha: 1,\n            ease: \"power3.out\",\n            onStart: () => {\n                this.displacementTimeline.restart().pause();\n                this.displacementTimeline.play();\n            },\n        });\n    }\n\n    portfolioItemMouseleave() {\n        gsap.to(this.app.stage.children, {\n            duration: 0.4,\n            alpha: 0,\n            ease: \"power3.out\",\n        });\n    }\n\n    //endregion\n}\n",
+    "static": true,
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/PortfolioListController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 91,
+    "kind": "class",
+    "name": "PortfolioListController",
+    "memberof": "components/PortfolioListController.js",
+    "static": true,
+    "longname": "components/PortfolioListController.js~PortfolioListController",
+    "access": "public",
+    "export": true,
+    "importPath": "gulp4-boilerplate/components/PortfolioListController.js",
+    "importStyle": "PortfolioListController",
+    "description": "interactive portfolio list with webGL preview interaction powered by PIXI.js",
+    "lineNumber": 9,
+    "interface": false
+  },
+  {
+    "__docId__": 92,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "member",
+    "name": "DOM",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#DOM",
+    "access": "public",
+    "description": "Navigation DOM selectors\nNavigation DOM state CSS classes",
+    "lineNumber": 17,
+    "type": {
+      "nullable": null,
+      "types": [
+        "{navigation: string, states: {navigationSlideUp: string, navigationScrolled: string, navigationFixed: string}}"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "member",
+    "name": "portfolio",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolio",
+    "access": "public",
+    "description": "",
+    "lineNumber": 29,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Element"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "member",
+    "name": "portfolioItems",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioItems",
+    "access": "public",
+    "description": "",
+    "lineNumber": 35,
+    "type": {
+      "nullable": null,
+      "types": [
+        "NodeListOf<Element>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "member",
+    "name": "portfolioPreviewList",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioPreviewList",
+    "access": "public",
+    "description": "",
+    "lineNumber": 41,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Element"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 97,
+    "kind": "member",
+    "name": "portfolioPreviewItems",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioPreviewItems",
+    "access": "public",
+    "description": "",
+    "lineNumber": 49,
+    "type": {
+      "nullable": null,
+      "types": [
+        "NodeListOf<Element>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "member",
+    "name": "portfolioCanvas",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioCanvas",
+    "access": "public",
+    "description": "",
+    "lineNumber": 57,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Element"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "member",
+    "name": "app",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#app",
+    "access": "public",
+    "description": null,
+    "lineNumber": 60,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "member",
+    "name": "displacementTimeline",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#displacementTimeline",
+    "access": "public",
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "name": "init",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 68,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "name": "portfolioEvents",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioEvents",
+    "access": "public",
+    "description": null,
+    "lineNumber": 79,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "portfolioController",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioController",
+    "access": "public",
+    "description": null,
+    "lineNumber": 95,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "name": "portfolioMousemove",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioMousemove",
+    "access": "public",
+    "description": null,
+    "lineNumber": 212,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ev",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "name": "portfolioItemMouseenter",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioItemMouseenter",
+    "access": "public",
+    "description": null,
+    "lineNumber": 224,
+    "undocument": true,
+    "params": [
+      {
+        "name": "index",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 108,
+    "kind": "method",
+    "name": "portfolioItemMouseleave",
+    "memberof": "components/PortfolioListController.js~PortfolioListController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/PortfolioListController.js~PortfolioListController#portfolioItemMouseleave",
+    "access": "public",
+    "description": null,
+    "lineNumber": 236,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 109,
+    "kind": "file",
+    "name": "components/ThreeDPhotosController.js",
+    "content": "import * as PIXI from \"pixi.js\";\n\nimport gsap from \"gsap\";\n\nexport default class ThreeDPhotosController {\n    /**\n     *\n     * @param {object} options\n     */\n    constructor() {\n        this.DOM = {\n            threeDPhotoContainer: \".js-3d-photo-container\",\n            threeDPhoto: \".js-3d-photo\",\n            threeDPhotoCanvas: \".js-3d-photo-canvas\",\n        };\n\n        this.threeDPhotos = document.querySelectorAll(this.DOM.threeDPhoto);\n    }\n\n    init() {\n        console.log(\"ThreeDPhotos init()\");\n\n        if (this.threeDPhotos !== null) {\n            this.threeDPhotosController();\n        } else {\n            console.error(`${this.DOM.threeDPhoto} does not exist in the DOM!`);\n        }\n    }\n\n    threeDPhotosController() {\n        for (let i = 0; i < this.threeDPhotos.length; i++) {\n            //MOUSEMOVE CONTAINER\n            const container = this.threeDPhotos[i].closest(\n                this.DOM.threeDPhotoContainer,\n            );\n\n            //THRESHOLD\n            const verticalThreshold = this.threeDPhotos[i].getAttribute(\n                \"data-vertical-threshold\",\n            );\n            const horizontalThreshold = this.threeDPhotos[i].getAttribute(\n                \"data-horizontal-threshold\",\n            );\n\n            // CANVAS SIZE\n            const canvasWidth = this.threeDPhotos[i].clientWidth;\n            const canvasHeight = this.threeDPhotos[i].clientHeight;\n\n            // CREATE PIXI APPLICATION\n            const app = new PIXI.Application({\n                width: canvasWidth,\n                height: canvasHeight,\n                transparent: true,\n                resolution: window.devicePixelRatio,\n                resizeTo: this.threeDPhotos[i],\n            });\n\n            // ADD CANVAS TO CANVAS WRAPPER ELEMENT\n            this.threeDPhotos[i].appendChild(app.view);\n\n            //IMAGE\n            const image = PIXI.Sprite.from(\n                this.threeDPhotos[i].getAttribute(\"data-image\"),\n            );\n\n            image.width = canvasWidth;\n            image.height = canvasHeight;\n\n            image.anchor.set(0.5);\n\n            image.position.x = canvasWidth / 2;\n            image.position.y = canvasHeight / 2;\n\n            app.stage.addChild(image);\n\n            // //DEPTH MAP\n            const depthMap = PIXI.Sprite.from(\n                this.threeDPhotos[i].getAttribute(\"data-depth-map\"),\n            );\n            const depthMapFilter = new PIXI.filters.DisplacementFilter(\n                depthMap,\n            );\n\n            app.stage.addChild(depthMap);\n            app.stage.filters = [depthMapFilter];\n\n            depthMap.width = canvasWidth;\n            depthMap.height = canvasHeight;\n\n            depthMap.anchor.set(0.5);\n\n            depthMap.position.y = canvasHeight / 2;\n            depthMap.position.x = canvasWidth / 2;\n\n            depthMapFilter.scale.x = 2;\n            depthMapFilter.scale.y = 2;\n\n            //EVENTS\n            this.initThreeDEvents(\n                container,\n                depthMapFilter,\n                horizontalThreshold,\n                verticalThreshold,\n            );\n        }\n    }\n\n    /**\n     *\n     * @param {HTMLElement} container\n     * @param {PIXI.filters.DisplacementFilter} displacementFilter\n     * @param {number} horizontalThreshold\n     * @param {number} verticalThreshold\n     */\n    initThreeDEvents(\n        container,\n        displacementFilter,\n        horizontalThreshold,\n        verticalThreshold,\n    ) {\n        container.addEventListener(\"mousemove\", (ev) => {\n            let yAmount = ev.clientY / window.innerHeight - 0.5;\n            let xAmount = ev.clientX / window.innerWidth - 0.5;\n\n            gsap.to(displacementFilter.scale, {\n                duration: 2,\n                y: yAmount * verticalThreshold,\n                x: xAmount * horizontalThreshold,\n                ease: \"power3.out\",\n            });\n\n            // displacementFilter.scale.x = xAmount * horizontalThreshold;\n            // displacementFilter.scale.y = yAmount * verticalThreshold;\n        });\n    }\n}\n",
+    "static": true,
+    "longname": "/Users/Karlo/work/private/pixi.js-playground/static/js/components/ThreeDPhotosController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 110,
+    "kind": "class",
+    "name": "ThreeDPhotosController",
+    "memberof": "components/ThreeDPhotosController.js",
+    "static": true,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "access": "public",
+    "export": true,
+    "importPath": "gulp4-boilerplate/components/ThreeDPhotosController.js",
+    "importStyle": "ThreeDPhotosController",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 111,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 10,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 112,
+    "kind": "member",
+    "name": "DOM",
+    "memberof": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "static": false,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#DOM",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"threeDPhotoContainer\": string, \"threeDPhoto\": string, \"threeDPhotoCanvas\": string}"
+      ]
+    }
+  },
+  {
+    "__docId__": 113,
+    "kind": "member",
+    "name": "threeDPhotos",
+    "memberof": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "static": false,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#threeDPhotos",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 114,
+    "kind": "method",
+    "name": "init",
+    "memberof": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 115,
+    "kind": "method",
+    "name": "threeDPhotosController",
+    "memberof": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#threeDPhotosController",
+    "access": "public",
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 116,
+    "kind": "method",
+    "name": "initThreeDEvents",
+    "memberof": "components/ThreeDPhotosController.js~ThreeDPhotosController",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "components/ThreeDPhotosController.js~ThreeDPhotosController#initThreeDEvents",
+    "access": "public",
+    "description": "",
+    "lineNumber": 115,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "container",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "PIXI.filters.DisplacementFilter"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "displacementFilter",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "horizontalThreshold",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "verticalThreshold",
         "description": ""
       }
     ],
@@ -941,7 +1775,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n    \"name\": \"gulp4-boilerplate\",\n    \"version\": \"0.1.0\",\n    \"description\": \"Altered 8 frontend project template based on gulp, es6 and scss\",\n    \"author\": \"Altered 8\",\n    \"email\": \"info@altrd8.com\",\n    \"private\": true,\n    \"engines\": {\n        \"node\": \">=12.16.1\",\n        \"npm\": \">=6.14.2\"\n    },\n    \"scripts\": {\n        \"build\": \"gulp build\",\n        \"dev\": \"gulp\",\n        \"esdoc\": \"./node_modules/.bin/esdoc\",\n        \"format\": \"prettier --write \\\"static/**/*.{scss,js}\\\"\",\n        \"lint:scss\": \"stylelint 'static/**/*.scss'\"\n    },\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"\"\n    },\n    \"browserslist\": [\n        \"> 0.5%\",\n        \"last 2 versions\"\n    ],\n    \"devDependencies\": {\n        \"@babel/core\": \"^7.8.7\",\n        \"@babel/plugin-proposal-class-properties\": \"^7.8.3\",\n        \"@babel/plugin-proposal-object-rest-spread\": \"^7.8.3\",\n        \"@babel/plugin-syntax-dynamic-import\": \"^7.8.3\",\n        \"@babel/preset-env\": \"^7.8.7\",\n        \"@babel/register\": \"^7.8.6\",\n        \"@namics/stylelint-bem\": \"^6.3.0\",\n        \"babelify\": \"^10.0.0\",\n        \"browser-sync\": \"^2.26.7\",\n        \"browserify\": \"^16.5.0\",\n        \"del\": \"^5.1.0\",\n        \"esdoc\": \"^1.1.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"eslint\": \"^6.8.0\",\n        \"eslint-config-prettier\": \"^6.10.0\",\n        \"eslint-plugin-prettier\": \"^3.1.2\",\n        \"esm\": \"^3.2.25\",\n        \"gulp\": \"^4.0.2\",\n        \"gulp-autoprefixer\": \"^7.0.1\",\n        \"gulp-babel\": \"^8.0.0\",\n        \"gulp-clean-css\": \"^4.2.0\",\n        \"gulp-concat\": \"^2.6.1\",\n        \"gulp-rename\": \"^2.0.0\",\n        \"gulp-sass\": \"^4.0.2\",\n        \"gulp-sourcemaps\": \"^2.6.5\",\n        \"gulp-uglify\": \"^3.0.2\",\n        \"prettier\": \"^1.19.1\",\n        \"stylelint\": \"^13.2.1\",\n        \"stylelint-config-prettier\": \"^8.0.1\",\n        \"stylelint-prettier\": \"^1.1.2\",\n        \"stylelint-scss\": \"^3.15.0\",\n        \"vinyl-buffer\": \"^1.0.1\",\n        \"vinyl-source-stream\": \"^2.0.0\"\n    },\n    \"dependencies\": {\n        \"gsap\": \"^3.2.4\",\n        \"poly-fluid-sizing\": \"^1.1.0\"\n    }\n}\n",
+    "content": "{\n    \"name\": \"gulp4-boilerplate\",\n    \"version\": \"0.1.0\",\n    \"description\": \"frontend project template based on gulp, es6 and scss\",\n    \"author\": \"\",\n    \"email\": \"\",\n    \"private\": true,\n    \"engines\": {\n        \"node\": \">=12.16.1\",\n        \"npm\": \">=6.14.2\"\n    },\n    \"scripts\": {\n        \"build\": \"gulp build\",\n        \"dev\": \"gulp\",\n        \"esdoc\": \"./node_modules/.bin/esdoc\",\n        \"format\": \"prettier --write \\\"static/**/*.{scss,js}\\\"\",\n        \"lint:scss\": \"stylelint 'static/**/*.scss'\"\n    },\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"\"\n    },\n    \"browserslist\": [\n        \"> 0.5%\",\n        \"last 2 versions\"\n    ],\n    \"devDependencies\": {\n        \"@babel/core\": \"^7.9.0\",\n        \"@babel/plugin-proposal-class-properties\": \"^7.8.3\",\n        \"@babel/plugin-proposal-object-rest-spread\": \"^7.9.5\",\n        \"@babel/plugin-syntax-dynamic-import\": \"^7.8.3\",\n        \"@babel/preset-env\": \"^7.9.5\",\n        \"@babel/register\": \"^7.9.0\",\n        \"@namics/stylelint-bem\": \"^6.3.0\",\n        \"babelify\": \"^10.0.0\",\n        \"browser-sync\": \"^2.26.7\",\n        \"browserify\": \"^16.5.1\",\n        \"del\": \"^5.1.0\",\n        \"esdoc\": \"^1.1.0\",\n        \"esdoc-standard-plugin\": \"^1.0.0\",\n        \"eslint\": \"^6.8.0\",\n        \"eslint-config-prettier\": \"^6.10.1\",\n        \"eslint-plugin-prettier\": \"^3.1.2\",\n        \"esm\": \"^3.2.25\",\n        \"gulp\": \"^4.0.2\",\n        \"gulp-autoprefixer\": \"^7.0.1\",\n        \"gulp-babel\": \"^8.0.0\",\n        \"gulp-clean-css\": \"^4.3.0\",\n        \"gulp-concat\": \"^2.6.1\",\n        \"gulp-rename\": \"^2.0.0\",\n        \"gulp-sass\": \"^4.0.2\",\n        \"gulp-sourcemaps\": \"^2.6.5\",\n        \"gulp-uglify\": \"^3.0.2\",\n        \"prettier\": \"^2.0.4\",\n        \"stylelint\": \"^13.3.1\",\n        \"stylelint-config-prettier\": \"^8.0.1\",\n        \"stylelint-prettier\": \"^1.1.2\",\n        \"stylelint-scss\": \"^3.16.1\",\n        \"vinyl-buffer\": \"^1.0.1\",\n        \"vinyl-source-stream\": \"^2.0.0\"\n    },\n    \"dependencies\": {\n        \"gsap\": \"^3.2.6\",\n        \"pixi.js\": \"^5.2.1\",\n        \"poly-fluid-sizing\": \"^1.1.0\"\n    }\n}\n",
     "longname": "/Users/Karlo/work/private/pixi.js-playground/package.json",
     "name": "package.json",
     "static": true,

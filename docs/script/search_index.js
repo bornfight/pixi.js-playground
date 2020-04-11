@@ -6,9 +6,33 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "gulp4-boilerplate/components/hotspotscontroller.js~hotspotscontroller",
+    "class/components/HotspotsController.js~HotspotsController.html",
+    "<span>HotspotsController</span> <span class=\"search-result-import-path\">gulp4-boilerplate/components/HotspotsController.js</span>",
+    "class"
+  ],
+  [
+    "gulp4-boilerplate/components/magneticctacontroller.js~magneticctacontroller",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html",
+    "<span>MagneticCtaController</span> <span class=\"search-result-import-path\">gulp4-boilerplate/components/MagneticCtaController.js</span>",
+    "class"
+  ],
+  [
     "gulp4-boilerplate/components/navigationcontroller.js~navigationcontroller",
     "class/components/NavigationController.js~NavigationController.html",
     "<span>NavigationController</span> <span class=\"search-result-import-path\">gulp4-boilerplate/components/NavigationController.js</span>",
+    "class"
+  ],
+  [
+    "gulp4-boilerplate/components/portfoliolistcontroller.js~portfoliolistcontroller",
+    "class/components/PortfolioListController.js~PortfolioListController.html",
+    "<span>PortfolioListController</span> <span class=\"search-result-import-path\">gulp4-boilerplate/components/PortfolioListController.js</span>",
+    "class"
+  ],
+  [
+    "gulp4-boilerplate/components/threedphotoscontroller.js~threedphotoscontroller",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html",
+    "<span>ThreeDPhotosController</span> <span class=\"search-result-import-path\">gulp4-boilerplate/components/ThreeDPhotosController.js</span>",
     "class"
   ],
   [
@@ -312,6 +336,102 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "components/hotspotscontroller.js",
+    "file/components/HotspotsController.js.html",
+    "components/HotspotsController.js",
+    "file"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#dom",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-member-DOM",
+    "components/HotspotsController.js~HotspotsController#DOM",
+    "member"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#constructor",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-constructor-constructor",
+    "components/HotspotsController.js~HotspotsController#constructor",
+    "method"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#creategradienttexture",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-method-createGradientTexture",
+    "components/HotspotsController.js~HotspotsController#createGradientTexture",
+    "method"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#getelementposition",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-method-getElementPosition",
+    "components/HotspotsController.js~HotspotsController#getElementPosition",
+    "method"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#hotspotcontainer",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-member-hotspotContainer",
+    "components/HotspotsController.js~HotspotsController#hotspotContainer",
+    "member"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#hotspotlines",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-method-hotspotLines",
+    "components/HotspotsController.js~HotspotsController#hotspotLines",
+    "method"
+  ],
+  [
+    "components/hotspotscontroller.js~hotspotscontroller#init",
+    "class/components/HotspotsController.js~HotspotsController.html#instance-method-init",
+    "components/HotspotsController.js~HotspotsController#init",
+    "method"
+  ],
+  [
+    "components/magneticctacontroller.js",
+    "file/components/MagneticCtaController.js.html",
+    "components/MagneticCtaController.js",
+    "file"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#dom",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-member-DOM",
+    "components/MagneticCtaController.js~MagneticCtaController#DOM",
+    "member"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#constructor",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-constructor-constructor",
+    "components/MagneticCtaController.js~MagneticCtaController#constructor",
+    "method"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#ctacontainer",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-member-ctaContainer",
+    "components/MagneticCtaController.js~MagneticCtaController#ctaContainer",
+    "member"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#init",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-method-init",
+    "components/MagneticCtaController.js~MagneticCtaController#init",
+    "method"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#magneticctaevents",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-method-magneticCtaEvents",
+    "components/MagneticCtaController.js~MagneticCtaController#magneticCtaEvents",
+    "method"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#magneticmouseleave",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-method-magneticMouseleave",
+    "components/MagneticCtaController.js~MagneticCtaController#magneticMouseleave",
+    "method"
+  ],
+  [
+    "components/magneticctacontroller.js~magneticctacontroller#magneticmousemove",
+    "class/components/MagneticCtaController.js~MagneticCtaController.html#instance-method-magneticMousemove",
+    "components/MagneticCtaController.js~MagneticCtaController#magneticMousemove",
+    "method"
+  ],
+  [
     "components/navigationcontroller.js",
     "file/components/NavigationController.js.html",
     "components/NavigationController.js",
@@ -405,6 +525,144 @@ window.esdocSearchIndex = [
     "components/navigationcontroller.js~navigationcontroller#scrollingup",
     "class/components/NavigationController.js~NavigationController.html#instance-method-scrollingUp",
     "components/NavigationController.js~NavigationController#scrollingUp",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js",
+    "file/components/PortfolioListController.js.html",
+    "components/PortfolioListController.js",
+    "file"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#dom",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-DOM",
+    "components/PortfolioListController.js~PortfolioListController#DOM",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#app",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-app",
+    "components/PortfolioListController.js~PortfolioListController#app",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#constructor",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-constructor-constructor",
+    "components/PortfolioListController.js~PortfolioListController#constructor",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#displacementtimeline",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-displacementTimeline",
+    "components/PortfolioListController.js~PortfolioListController#displacementTimeline",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#init",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-method-init",
+    "components/PortfolioListController.js~PortfolioListController#init",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfolio",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolio",
+    "components/PortfolioListController.js~PortfolioListController#portfolio",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfoliocanvas",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioCanvas",
+    "components/PortfolioListController.js~PortfolioListController#portfolioCanvas",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfoliocontroller",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioController",
+    "components/PortfolioListController.js~PortfolioListController#portfolioController",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfolioevents",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioEvents",
+    "components/PortfolioListController.js~PortfolioListController#portfolioEvents",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfolioitemmouseenter",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioItemMouseenter",
+    "components/PortfolioListController.js~PortfolioListController#portfolioItemMouseenter",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfolioitemmouseleave",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioItemMouseleave",
+    "components/PortfolioListController.js~PortfolioListController#portfolioItemMouseleave",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfolioitems",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioItems",
+    "components/PortfolioListController.js~PortfolioListController#portfolioItems",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfoliomousemove",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioMousemove",
+    "components/PortfolioListController.js~PortfolioListController#portfolioMousemove",
+    "method"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfoliopreviewitems",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioPreviewItems",
+    "components/PortfolioListController.js~PortfolioListController#portfolioPreviewItems",
+    "member"
+  ],
+  [
+    "components/portfoliolistcontroller.js~portfoliolistcontroller#portfoliopreviewlist",
+    "class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioPreviewList",
+    "components/PortfolioListController.js~PortfolioListController#portfolioPreviewList",
+    "member"
+  ],
+  [
+    "components/threedphotoscontroller.js",
+    "file/components/ThreeDPhotosController.js.html",
+    "components/ThreeDPhotosController.js",
+    "file"
+  ],
+  [
+    "components/threedphotoscontroller.js~threedphotoscontroller#dom",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html#instance-member-DOM",
+    "components/ThreeDPhotosController.js~ThreeDPhotosController#DOM",
+    "member"
+  ],
+  [
+    "components/threedphotoscontroller.js~threedphotoscontroller#constructor",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html#instance-constructor-constructor",
+    "components/ThreeDPhotosController.js~ThreeDPhotosController#constructor",
+    "method"
+  ],
+  [
+    "components/threedphotoscontroller.js~threedphotoscontroller#init",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html#instance-method-init",
+    "components/ThreeDPhotosController.js~ThreeDPhotosController#init",
+    "method"
+  ],
+  [
+    "components/threedphotoscontroller.js~threedphotoscontroller#initthreedevents",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html#instance-method-initThreeDEvents",
+    "components/ThreeDPhotosController.js~ThreeDPhotosController#initThreeDEvents",
+    "method"
+  ],
+  [
+    "components/threedphotoscontroller.js~threedphotoscontroller#threedphotos",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html#instance-member-threeDPhotos",
+    "components/ThreeDPhotosController.js~ThreeDPhotosController#threeDPhotos",
+    "member"
+  ],
+  [
+    "components/threedphotoscontroller.js~threedphotoscontroller#threedphotoscontroller",
+    "class/components/ThreeDPhotosController.js~ThreeDPhotosController.html#instance-method-threeDPhotosController",
+    "components/ThreeDPhotosController.js~ThreeDPhotosController#threeDPhotosController",
     "method"
   ]
 ]

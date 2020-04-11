@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">NavigationController | gulp4-boilerplate</title>
+  <title data-ice="title">PortfolioListController | gulp4-boilerplate</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -40,17 +40,17 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import NavigationController from &apos;<span><a href="file/components/NavigationController.js.html#lineNumber5">gulp4-boilerplate/components/NavigationController.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import PortfolioListController from &apos;<span><a href="file/components/PortfolioListController.js.html#lineNumber9">gulp4-boilerplate/components/PortfolioListController.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/components/NavigationController.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/components/PortfolioListController.js.html#lineNumber9">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">NavigationController</h1>
+  <h1 data-ice="name">PortfolioListController</h1>
 
   
 
@@ -66,8 +66,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>&quot;smart&quot; navigation which goes off screen when scrolling down for a better overview of content and UX
-navigation appears when scrolling up</p>
+  <div class="description" data-ice="description"><p>interactive portfolio list with webGL preview interaction powered by PIXI.js</p>
 </div>
   
 
@@ -100,7 +99,7 @@ navigation appears when scrolling up</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -135,7 +134,7 @@ navigation appears when scrolling up</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-DOM">DOM</a></span></span><span class="code" data-ice="signature">: {navigation: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, states: {navigationSlideUp: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, navigationScrolled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, navigationFixed: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>}}</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-DOM">DOM</a></span></span><span class="code" data-ice="signature">: {navigation: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, states: {navigationSlideUp: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, navigationScrolled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, navigationFixed: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>}}</span>
         </p>
       </div>
       <div>
@@ -165,94 +164,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-currentTop">currentTop</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>variable for storing current scroll position value</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-navigation">navigation</a></span></span><span class="code" data-ice="signature">: <span>Element</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>fetch navigation element DOM element</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-previousTop">previousTop</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>variable for storing amount of scroll from top position value</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-scrollDelta">scrollDelta</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-app">app</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -280,36 +192,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-scrollNavigationOffset">scrollNavigationOffset</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>amount of pixels to scroll from top for adding &quot;has-scrolled&quot; state class</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-scrollOffset">scrollOffset</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-displacementTimeline">displacementTimeline</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -337,14 +220,125 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-member-scrolling">scrolling</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolio">portfolio</a></span></span><span class="code" data-ice="signature">: <span>Element</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>flag, state variable for scrolling event</p>
-</div>
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioCanvas">portfolioCanvas</a></span></span><span class="code" data-ice="signature">: <span>Element</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioItems">portfolioItems</a></span></span><span class="code" data-ice="signature">: <span>NodeListOf</span>&lt;<span>Element</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioPreviewItems">portfolioPreviewItems</a></span></span><span class="code" data-ice="signature">: <span>NodeListOf</span>&lt;<span>Element</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-member-portfolioPreviewList">portfolioPreviewList</a></span></span><span class="code" data-ice="signature">: <span>Element</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
       </div>
     </td>
     <td>
@@ -373,7 +367,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-method-changeNavigationState">changeNavigationState</a></span></span><span class="code" data-ice="signature">(currentTop: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -401,7 +395,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-method-checkScroll">checkScroll</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioController">portfolioController</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -429,7 +423,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioEvents">portfolioEvents</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -457,7 +451,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-method-navigationController">navigationController</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioItemMouseenter">portfolioItemMouseenter</a></span></span><span class="code" data-ice="signature">(index: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -485,7 +479,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-method-scrollingDown">scrollingDown</a></span></span><span class="code" data-ice="signature">(currentTop: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioItemMouseleave">portfolioItemMouseleave</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -513,7 +507,7 @@ Navigation DOM state CSS classes</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/components/NavigationController.js~NavigationController.html#instance-method-scrollingUp">scrollingUp</a></span></span><span class="code" data-ice="signature">(currentTop: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/components/PortfolioListController.js~PortfolioListController.html#instance-method-portfolioMousemove">portfolioMousemove</a></span></span><span class="code" data-ice="signature">(ev: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -549,7 +543,7 @@ Navigation DOM state CSS classes</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber6">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber10">source</a></span></span>
     </span>
   </h3>
 
@@ -595,7 +589,7 @@ Navigation DOM state CSS classes</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
@@ -629,150 +623,18 @@ Navigation DOM state CSS classes</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-currentTop">
+  <h3 data-ice="anchor" id="instance-member-app">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">currentTop</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="code" data-ice="name">app</span><span class="code" data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber41">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>variable for storing current scroll position value</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-navigation">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">navigation</span><span class="code" data-ice="signature">: <span>Element</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber49">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>fetch navigation element DOM element</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-previousTop">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">previousTop</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber36">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>variable for storing amount of scroll from top position value</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-scrollDelta">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">scrollDelta</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
@@ -804,62 +666,18 @@ Navigation DOM state CSS classes</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-scrollNavigationOffset">
+  <h3 data-ice="anchor" id="instance-member-displacementTimeline">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">scrollNavigationOffset</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="code" data-ice="name">displacementTimeline</span><span class="code" data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber31">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>amount of pixels to scroll from top for adding &quot;has-scrolled&quot; state class</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-scrollOffset">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">scrollOffset</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber63">source</a></span></span>
     </span>
   </h3>
 
@@ -891,26 +709,197 @@ Navigation DOM state CSS classes</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-scrolling">
+  <h3 data-ice="anchor" id="instance-member-portfolio">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">scrolling</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="code" data-ice="name">portfolio</span><span class="code" data-ice="signature">: <span>Element</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber26">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber29">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>flag, state variable for scrolling event</p>
+  
+
+  
+
+  <div data-ice="properties">
 </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-portfolioCanvas">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">portfolioCanvas</span><span class="code" data-ice="signature">: <span>Element</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber57">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-portfolioItems">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">portfolioItems</span><span class="code" data-ice="signature">: <span>NodeListOf</span>&lt;<span>Element</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber35">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-portfolioPreviewItems">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">portfolioPreviewItems</span><span class="code" data-ice="signature">: <span>NodeListOf</span>&lt;<span>Element</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber49">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-portfolioPreviewList">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">portfolioPreviewList</span><span class="code" data-ice="signature">: <span>Element</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber41">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
 
   
 
@@ -938,108 +927,6 @@ Navigation DOM state CSS classes</p>
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-changeNavigationState">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">changeNavigationState</span><span class="code" data-ice="signature">(currentTop: <span>*</span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber103">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">currentTop</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-checkScroll">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">checkScroll</span><span class="code" data-ice="signature">()</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber86">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-init">
     <span class="access" data-ice="access">public</span>
     
@@ -1051,7 +938,7 @@ Navigation DOM state CSS classes</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
@@ -1083,18 +970,18 @@ Navigation DOM state CSS classes</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-navigationController">
+  <h3 data-ice="anchor" id="instance-method-portfolioController">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">navigationController</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">portfolioController</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
@@ -1126,18 +1013,61 @@ Navigation DOM state CSS classes</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-scrollingDown">
+  <h3 data-ice="anchor" id="instance-method-portfolioEvents">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">scrollingDown</span><span class="code" data-ice="signature">(currentTop: <span>*</span>)</span>
+    <span class="code" data-ice="name">portfolioEvents</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber135">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber79">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-portfolioItemMouseenter">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">portfolioItemMouseenter</span><span class="code" data-ice="signature">(index: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber224">source</a></span></span>
     </span>
   </h3>
 
@@ -1157,7 +1087,7 @@ Navigation DOM state CSS classes</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">currentTop</td>
+      <td data-ice="name" class="code" data-depth="0">index</td>
       <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
@@ -1185,18 +1115,61 @@ Navigation DOM state CSS classes</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-scrollingUp">
+  <h3 data-ice="anchor" id="instance-method-portfolioItemMouseleave">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">scrollingUp</span><span class="code" data-ice="signature">(currentTop: <span>*</span>)</span>
+    <span class="code" data-ice="name">portfolioItemMouseleave</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/components/NavigationController.js.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber236">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-portfolioMousemove">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">portfolioMousemove</span><span class="code" data-ice="signature">(ev: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/components/PortfolioListController.js.html#lineNumber212">source</a></span></span>
     </span>
   </h3>
 
@@ -1216,7 +1189,7 @@ Navigation DOM state CSS classes</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">currentTop</td>
+      <td data-ice="name" class="code" data-depth="0">ev</td>
       <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>

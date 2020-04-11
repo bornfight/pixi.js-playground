@@ -8,9 +8,7 @@ export default class MagneticCtaController {
             ctaContent: ".js-magnetic-cta-content",
         };
 
-        this.ctaContainer = document.querySelectorAll(
-            this.DOM.ctaContainer,
-        );
+        this.ctaContainer = document.querySelectorAll(this.DOM.ctaContainer);
     }
 
     init() {
@@ -19,7 +17,9 @@ export default class MagneticCtaController {
         if (this.ctaContainer !== null) {
             this.magneticCtaEvents();
         } else {
-            console.error(`${this.DOM.ctaContainer} does not exist in the DOM!`);
+            console.error(
+                `${this.DOM.ctaContainer} does not exist in the DOM!`,
+            );
         }
     }
 
@@ -53,8 +53,10 @@ export default class MagneticCtaController {
         // Get position of mouse relative to container center
         // Mouse position inside element - container width / 2
         // To get positive or negative movement
-        const xPosOfMouseInsideContainer = xPosOfMouse - ev.currentTarget.offsetWidth / 2;
-        const yPosOfMouseInsideContainer = yPosOfMouse - ev.currentTarget.offsetHeight / 2;
+        const xPosOfMouseInsideContainer =
+            xPosOfMouse - ev.currentTarget.offsetWidth / 2;
+        const yPosOfMouseInsideContainer =
+            yPosOfMouse - ev.currentTarget.offsetHeight / 2;
 
         // Button text divider to increase or decrease text path
         const animationDivider = 3;
@@ -67,7 +69,9 @@ export default class MagneticCtaController {
             ease: "power3.out",
         });
 
-        if (ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null) {
+        if (
+            ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null
+        ) {
             gsap.to(ev.currentTarget.querySelector(this.DOM.ctaContent), 0.2, {
                 x: xPosOfMouseInsideContainer / animationDividerText,
                 y: yPosOfMouseInsideContainer / animationDividerText,
@@ -87,7 +91,9 @@ export default class MagneticCtaController {
             ease: "power3.out",
         });
 
-        if (ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null) {
+        if (
+            ev.currentTarget.querySelector(this.DOM.ctaContent).length !== null
+        ) {
             gsap.to(ev.currentTarget.querySelector(this.DOM.ctaContent), {
                 duration: 0.5,
                 x: 0,

@@ -2,6 +2,7 @@
 import PortfolioListController from "./components/PortfolioListController";
 import MagneticCtaController from "./components/MagneticCtaController";
 import HotspotsController from "./components/HotspotsController";
+import ThreeDPhotosController from "./components/ThreeDPhotosController";
 import Dummy from "./components/Dummy";
 
 function ready(callbackFunc) {
@@ -19,7 +20,7 @@ function ready(callbackFunc) {
         /**
          * Old IE browsers
          */
-        document.attachEvent("onreadystatechange", function() {
+        document.attachEvent("onreadystatechange", function () {
             if (document.readyState === "complete") {
                 callbackFunc();
             }
@@ -30,7 +31,7 @@ function ready(callbackFunc) {
 /**
  * Document ready callback
  */
-ready(function() {
+ready(function () {
     const dummy = new Dummy();
     dummy.init();
 
@@ -42,13 +43,16 @@ ready(function() {
         portfolioList.init();
     }
 
-    if(document.getElementById("hotspots") !== null) {
-
+    if (document.getElementById("hotspots") !== null) {
         const magneticCta = new MagneticCtaController();
         magneticCta.init();
 
         const hotspots = new HotspotsController();
         hotspots.init();
+    }
 
+    if (document.getElementById("faux-3d") !== null) {
+        const threeDPhotos = new ThreeDPhotosController();
+        threeDPhotos.init();
     }
 });

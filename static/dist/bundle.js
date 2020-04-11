@@ -50722,11 +50722,7 @@ var HotspotsController = /*#__PURE__*/function () {
         for (var _i = 0; _i < hotspots.length; _i++) {
           _loop(_i);
         }
-
-        ;
       }
-
-      ;
     }
     /**
      *
@@ -51131,11 +51127,144 @@ exports.default = PortfolioListController;
 },{"gsap":38,"pixi.js":44}],58:[function(require,module,exports){
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var PIXI = _interopRequireWildcard(require("pixi.js"));
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ThreeDPhotosController = /*#__PURE__*/function () {
+  /**
+   *
+   * @param {object} options
+   */
+  function ThreeDPhotosController() {
+    _classCallCheck(this, ThreeDPhotosController);
+
+    this.DOM = {
+      threeDPhotoContainer: ".js-3d-photo-container",
+      threeDPhoto: ".js-3d-photo",
+      threeDPhotoCanvas: ".js-3d-photo-canvas"
+    };
+    this.threeDPhotos = document.querySelectorAll(this.DOM.threeDPhoto);
+  }
+
+  _createClass(ThreeDPhotosController, [{
+    key: "init",
+    value: function init() {
+      console.log("ThreeDPhotos init()");
+
+      if (this.threeDPhotos !== null) {
+        this.threeDPhotosController();
+      } else {
+        console.error("".concat(this.DOM.threeDPhoto, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "threeDPhotosController",
+    value: function threeDPhotosController() {
+      for (var i = 0; i < this.threeDPhotos.length; i++) {
+        //MOUSEMOVE CONTAINER
+        var container = this.threeDPhotos[i].closest(this.DOM.threeDPhotoContainer); //THRESHOLD
+
+        var verticalThreshold = this.threeDPhotos[i].getAttribute("data-vertical-threshold");
+        var horizontalThreshold = this.threeDPhotos[i].getAttribute("data-horizontal-threshold"); // CANVAS SIZE
+
+        var canvasWidth = this.threeDPhotos[i].clientWidth;
+        var canvasHeight = this.threeDPhotos[i].clientHeight; // CREATE PIXI APPLICATION
+
+        var app = new PIXI.Application({
+          width: canvasWidth,
+          height: canvasHeight,
+          transparent: true,
+          resolution: window.devicePixelRatio,
+          resizeTo: this.threeDPhotos[i]
+        }); // ADD CANVAS TO CANVAS WRAPPER ELEMENT
+
+        this.threeDPhotos[i].appendChild(app.view); //IMAGE
+
+        var image = PIXI.Sprite.from(this.threeDPhotos[i].getAttribute("data-image"));
+        image.width = canvasWidth;
+        image.height = canvasHeight;
+        image.anchor.set(0.5);
+        image.position.x = canvasWidth / 2;
+        image.position.y = canvasHeight / 2;
+        app.stage.addChild(image); // //DEPTH MAP
+
+        var depthMap = PIXI.Sprite.from(this.threeDPhotos[i].getAttribute("data-depth-map"));
+        var depthMapFilter = new PIXI.filters.DisplacementFilter(depthMap);
+        app.stage.addChild(depthMap);
+        app.stage.filters = [depthMapFilter];
+        depthMap.width = canvasWidth;
+        depthMap.height = canvasHeight;
+        depthMap.anchor.set(0.5);
+        depthMap.position.y = canvasHeight / 2;
+        depthMap.position.x = canvasWidth / 2;
+        depthMapFilter.scale.x = 2;
+        depthMapFilter.scale.y = 2; //EVENTS
+
+        this.initThreeDEvents(container, depthMapFilter, horizontalThreshold, verticalThreshold);
+      }
+    }
+    /**
+     *
+     * @param {HTMLElement} container
+     * @param {PIXI.filters.DisplacementFilter} displacementFilter
+     * @param {number} horizontalThreshold
+     * @param {number} verticalThreshold
+     */
+
+  }, {
+    key: "initThreeDEvents",
+    value: function initThreeDEvents(container, displacementFilter, horizontalThreshold, verticalThreshold) {
+      container.addEventListener("mousemove", function (ev) {
+        var yAmount = ev.clientY / window.innerHeight - 0.5;
+        var xAmount = ev.clientX / window.innerWidth - 0.5;
+
+        _gsap.default.to(displacementFilter.scale, {
+          duration: 2,
+          y: yAmount * verticalThreshold,
+          x: xAmount * horizontalThreshold,
+          ease: "power3.out"
+        }); // displacementFilter.scale.x = xAmount * horizontalThreshold;
+        // displacementFilter.scale.y = yAmount * verticalThreshold;
+
+      });
+    }
+  }]);
+
+  return ThreeDPhotosController;
+}();
+
+exports.default = ThreeDPhotosController;
+
+},{"gsap":38,"pixi.js":44}],59:[function(require,module,exports){
+"use strict";
+
 var _PortfolioListController = _interopRequireDefault(require("./components/PortfolioListController"));
 
 var _MagneticCtaController = _interopRequireDefault(require("./components/MagneticCtaController"));
 
 var _HotspotsController = _interopRequireDefault(require("./components/HotspotsController"));
+
+var _ThreeDPhotosController = _interopRequireDefault(require("./components/ThreeDPhotosController"));
 
 var _Dummy = _interopRequireDefault(require("./components/Dummy"));
 
@@ -51185,8 +51314,13 @@ ready(function () {
     var hotspots = new _HotspotsController.default();
     hotspots.init();
   }
+
+  if (document.getElementById("faux-3d") !== null) {
+    var threeDPhotos = new _ThreeDPhotosController.default();
+    threeDPhotos.init();
+  }
 });
 
-},{"./components/Dummy":54,"./components/HotspotsController":55,"./components/MagneticCtaController":56,"./components/PortfolioListController":57}]},{},[58]);
+},{"./components/Dummy":54,"./components/HotspotsController":55,"./components/MagneticCtaController":56,"./components/PortfolioListController":57,"./components/ThreeDPhotosController":58}]},{},[59]);
 
 //# sourceMappingURL=bundle.js.map

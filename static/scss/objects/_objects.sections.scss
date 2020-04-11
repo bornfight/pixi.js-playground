@@ -1,32 +1,32 @@
 .o-section {
-	&__heading {
-		padding-bottom: 20px;
+    &__heading {
+        padding-bottom: 20px;
 
-		//overrides
-		.u-a7 {
-			max-width: percentage(12/20);
-		}
+        //overrides
+        .u-a7 {
+            max-width: percentage(12/20);
+        }
 
-		.u-b0 {
-			opacity: 0.4;
-		}
-	}
+        .u-b0 {
+            opacity: 0.4;
+        }
+    }
 
-	&__content {
+    &__content {
+    }
 
-	}
+    //modifiers
+    &--portfolio,
+    &--hotsports,
+    &--3d {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
 
-	//modifiers
-	&--portfolio,
-	&--hotspots {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		overflow: hidden;
-
-		.o-container {
-			position: relative;
-		}
-	}
+        .o-container {
+            position: relative;
+        }
+    }
 }

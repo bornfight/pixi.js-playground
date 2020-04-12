@@ -4,5 +4,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        p {
+
+            a {
+                transition: getTransition();
+
+                &:hover {
+                    opacity: 0.4;
+                }
+            }
+        }
     }
 }

@@ -12,24 +12,24 @@
     }
 
     &__prepend {
-        display: inline-block;
+        display: inline-flex;
         vertical-align: middle;
-        margin-right: 8px;
+        margin-right: 12px;
         transition: getTransition();
     }
 
     &__label {
-        display: inline-block;
+        display: inline-flex;
     }
 
     &__icon {
-        display: inline-block;
+        display: inline-flex;
     }
 
     &__append {
-        display: inline-block;
+        display: inline-flex;
         vertical-align: middle;
-        margin-left: 8px;
+        margin-left: 12px;
         transition: getTransition();
     }
 
@@ -59,6 +59,7 @@
 }
 
 .c-link-list {
+    padding-bottom: 60px;
     &__item {
         &:before {
         }

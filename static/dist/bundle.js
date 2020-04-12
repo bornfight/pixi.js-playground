@@ -55500,7 +55500,9 @@ var LiquidImagesController = /*#__PURE__*/function () {
 
         this.images[i].appendChild(this.app.view); //IMAGE
 
-        var image = PIXI.Sprite.from(this.images[i].getAttribute("data-image"));
+        var imageFile = this.images[i].getAttribute("data-image");
+        var image = PIXI.Sprite.from(imageFile);
+        image.name = imageFile;
         image.width = canvasWidth;
         image.height = canvasHeight;
         image.anchor.set(0.5);
@@ -55508,11 +55510,13 @@ var LiquidImagesController = /*#__PURE__*/function () {
         image.position.y = canvasHeight / 2;
         this.app.stage.addChild(image); // DISPLACEMENT MAP
 
-        var displacementMap = PIXI.Sprite.from(this.images[i].getAttribute("data-displacement-map"));
+        var displacementMapFile = this.images[i].getAttribute("data-displacement-map");
+        var displacementMap = PIXI.Sprite.from(displacementMapFile);
         var displacementFilter = new PIXI.filters.DisplacementFilter(displacementMap);
         this.app.stage.filterArea = this.app.screen;
         this.app.stage.filters = [displacementFilter];
         this.app.stage.addChild(displacementMap);
+        displacementMap.name = displacementMapFile;
         displacementMap.width = canvasWidth;
         displacementMap.height = canvasHeight;
         displacementMap.anchor.set(0.5);
@@ -56009,13 +56013,13 @@ var PortfolioListController = /*#__PURE__*/function () {
       }); // add PIXI canvas element to our DOM element
 
       this.portfolioCanvas.appendChild(this.app.view);
-      var displacementMapImage = this.portfolioCanvas.getAttribute("data-displacement-map"); // create displacement texture
+      var displacementMapFile = this.portfolioCanvas.getAttribute("data-displacement-map"); // create displacement texture
 
-      var displacementMap = new PIXI.Sprite.from(displacementMapImage); // create PIXI displacement filter and pass the texture
+      var displacementMap = new PIXI.Sprite.from(displacementMapFile); // create PIXI displacement filter and pass the texture
 
       var displacementFilter = new PIXI.filters.DisplacementFilter(displacementMap); // set displacement texture properties
 
-      displacementMap.name = displacementMapImage;
+      displacementMap.name = displacementMapFile;
       displacementMap.anchor.set(0.5);
       displacementMap.scale.set(1);
       displacementMap.width = canvasWidth;
@@ -56029,12 +56033,13 @@ var PortfolioListController = /*#__PURE__*/function () {
 
       for (var i = 0; i < this.portfolioItems.length; i++) {
         //create texture
-        var texture = new PIXI.Texture.from(this.portfolioPreviewItems[i].getAttribute("data-portfolio-preview")); // create sprite and pass the texture
+        var imageFile = this.portfolioPreviewItems[i].getAttribute("data-portfolio-preview");
+        var texture = new PIXI.Texture.from(imageFile); // create sprite and pass the texture
 
         var image = new PIXI.Sprite(texture); //set sprites properties
 
-        image.name = this.portfolioPreviewItems[i].getAttribute("data-portfolio-preview");
-        image.alpha = 1;
+        image.name = imageFile;
+        image.alpha = 0;
         image.width = canvasWidth;
         image.height = canvasHeight; // add sprites to root container/stage
 
@@ -56344,7 +56349,9 @@ var ThreeDImagesController = /*#__PURE__*/function () {
 
         this.threeDImages[i].appendChild(app.view); //IMAGE
 
-        var image = PIXI.Sprite.from(this.threeDImages[i].getAttribute("data-image"));
+        var imageFile = this.threeDImages[i].getAttribute("data-image");
+        var image = PIXI.Sprite.from(imageFile);
+        image.name = imageFile;
         image.width = canvasWidth;
         image.height = canvasHeight;
         image.anchor.set(0.5);
@@ -56352,10 +56359,12 @@ var ThreeDImagesController = /*#__PURE__*/function () {
         image.position.y = canvasHeight / 2;
         app.stage.addChild(image); // //DEPTH MAP
 
-        var depthMap = PIXI.Sprite.from(this.threeDImages[i].getAttribute("data-depth-map"));
+        var depthMapName = this.threeDImages[i].getAttribute("data-depth-map");
+        var depthMap = PIXI.Sprite.from(depthMapName);
         var depthMapFilter = new PIXI.filters.DisplacementFilter(depthMap);
         app.stage.addChild(depthMap);
         app.stage.filters = [depthMapFilter];
+        depthMap.name = depthMapName;
         depthMap.width = canvasWidth;
         depthMap.height = canvasHeight;
         depthMap.anchor.set(0.5);

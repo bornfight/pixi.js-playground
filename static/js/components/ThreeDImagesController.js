@@ -55,10 +55,12 @@ export default class ThreeDImagesController {
             this.threeDImages[i].appendChild(app.view);
 
             //IMAGE
+            const imageFile = this.threeDImages[i].getAttribute("data-image");
             const image = PIXI.Sprite.from(
-                this.threeDImages[i].getAttribute("data-image"),
+                imageFile,
             );
 
+            image.name = imageFile;
             image.width = canvasWidth;
             image.height = canvasHeight;
 
@@ -70,8 +72,9 @@ export default class ThreeDImagesController {
             app.stage.addChild(image);
 
             // //DEPTH MAP
+            const depthMapName = this.threeDImages[i].getAttribute("data-depth-map");
             const depthMap = PIXI.Sprite.from(
-                this.threeDImages[i].getAttribute("data-depth-map"),
+                depthMapName,
             );
             const depthMapFilter = new PIXI.filters.DisplacementFilter(
                 depthMap,
@@ -80,6 +83,7 @@ export default class ThreeDImagesController {
             app.stage.addChild(depthMap);
             app.stage.filters = [depthMapFilter];
 
+            depthMap.name = depthMapName;
             depthMap.width = canvasWidth;
             depthMap.height = canvasHeight;
 

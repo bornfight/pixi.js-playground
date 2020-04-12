@@ -61,10 +61,12 @@ export default class LiquidImagesController {
             this.images[i].appendChild(this.app.view);
 
             //IMAGE
+            const imageFile = this.images[i].getAttribute("data-image");
             const image = PIXI.Sprite.from(
-                this.images[i].getAttribute("data-image"),
+                imageFile,
             );
 
+            image.name = imageFile;
             image.width = canvasWidth;
             image.height = canvasHeight;
 
@@ -76,8 +78,9 @@ export default class LiquidImagesController {
             this.app.stage.addChild(image);
 
             // DISPLACEMENT MAP
+            const displacementMapFile = this.images[i].getAttribute("data-displacement-map");
             const displacementMap = PIXI.Sprite.from(
-                this.images[i].getAttribute("data-displacement-map"),
+                displacementMapFile,
             );
             const displacementFilter = new PIXI.filters.DisplacementFilter(
                 displacementMap,
@@ -87,6 +90,7 @@ export default class LiquidImagesController {
             this.app.stage.filters = [displacementFilter];
             this.app.stage.addChild(displacementMap);
 
+            displacementMap.name = displacementMapFile;
             displacementMap.width = canvasWidth;
             displacementMap.height = canvasHeight;
 

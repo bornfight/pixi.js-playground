@@ -108,12 +108,12 @@ export default class PortfolioListController {
         // add PIXI canvas element to our DOM element
         this.portfolioCanvas.appendChild(this.app.view);
 
-        const displacementMapImage = this.portfolioCanvas.getAttribute(
+        const displacementMapFile = this.portfolioCanvas.getAttribute(
             "data-displacement-map",
         );
 
         // create displacement texture
-        const displacementMap = new PIXI.Sprite.from(displacementMapImage);
+        const displacementMap = new PIXI.Sprite.from(displacementMapFile);
 
         // create PIXI displacement filter and pass the texture
         const displacementFilter = new PIXI.filters.DisplacementFilter(
@@ -121,7 +121,7 @@ export default class PortfolioListController {
         );
 
         // set displacement texture properties
-        displacementMap.name = displacementMapImage;
+        displacementMap.name = displacementMapFile;
         displacementMap.anchor.set(0.5);
         displacementMap.scale.set(1);
         displacementMap.width = canvasWidth;
@@ -138,20 +138,20 @@ export default class PortfolioListController {
         // load images from DOM to PIXI container
         for (let i = 0; i < this.portfolioItems.length; i++) {
             //create texture
+            const imageFile = this.portfolioPreviewItems[i].getAttribute(
+                "data-portfolio-preview"
+            );
+
             const texture = new PIXI.Texture.from(
-                this.portfolioPreviewItems[i].getAttribute(
-                    "data-portfolio-preview",
-                ),
+                imageFile,
             );
 
             // create sprite and pass the texture
             const image = new PIXI.Sprite(texture);
 
             //set sprites properties
-            image.name = this.portfolioPreviewItems[i].getAttribute(
-                "data-portfolio-preview",
-            );
-            image.alpha = 1;
+            image.name = imageFile;
+            image.alpha = 0;
             image.width = canvasWidth;
             image.height = canvasHeight;
 

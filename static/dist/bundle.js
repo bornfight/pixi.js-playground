@@ -55459,7 +55459,7 @@ var LiquidImagesController = /*#__PURE__*/function () {
       image: ".js-liquid-image"
     };
     this.options = {
-      bindToScroll: true
+      bindTimelineToScroll: false
     };
     /**
      *
@@ -55546,16 +55546,26 @@ var LiquidImagesController = /*#__PURE__*/function () {
           ease: "power3.out",
           onComplete: function onComplete() {}
         }, "start");
-        var scrollScene = new _scrollscene.ScrollScene({
-          triggerElement: this.images[i],
-          triggerHook: 0.8,
-          // triggerHook: 1,
-          // duration: '100%',
-          gsap: {
-            timeline: displacementTimeline,
-            reverseSpeed: 2
-          }
-        });
+
+        if (this.options.bindTimelineToScroll === true) {
+          var scrollScene = new _scrollscene.ScrollScene({
+            triggerElement: this.images[i],
+            triggerHook: 1,
+            duration: '100%',
+            gsap: {
+              timeline: displacementTimeline
+            }
+          });
+        } else {
+          var _scrollScene = new _scrollscene.ScrollScene({
+            triggerElement: this.images[i],
+            triggerHook: 0.8,
+            gsap: {
+              timeline: displacementTimeline,
+              reverseSpeed: 2
+            }
+          });
+        }
       }
     }
   }]);

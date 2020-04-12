@@ -18,7 +18,7 @@ export default class LiquidImagesController {
         };
 
         this.options = {
-            bindToScroll: true,
+            bindTimelineToScroll: false,
         };
 
         /**
@@ -145,16 +145,27 @@ export default class LiquidImagesController {
                     "start",
                 );
 
-            const scrollScene = new ScrollScene({
-                triggerElement: this.images[i],
-                triggerHook: 0.8,
-                // triggerHook: 1,
-                // duration: '100%',
-                gsap: {
-                    timeline: displacementTimeline,
-                    reverseSpeed: 2,
-                },
-            })
+            if(this.options.bindTimelineToScroll === true) {
+                const scrollScene = new ScrollScene({
+                    triggerElement: this.images[i],
+                    triggerHook: 1,
+                    duration: '100%',
+                    gsap: {
+                        timeline: displacementTimeline,
+                    },
+                });
+
+            } else {
+                const scrollScene = new ScrollScene({
+                    triggerElement: this.images[i],
+                    triggerHook: 0.8,
+                    gsap: {
+                        timeline: displacementTimeline,
+                        reverseSpeed: 2,
+                    },
+                });
+            }
+
         }
     }
 }

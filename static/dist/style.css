@@ -525,7 +525,7 @@ a {
   opacity: 0.4;
   max-width: 460px; }
 
-.o-section--portfolio, .o-section--hotsports, .o-section--rgb-splitting, .o-section--3d {
+.o-section--portfolio, .o-section--hotspots, .o-section--rgb-splitting, .o-section--3d {
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -539,7 +539,7 @@ a {
           justify-content: center;
   overflow: hidden; }
 
-.o-section--portfolio .o-container, .o-section--hotsports .o-container, .o-section--rgb-splitting .o-container, .o-section--3d .o-container {
+.o-section--portfolio .o-container, .o-section--hotspots .o-container, .o-section--rgb-splitting .o-container, .o-section--3d .o-container {
   position: relative; }
 
 .o-section--image-reveal .o-section__heading {

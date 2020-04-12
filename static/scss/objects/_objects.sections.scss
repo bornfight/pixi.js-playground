@@ -9,6 +9,7 @@
 
         .u-b0 {
             opacity: 0.4;
+            max-width: 460px;
         }
     }
 
@@ -28,6 +29,14 @@
 
         .o-container {
             position: relative;
+        }
+    }
+
+
+    &--image-reveal {
+        //overrides
+        .o-section__heading {
+            padding-bottom: 20vh;
         }
     }
 }

@@ -1,10 +1,10 @@
-// import NavigationController from "./components/NavigationController";
+import NavigationController from "./components/NavigationController";
 import PortfolioListController from "./components/PortfolioListController";
 import MagneticCtaController from "./components/MagneticCtaController";
 import HotspotsController from "./components/HotspotsController";
-import ThreeDPhotosController from "./components/ThreeDPhotosController";
+import ThreeDImagesController from "./components/ThreeDImagesController";
+import LiquidImagesController from "./components/LiquidImagesController";
 import RGBSplittingController from "./components/RGBSplittingController";
-import Dummy from "./components/Dummy";
 
 function ready(callbackFunc) {
     if (document.readyState !== "loading") {
@@ -33,11 +33,9 @@ function ready(callbackFunc) {
  * Document ready callback
  */
 ready(function () {
-    // const dummy = new Dummy();
-    // dummy.init();
 
-    // const navigation = new NavigationController();
-    // navigation.init();
+    const navigation = new NavigationController();
+    navigation.init();
 
     var consoleLogStyle = [
         "background-color: #000000",
@@ -65,12 +63,17 @@ ready(function () {
     }
 
     if (document.getElementById("faux-3d") !== null) {
-        const threeDPhotos = new ThreeDPhotosController();
-        threeDPhotos.init();
+        const threeDImages = new ThreeDImagesController();
+        threeDImages.init();
     }
 
     if (document.getElementById("rgb-splitting") !== null) {
         const RGBSplitting = new RGBSplittingController();
         RGBSplitting.init();
+    }
+
+    if (document.getElementById("image-reveal") !== null) {
+        const liquidImages = new LiquidImagesController();
+        liquidImages.init();
     }
 });

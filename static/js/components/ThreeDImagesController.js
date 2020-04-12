@@ -2,45 +2,45 @@ import * as PIXI from "pixi.js";
 
 import gsap from "gsap";
 
-export default class ThreeDPhotosController {
+export default class ThreeDImagesController {
     constructor() {
         this.DOM = {
-            threeDPhotoContainer: ".js-3d-photo-container",
-            threeDPhoto: ".js-3d-photo",
-            threeDPhotoCanvas: ".js-3d-photo-canvas",
+            threeDImageContainer: ".js-3d-image-container",
+            threeDImage: ".js-3d-image",
+            threeDImageCanvas: ".js-3d-image-canvas",
         };
 
-        this.threeDPhotos = document.querySelectorAll(this.DOM.threeDPhoto);
+        this.threeDImages = document.querySelectorAll(this.DOM.threeDImage);
     }
 
     init() {
-        console.log("ThreeDPhotos init()");
+        console.log("ThreeDImages init()");
 
-        if (this.threeDPhotos !== null) {
-            this.threeDPhotosController();
+        if (this.threeDImages !== null) {
+            this.threeDImagesController();
         } else {
-            console.error(`${this.DOM.threeDPhoto} does not exist in the DOM!`);
+            console.error(`${this.DOM.threeDImage} does not exist in the DOM!`);
         }
     }
 
-    threeDPhotosController() {
-        for (let i = 0; i < this.threeDPhotos.length; i++) {
+    threeDImagesController() {
+        for (let i = 0; i < this.threeDImages.length; i++) {
             //MOUSEMOVE CONTAINER
-            const container = this.threeDPhotos[i].closest(
-                this.DOM.threeDPhotoContainer,
+            const container = this.threeDImages[i].closest(
+                this.DOM.threeDImageContainer,
             );
 
             //THRESHOLD
-            const verticalThreshold = this.threeDPhotos[i].getAttribute(
+            const verticalThreshold = this.threeDImages[i].getAttribute(
                 "data-vertical-threshold",
             );
-            const horizontalThreshold = this.threeDPhotos[i].getAttribute(
+            const horizontalThreshold = this.threeDImages[i].getAttribute(
                 "data-horizontal-threshold",
             );
 
             // CANVAS SIZE
-            const canvasWidth = this.threeDPhotos[i].clientWidth;
-            const canvasHeight = this.threeDPhotos[i].clientHeight;
+            const canvasWidth = this.threeDImages[i].clientWidth;
+            const canvasHeight = this.threeDImages[i].clientHeight;
 
             // CREATE PIXI APPLICATION
             const app = new PIXI.Application({
@@ -48,15 +48,15 @@ export default class ThreeDPhotosController {
                 height: canvasHeight,
                 transparent: true,
                 resolution: window.devicePixelRatio,
-                resizeTo: this.threeDPhotos[i],
+                resizeTo: this.threeDImages[i],
             });
 
             // ADD CANVAS TO CANVAS WRAPPER ELEMENT
-            this.threeDPhotos[i].appendChild(app.view);
+            this.threeDImages[i].appendChild(app.view);
 
             //IMAGE
             const image = PIXI.Sprite.from(
-                this.threeDPhotos[i].getAttribute("data-image"),
+                this.threeDImages[i].getAttribute("data-image"),
             );
 
             image.width = canvasWidth;
@@ -71,7 +71,7 @@ export default class ThreeDPhotosController {
 
             // //DEPTH MAP
             const depthMap = PIXI.Sprite.from(
-                this.threeDPhotos[i].getAttribute("data-depth-map"),
+                this.threeDImages[i].getAttribute("data-depth-map"),
             );
             const depthMapFilter = new PIXI.filters.DisplacementFilter(
                 depthMap,

@@ -4,13 +4,14 @@ import gsap from "gsap";
 window.PIXI = PIXI;
 
 /**
- * interactive portfolio list with webGL preview interaction powered by PIXI.js
+ * Magnetic hotspots with connecting lines
  */
 export default class HotspotsController {
     constructor() {
+
         /**
          *
-         * @type {{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotCanvasContainer: string, hotspotContainer: string}}
+         * @type {{hotspotText: string, hotspot: string, hotspotCircle: string, hotspotContainer: string}}
          */
         this.DOM = {
             hotspotContainer: ".js-hotspot-container",

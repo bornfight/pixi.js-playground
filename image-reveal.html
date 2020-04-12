@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="static/dist/style.css"/>
 </head>
 
-<body>
+<body class="is-light">
 <!-- LOADER -->
 <div class="o-loader"></div>
 <!-- //LOADER -->
@@ -50,22 +50,56 @@
 <!-- //NAVIGATION -->
 
 <!-- PAGE -->
-<div id="faux-3d" class="o-page o-page--faux-3d">
+<div id="image-reveal" class="o-page o-page--image-reveal">
     <div class="o-page__inner">
 
-        <section class="o-section o-section--portfolio js-portfolio">
+        <section class="o-section o-section--image-reveal">
 
             <div class="o-section__heading">
                 <div class="o-container">
+                    <span class="c-eyebrow u-uppercase u-b1">
+                        <span>Liquid distortion</span>
+                    </span>
                     <h2 class="u-a7">
                         Liquid image reveal on scroll \w PIXI.js
                     </h2>
-                    <span class="u-b0">— comming soon</span>
+                    <p class="u-b0">The main concept of this demo is to use a displacement map in order to distort an underlying image, giving it different types of effects.</p>
                 </div>
             </div>
             <div class="o-section__content">
                 <div class="o-container">
-
+                    <div class="c-liquid-images-wrapper">
+                        <div class="c-liquid-image-container c-liquid-image-container--center c-liquid-image-container--large">
+                            <div class="c-liquid-image js-liquid-image"
+                                 data-displacement-map="static/ui/displacement/displacement-liquid.png"
+                                 data-image="static/images/work-01.jpg">
+                            </div>
+                        </div>
+                        <div class="c-liquid-image-container c-liquid-image-container--left c-liquid-image-container--medium">
+                            <div class="c-liquid-image js-liquid-image"
+                                 data-displacement-map="static/ui/displacement/displacement-brush.png"
+                                 data-image="static/images/work-02.jpg">
+                            </div>
+                        </div>
+                        <div class="c-liquid-image-container c-liquid-image-container--right c-liquid-image-container--small">
+                            <div class="c-liquid-image js-liquid-image"
+                                 data-displacement-map="static/ui/displacement/map-03.jpg"
+                                 data-image="static/images/work-03.jpg">
+                            </div>
+                        </div>
+                        <div class="c-liquid-image-container c-liquid-image-container--right c-liquid-image-container--large">
+                            <div class="c-liquid-image js-liquid-image"
+                                 data-displacement-map="static/ui/displacement/map-02.jpg"
+                                 data-image="static/images/work-04.jpg">
+                            </div>
+                        </div>
+                        <div class="c-liquid-image-container c-liquid-image-container--left c-liquid-image-container--medium">
+                            <div class="c-liquid-image js-liquid-image"
+                                 data-displacement-map="static/ui/displacement/map-04.jpg"
+                                 data-image="static/images/work-05.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

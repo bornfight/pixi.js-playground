@@ -1,12 +1,12 @@
 //3D PHOTOS
-.c-3d-photo-wrapper {
+.c-3d-image-wrapper {
     width: 100%;
     max-width: percentage(16/20);
     margin: 0 auto;
     position: relative;
 }
 
-.c-3d-photo-container {
+.c-3d-image-container {
     overflow: hidden;
     position: relative;
     margin: 0 auto;
@@ -14,7 +14,7 @@
     padding-bottom: percentage(853/1280);
 }
 
-.c-3d-photo {
+.c-3d-image {
     width: 100%;
     height: 100%;
     left: 0;
@@ -31,7 +31,7 @@
     }
 }
 
-.c-3d-photo-heading {
+.c-3d-image-heading {
     position: absolute;
     left: percentage(1/16);
     bottom: 0;

@@ -1,0 +1,52 @@
+//LIQUID IMAGES
+.c-liquid-images-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.c-liquid-image-container {
+	width: 100%;
+
+	//modifiers
+	&--left {}
+
+	&--center {
+		align-self: center;
+	}
+
+	&--right {
+		align-self: flex-end;
+	}
+
+	&--small {
+		max-width: percentage(8/20);
+		padding-top: 40px;
+	}
+
+	&--medium {
+		max-width: percentage(10/20);
+		padding-top: 80px;
+	}
+
+	&--large {
+		max-width: percentage(16/20);
+		padding-top: 120px;
+	}
+}
+
+.c-liquid-image {
+	background-color: rgba($black, 0.4);
+	height: 0;
+	width: 100%;
+	padding-bottom: percentage(9/16);
+	position: relative;
+	overflow: hidden;
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}

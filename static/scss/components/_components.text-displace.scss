@@ -1,0 +1,51 @@
+// TEXT DISPLACE
+.c-text-displace-wrapper {
+    width: 100%;
+    max-width: percentage(16/20);
+    margin: 0 auto;
+    position: relative;
+
+    //overrides
+    .c-eyebrow {
+    }
+
+    .u-b1 {
+        display: inline-block;
+        margin-bottom: 1.6em;
+    }
+
+    .u-b0 {
+        padding-top: 40px;
+        max-width: 480px;
+    }
+}
+
+.c-text-displace-container {
+    position: relative;
+    margin: 0 auto;
+
+    canvas {
+        display: block;
+        position: absolute;
+        top: 20%;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        height: 100%;
+    }
+}
+
+.c-text-displace {
+    width: 100%;
+}
+
+.c-text-displace-heading {
+    //pointer-events: none;
+    color: $white;
+
+    //overrides
+    .u-a7 {
+        opacity: 0.1;
+        margin-bottom: 0;
+    }
+}

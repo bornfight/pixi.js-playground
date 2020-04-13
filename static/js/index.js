@@ -5,6 +5,7 @@ import HotspotsController from "./components/HotspotsController";
 import ThreeDImagesController from "./components/ThreeDImagesController";
 import LiquidImagesController from "./components/LiquidImagesController";
 import RGBSplittingController from "./components/RGBSplittingController";
+import TextDisplacementController from "./components/TextDisplacemetController";
 
 function ready(callbackFunc) {
     if (document.readyState !== "loading") {
@@ -75,5 +76,10 @@ ready(function () {
     if (document.getElementById("image-reveal") !== null) {
         const liquidImages = new LiquidImagesController();
         liquidImages.init();
+    }
+
+    if (document.getElementById("text-displace") !== null) {
+        const textDisplace = new TextDisplacementController();
+        textDisplace.init();
     }
 });

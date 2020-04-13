@@ -56303,6 +56303,129 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var TextDisplacementController = /*#__PURE__*/function () {
+  function TextDisplacementController() {
+    _classCallCheck(this, TextDisplacementController);
+
+    this.DOM = {
+      textContainer: ".js-text-displace-container",
+      textValue: ".js-text-displace-value"
+    };
+    this.textContainers = document.querySelectorAll(this.DOM.textContainer);
+  }
+
+  _createClass(TextDisplacementController, [{
+    key: "init",
+    value: function init() {
+      console.log("TextDisplacementController init()");
+
+      if (this.textContainers !== null) {
+        this.textDisplace();
+      } else {
+        console.error("".concat(this.DOM.textContainer, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "textDisplace",
+    value: function textDisplace() {
+      for (var i = 0; i < this.textContainers.length; i++) {
+        // CANVAS SIZE
+        var canvasWidth = this.textContainers[i].clientWidth;
+        var canvasHeight = this.textContainers[i].clientHeight; // CREATE PIXI APPLICATION
+
+        this.app = new PIXI.Application({
+          width: canvasWidth,
+          height: canvasHeight,
+          transparent: true,
+          resolution: window.devicePixelRatio
+        }); // ADD CANVAS TO CANVAS WRAPPER ELEMENT
+
+        this.textContainers[i].appendChild(this.app.view); // DISPLACEMENT MAP
+
+        var displacementMapFile = this.textContainers[i].getAttribute("data-displacement-map");
+        var displacementMap = PIXI.Sprite.from(displacementMapFile); // displacementMap.texture.baseTexture.wrapMode =
+
+        PIXI.WRAP_MODES.REPEAT;
+        displacementMap.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.MIRRORED_REPEAT; // displacementMap.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.CLAMP;
+
+        displacementMap.scale.y = 0.9;
+        displacementMap.scale.x = 0.7;
+        displacementMap.x = displacementMap._x = 0;
+        displacementMap.y = displacementMap._y = 0;
+        var displacementFilter = new PIXI.filters.DisplacementFilter(displacementMap);
+        displacementFilter.padding = 30;
+        displacementFilter.scale.x = 65;
+        displacementFilter.scale.y = 65; //TEXT
+
+        var textValue = this.textContainers[i].querySelector(this.DOM.textValue).textContent;
+        var style = new PIXI.TextStyle({
+          fontFamily: '"RobotoMono-Regular"',
+          fill: 0xffffff,
+          align: "left",
+          wordWrap: true,
+          wordWrapWidth: this.textContainers[i].clientWidth,
+          whiteSpace: "normal",
+          fontSize: 24,
+          lineHeight: 32,
+          padding: 60
+        });
+        var text = new PIXI.Text("".concat(textValue), style);
+        text.filters = [displacementFilter];
+        text.position.x = 30;
+        text.position.y = 30;
+        this.app.stage.addChild(displacementMap);
+        this.app.stage.addChild(text);
+        this.initTextDisplaceEvents(displacementFilter);
+      }
+    }
+  }, {
+    key: "initTextDisplaceEvents",
+    value: function initTextDisplaceEvents(displacementFilter) {
+      window.addEventListener("mousemove", function (ev) {
+        var yAmount = ev.clientY / window.innerHeight - 0.5;
+        var xAmount = ev.clientX / window.innerWidth - 0.5;
+
+        _gsap.default.to(displacementFilter.scale, {
+          duration: 1.2,
+          y: yAmount * 100,
+          x: xAmount * 150,
+          ease: "power3.out"
+        });
+      });
+    }
+  }]);
+
+  return TextDisplacementController;
+}();
+
+exports.default = TextDisplacementController;
+
+},{"gsap":41,"pixi.js":49}],82:[function(require,module,exports){
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var PIXI = _interopRequireWildcard(require("pixi.js"));
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 var ThreeDImagesController = /*#__PURE__*/function () {
   function ThreeDImagesController() {
     _classCallCheck(this, ThreeDImagesController);
@@ -56408,7 +56531,7 @@ var ThreeDImagesController = /*#__PURE__*/function () {
 
 exports.default = ThreeDImagesController;
 
-},{"gsap":41,"pixi.js":49}],82:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49}],83:[function(require,module,exports){
 "use strict";
 
 var _NavigationController = _interopRequireDefault(require("./components/NavigationController"));
@@ -56424,6 +56547,8 @@ var _ThreeDImagesController = _interopRequireDefault(require("./components/Three
 var _LiquidImagesController = _interopRequireDefault(require("./components/LiquidImagesController"));
 
 var _RGBSplittingController = _interopRequireDefault(require("./components/RGBSplittingController"));
+
+var _TextDisplacemetController = _interopRequireDefault(require("./components/TextDisplacemetController"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56486,8 +56611,13 @@ ready(function () {
     var liquidImages = new _LiquidImagesController.default();
     liquidImages.init();
   }
+
+  if (document.getElementById("text-displace") !== null) {
+    var textDisplace = new _TextDisplacemetController.default();
+    textDisplace.init();
+  }
 });
 
-},{"./components/HotspotsController":75,"./components/LiquidImagesController":76,"./components/MagneticCtaController":77,"./components/NavigationController":78,"./components/PortfolioListController":79,"./components/RGBSplittingController":80,"./components/ThreeDImagesController":81}]},{},[82]);
+},{"./components/HotspotsController":75,"./components/LiquidImagesController":76,"./components/MagneticCtaController":77,"./components/NavigationController":78,"./components/PortfolioListController":79,"./components/RGBSplittingController":80,"./components/TextDisplacemetController":81,"./components/ThreeDImagesController":82}]},{},[83]);
 
 //# sourceMappingURL=bundle.js.map

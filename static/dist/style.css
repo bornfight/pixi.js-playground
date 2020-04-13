@@ -493,7 +493,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 0;
+  padding: 30px 0;
   z-index: 5;
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
@@ -548,6 +548,19 @@ a {
 /**
  * Components
  */
+.c-logo {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 120px;
+  height: auto; }
+
+.c-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: currentColor; }
+
 .c-work {
   width: 100%;
   display: -webkit-box;
@@ -1019,9 +1032,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end; }
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
 
 .c-link {
   font-size: 14px;

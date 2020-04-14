@@ -8,7 +8,7 @@
     @include poly-fluid-sizing("font-size", $font-size);
     $line-height: (
         $breakpoint-sm: 40px,
-        $breakpoint-xl: 50px,
+        $breakpoint-xl: 44px,
     );
     @include poly-fluid-sizing("line-height", $line-height);
     letter-spacing: 2px;
@@ -54,8 +54,8 @@
     );
     @include poly-fluid-sizing("font-size", $font-size);
     $line-height: (
-        $breakpoint-sm: 20px,
-        $breakpoint-xl: 20px,
+        $breakpoint-sm: 22px,
+        $breakpoint-xl: 22px,
     );
     @include poly-fluid-sizing("line-height", $line-height);
     font-weight: normal;

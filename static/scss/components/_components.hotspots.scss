@@ -3,10 +3,28 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+
+    @include mq("md") {
+        flex-direction: column;
+    }
 }
 
 .c-hotspot-text {
     width: percentage(6/20);
+
+    @include mq("md") {
+        width: 100%;
+        padding-top: 40px;
+        padding-bottom: 120px;
+    }
+
+    .u-a7 {
+        max-width: 540px;
+    }
+
+    .u-b0 {
+        max-width: 480px;
+    }
 }
 
 .c-hotspot-image {
@@ -14,6 +32,10 @@
     width: percentage(14/20);
     max-width: 840px;
     margin: 0 auto;
+
+    @include mq("md") {
+        width: 100%;
+    }
 
     &__visual {
         position: relative;

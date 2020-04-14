@@ -21,16 +21,28 @@
 	&--small {
 		max-width: percentage(8/20);
 		padding-top: 40px;
+
+		@include mq("lg") {
+			max-width: percentage(12/20);
+		}
 	}
 
 	&--medium {
 		max-width: percentage(10/20);
 		padding-top: 80px;
+
+		@include mq("lg") {
+			max-width: percentage(14/20);
+		}
 	}
 
 	&--large {
 		max-width: percentage(16/20);
 		padding-top: 120px;
+
+		@include mq("lg") {
+			max-width: 100%;
+		}
 	}
 }
 

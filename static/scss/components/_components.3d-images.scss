@@ -4,6 +4,10 @@
     max-width: percentage(16/20);
     margin: 0 auto;
     position: relative;
+
+    @include mq("lg") {
+        max-width: 100%;
+    }
 }
 
 .c-3d-image-container {

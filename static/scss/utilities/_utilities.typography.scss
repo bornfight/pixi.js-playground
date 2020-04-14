@@ -2,12 +2,12 @@
     font-family: $font-primary;
     margin-bottom: 0.6em;
     $font-size: (
-        $breakpoint-sm: 32px,
+        $breakpoint-sm: 24px,
         $breakpoint-xl: 42px,
     );
     @include poly-fluid-sizing("font-size", $font-size);
     $line-height: (
-        $breakpoint-sm: 40px,
+        $breakpoint-sm: 32px,
         $breakpoint-xl: 44px,
     );
     @include poly-fluid-sizing("line-height", $line-height);

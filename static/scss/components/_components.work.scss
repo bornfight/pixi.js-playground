@@ -14,6 +14,7 @@ $settings-hover-delay: all 0.2s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     &__list {
         position: relative;
         z-index: 2;
+        mix-blend-mode: difference;
     }
 
     &__item {
@@ -37,6 +38,12 @@ $settings-hover-delay: all 0.2s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         pointer-events: none;
         transition: $settings-hover-delay;
         will-change: transform, opacity;
+
+        @include mq("md") {
+            position: relative;
+            right: auto;
+            top: auto;
+        }
     }
 
     &__title {
@@ -95,6 +102,10 @@ $settings-hover-delay: all 0.2s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         max-width: 1020px;
         height: 100%;
 
+        @include mq("md") {
+            width: percentage(20/24);
+        }
+
         .c-canvas {
             position: absolute;
             top: 50%;
@@ -124,6 +135,10 @@ $settings-hover-delay: all 0.2s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         width: percentage(14/24);
         max-width: 1020px;
         height: 100%;
+
+        @include mq("md") {
+            width: percentage(20/24);
+        }
 
         li {
             position: absolute;

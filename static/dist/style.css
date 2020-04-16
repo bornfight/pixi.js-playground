@@ -529,7 +529,7 @@ a {
   opacity: 0.4;
   max-width: 460px; }
 
-.o-section--portfolio, .o-section--hotspots, .o-section--rgb-splitting, .o-section--text-displace, .o-section--3d {
+.o-section--edu, .o-section--portfolio, .o-section--hotspots, .o-section--rgb-splitting, .o-section--text-displace, .o-section--3d {
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -543,7 +543,7 @@ a {
           justify-content: center;
   overflow: hidden; }
 
-.o-section--portfolio .o-container, .o-section--hotspots .o-container, .o-section--rgb-splitting .o-container, .o-section--text-displace .o-container, .o-section--3d .o-container {
+.o-section--edu .o-container, .o-section--portfolio .o-container, .o-section--hotspots .o-container, .o-section--rgb-splitting .o-container, .o-section--text-displace .o-container, .o-section--3d .o-container {
   position: relative; }
 
 .o-section--image-reveal .o-section__heading {
@@ -552,6 +552,26 @@ a {
 /**
  * Components
  */
+.c-pixi-example-wrapper {
+  width: 100%;
+  max-width: 720px;
+  padding-top: 20px; }
+
+.c-pixi-example {
+  border: 1px solid #000000;
+  height: 0;
+  width: 100%;
+  padding-bottom: 56.25%;
+  position: relative;
+  overflow: hidden; }
+
+.c-pixi-example canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
 .c-logo {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;

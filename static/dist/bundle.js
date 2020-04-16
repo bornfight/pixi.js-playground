@@ -55261,6 +55261,122 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var BasicPixiExample = /*#__PURE__*/function () {
+  function BasicPixiExample() {
+    _classCallCheck(this, BasicPixiExample);
+
+    this.DOM = {
+      pixiExample: ".js-pixi-example"
+    };
+    this.pixiExample = document.querySelector(this.DOM.pixiExample);
+  }
+
+  _createClass(BasicPixiExample, [{
+    key: "init",
+    value: function init() {
+      console.log("BasicPixiExample init()");
+
+      if (this.BasicPixiExample !== null) {
+        this.PIXIExample();
+      } else {
+        console.error("".concat(this.DOM.BasicPixiExample, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "PIXIExample",
+    value: function PIXIExample() {// CANVAS SIZE
+      // const canvasWidth = this.pixiExample.clientWidth;
+      // const canvasHeight = this.pixiExample.clientHeight;
+      // 1. CREATE PIXI APPLICATION
+      // const app = new PIXI.Application({
+      //     width: canvasWidth,
+      //     height: canvasHeight,
+      //     transparent: true,
+      //     resolution: window.devicePixelRatio,
+      //     resizeTo: this.pixiExample,
+      // });
+      // 2. ADD CANVAS TO CANVAS WRAPPER ELEMENT
+      // this.pixiExample.appendChild(app.view);
+      // 3. GET IMAGE/TEXTURE AND CREATE SPRITE
+      // const imageFile = this.pixiExample.getAttribute("data-image");
+      // const image = PIXI.Sprite.from(
+      //     imageFile,
+      // );
+      // 4. SET SPRITE PROPERTIES, POSITION SPRITE ON SCREEN
+      // image.name = imageFile; // useful if using PIXI.js dev tools, also can be referenced later in the code
+      // image.width = 360; // affects image.scale -> now is set to 0.5
+      // image.height = 85;
+      // image.anchor.set(0.5);
+      // image.position.x = canvasWidth / 2;
+      // image.position.y = canvasHeight / 2;
+      // 5. ADD OUR IMAGE TO THE STAGE
+      // app.stage.addChild(image);
+      // 6. CREATE FILTER
+      // const blurFilter = new PIXI.filters.BlurFilter();
+      // blurFilter.blur = 0;
+      // 7. ADD FILTER(s) TO SPRITE
+      // image.filters = [blurFilter];
+      // 8a. ANIMATE FILTER \W NATIVE TICKER
+      // let frames = 0;
+      // app.ticker.add(() => {
+      //     frames += 0.015;
+      //
+      //     const blurAmount = Math.cos(frames);
+      //
+      //     blurFilter.blur = 10 * (blurAmount);
+      // });
+      // 8b.  ANIMATE FILTERS IMAGE PROPERTIES ON CLICK WITH GSAP
+      // this.pixiExample.addEventListener("click", () => {
+      //     gsap.to(blurFilter, {
+      //         duration: 1,
+      //         blur: 10,
+      //         yoyo: true,
+      //         repeat: 3,
+      //         repeatDelay: 1,
+      //         ease: "power3.out"
+      //     });
+      //
+      //     gsap.to(image.scale, {
+      //         duration: 1,
+      //         x: 0.75,
+      //         y: 0.75,
+      //         ease: "power3.inOut"
+      //     });
+      // })
+    }
+  }]);
+
+  return BasicPixiExample;
+}();
+
+exports.default = BasicPixiExample;
+
+},{"gsap":41,"pixi.js":49}],76:[function(require,module,exports){
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var PIXI = _interopRequireWildcard(require("pixi.js"));
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 window.PIXI = PIXI;
 /**
  * Magnetic hotspots with connecting lines
@@ -55414,7 +55530,7 @@ var HotspotsController = /*#__PURE__*/function () {
 
 exports.default = HotspotsController;
 
-},{"gsap":41,"pixi.js":49}],76:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49}],77:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55579,7 +55695,7 @@ var LiquidImagesController = /*#__PURE__*/function () {
 
 exports.default = LiquidImagesController;
 
-},{"gsap":41,"pixi.js":49,"scrollscene":68}],77:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49,"scrollscene":68}],78:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55698,7 +55814,7 @@ var MagneticCtaController = /*#__PURE__*/function () {
 
 exports.default = MagneticCtaController;
 
-},{"gsap":41}],78:[function(require,module,exports){
+},{"gsap":41}],79:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55878,7 +55994,7 @@ var NavigationController = /*#__PURE__*/function () {
 
 exports.default = NavigationController;
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56120,7 +56236,7 @@ var PortfolioListController = /*#__PURE__*/function () {
 
 exports.default = PortfolioListController;
 
-},{"gsap":41,"pixi.js":49}],80:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49}],81:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56277,7 +56393,7 @@ var RGBSplittingController = /*#__PURE__*/function () {
 
 exports.default = RGBSplittingController;
 
-},{"gsap":41,"pixi.js":49}],81:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49}],82:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56400,7 +56516,7 @@ var TextDisplacementController = /*#__PURE__*/function () {
 
 exports.default = TextDisplacementController;
 
-},{"gsap":41,"pixi.js":49}],82:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49}],83:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56531,8 +56647,10 @@ var ThreeDImagesController = /*#__PURE__*/function () {
 
 exports.default = ThreeDImagesController;
 
-},{"gsap":41,"pixi.js":49}],83:[function(require,module,exports){
+},{"gsap":41,"pixi.js":49}],84:[function(require,module,exports){
 "use strict";
+
+var _BasicPixiExample = _interopRequireDefault(require("./components/BasicPixiExample"));
 
 var _NavigationController = _interopRequireDefault(require("./components/NavigationController"));
 
@@ -56585,6 +56703,11 @@ ready(function () {
   var consoleLogStyle = ["background-color: #000000", "color: white", "display: block", "line-height: 24px", "text-align: center", "border: 1px solid #ffffff", "font-weight: bold"].join(";");
   console.log("dev by: %c Bornfight ", consoleLogStyle);
 
+  if (document.getElementById("edu") !== null) {
+    var pixiEdu = new _BasicPixiExample.default();
+    pixiEdu.init();
+  }
+
   if (document.getElementById("portfolio") !== null) {
     var portfolioList = new _PortfolioListController.default();
     portfolioList.init();
@@ -56618,6 +56741,6 @@ ready(function () {
   }
 });
 
-},{"./components/HotspotsController":75,"./components/LiquidImagesController":76,"./components/MagneticCtaController":77,"./components/NavigationController":78,"./components/PortfolioListController":79,"./components/RGBSplittingController":80,"./components/TextDisplacemetController":81,"./components/ThreeDImagesController":82}]},{},[83]);
+},{"./components/BasicPixiExample":75,"./components/HotspotsController":76,"./components/LiquidImagesController":77,"./components/MagneticCtaController":78,"./components/NavigationController":79,"./components/PortfolioListController":80,"./components/RGBSplittingController":81,"./components/TextDisplacemetController":82,"./components/ThreeDImagesController":83}]},{},[84]);
 
 //# sourceMappingURL=bundle.js.map

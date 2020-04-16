@@ -1,3 +1,4 @@
+import BasicPixiExample from "./components/BasicPixiExample";
 import NavigationController from "./components/NavigationController";
 import PortfolioListController from "./components/PortfolioListController";
 import MagneticCtaController from "./components/MagneticCtaController";
@@ -49,6 +50,11 @@ ready(function () {
     ].join(";");
 
     console.log("dev by: %c Bornfight ", consoleLogStyle);
+
+    if (document.getElementById("edu") !== null) {
+        const pixiEdu = new BasicPixiExample();
+        pixiEdu.init();
+    }
 
     if (document.getElementById("portfolio") !== null) {
         const portfolioList = new PortfolioListController();

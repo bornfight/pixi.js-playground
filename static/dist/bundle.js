@@ -56746,7 +56746,6 @@ var VideoDisplacementController = /*#__PURE__*/function () {
     key: "initVideoDisplaceEvents",
     value: function initVideoDisplaceEvents(displacementFilter) {
       window.addEventListener("mousemove", function (ev) {
-        s;
         var yAmount = ev.clientY / window.innerHeight - 0.5;
         var xAmount = ev.clientX / window.innerWidth - 0.5;
 

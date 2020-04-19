@@ -91,7 +91,7 @@ export default class VideoDisplacementController {
 
     initVideoDisplaceEvents(displacementFilter) {
 
-        window.addEventListener("mousemove", (ev) => {s
+        window.addEventListener("mousemove", (ev) => {
 
             let yAmount = ev.clientY / window.innerHeight - 0.5;
             let xAmount = ev.clientX / window.innerWidth - 0.5;

@@ -529,7 +529,7 @@ a {
   opacity: 0.4;
   max-width: 460px; }
 
-.o-section--edu, .o-section--portfolio, .o-section--hotspots, .o-section--rgb-splitting, .o-section--text-displace, .o-section--3d {
+.o-section--edu, .o-section--portfolio, .o-section--hotspots, .o-section--rgb-splitting, .o-section--text-displace, .o-section--video-displace, .o-section--3d {
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -543,7 +543,7 @@ a {
           justify-content: center;
   overflow: hidden; }
 
-.o-section--edu .o-container, .o-section--portfolio .o-container, .o-section--hotspots .o-container, .o-section--rgb-splitting .o-container, .o-section--text-displace .o-container, .o-section--3d .o-container {
+.o-section--edu .o-container, .o-section--portfolio .o-container, .o-section--hotspots .o-container, .o-section--rgb-splitting .o-container, .o-section--text-displace .o-container, .o-section--video-displace .o-container, .o-section--3d .o-container {
   position: relative; }
 
 .o-section--image-reveal .o-section__heading {
@@ -1038,6 +1038,54 @@ a {
 .c-text-displace-heading .u-a7 {
   opacity: 0.075;
   margin-bottom: 0; }
+
+.c-video-displace-wrapper {
+  max-width: 80%;
+  width: 100%;
+  position: relative; }
+
+@media (max-width: 1140px) {
+  .c-video-displace-wrapper {
+    max-width: 90%; } }
+
+@media (max-width: 800px) {
+  .c-video-displace-wrapper {
+    max-width: 100%; } }
+
+.c-video-displace-wrapper .u-b1 {
+  display: inline-block;
+  margin-bottom: 1.6em; }
+
+.c-video-displace-wrapper .u-b0 {
+  padding-top: 40px;
+  max-width: 480px; }
+
+@media (max-width: 800px) {
+  .c-video-displace-wrapper .u-b0 {
+    padding-top: 60px; } }
+
+.c-video-displace-container {
+  position: relative;
+  margin: 0 auto; }
+
+.c-video-displace-container canvas {
+  display: block;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 6.25%;
+  width: 70%;
+  height: 70%;
+  z-index: 2; }
+
+.c-video-displace {
+  width: 100%; }
+
+.c-video-displace__video video {
+  width: 100%;
+  opacity: 0.1;
+  height: auto; }
 
 .c-liquid-images-wrapper {
   display: -webkit-box;

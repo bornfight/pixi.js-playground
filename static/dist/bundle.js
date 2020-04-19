@@ -56650,6 +56650,124 @@ exports.default = ThreeDImagesController;
 },{"gsap":41,"pixi.js":49}],84:[function(require,module,exports){
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var PIXI = _interopRequireWildcard(require("pixi.js"));
+
+var _gsap = _interopRequireDefault(require("gsap"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var VideoDisplacementController = /*#__PURE__*/function () {
+  function VideoDisplacementController() {
+    _classCallCheck(this, VideoDisplacementController);
+
+    this.DOM = {
+      videoContainer: ".js-video-displace-container"
+    };
+    this.videoContainer = document.querySelector(this.DOM.videoContainer);
+  }
+
+  _createClass(VideoDisplacementController, [{
+    key: "init",
+    value: function init() {
+      console.log("VideoDisplacementController init()");
+
+      if (this.videoContainer !== null) {
+        this.videoDisplace();
+      } else {
+        console.error("".concat(this.DOM.videoContainer, " does not exist in the DOM!"));
+      }
+    }
+  }, {
+    key: "videoDisplace",
+    value: function videoDisplace() {
+      // CANVAS SIZE
+      var canvasWidth = this.videoContainer.clientWidth;
+      var canvasHeight = this.videoContainer.clientHeight; // CREATE PIXI APPLICATION
+
+      var app = new PIXI.Application({
+        width: canvasWidth,
+        height: canvasHeight,
+        transparent: true,
+        resolution: window.devicePixelRatio
+      }); // ADD CANVAS TO CANVAS WRAPPER ELEMENT
+
+      this.videoContainer.appendChild(app.view); // DISPLACEMENT MAP
+
+      var displacementMapFile = this.videoContainer.getAttribute("data-displacement-map");
+      var displacementMap = PIXI.Sprite.from(displacementMapFile); // displacementMap.texture.baseTexture.wrapMode =
+
+      PIXI.WRAP_MODES.REPEAT;
+      displacementMap.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.MIRRORED_REPEAT; // displacementMap.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.CLAMP;
+
+      displacementMap.name = displacementMapFile;
+      displacementMap.scale.y = 0.9;
+      displacementMap.scale.x = 0.7;
+      displacementMap.x = displacementMap._x = 0;
+      displacementMap.y = displacementMap._y = 0;
+      var displacementFilter = new PIXI.filters.DisplacementFilter(displacementMap); // displacementFilter.padding = 30;
+      // displacementFilter.scale.x = 65;
+      // displacementFilter.scale.y = 65;
+      //IMAGE
+
+      var videoFile = this.videoContainer.getAttribute("data-video");
+      var video = PIXI.Texture.from(videoFile);
+      var videoSprite = new PIXI.Sprite(video);
+      videoSprite.name = videoFile;
+      videoSprite.width = canvasWidth;
+      videoSprite.height = canvasHeight;
+      video.baseTexture.resource.source.loop = true;
+      videoSprite.anchor.set(0.5);
+      videoSprite.position.x = canvasWidth / 2;
+      videoSprite.position.y = canvasHeight / 2;
+      app.stage.addChild(displacementMap);
+      app.stage.filterArea = app.screen;
+      app.stage.filters = [displacementFilter];
+      app.stage.addChild(videoSprite);
+      this.initVideoDisplaceEvents(displacementFilter);
+    }
+  }, {
+    key: "initVideoDisplaceEvents",
+    value: function initVideoDisplaceEvents(displacementFilter) {
+      window.addEventListener("mousemove", function (ev) {
+        s;
+        var yAmount = ev.clientY / window.innerHeight - 0.5;
+        var xAmount = ev.clientX / window.innerWidth - 0.5;
+
+        _gsap.default.to(displacementFilter.scale, {
+          duration: 1.2,
+          y: yAmount * 200,
+          x: xAmount * 200,
+          ease: "power3.out"
+        });
+      });
+    }
+  }]);
+
+  return VideoDisplacementController;
+}();
+
+exports.default = VideoDisplacementController;
+
+},{"gsap":41,"pixi.js":49}],85:[function(require,module,exports){
+"use strict";
+
 var _BasicPixiExample = _interopRequireDefault(require("./components/BasicPixiExample"));
 
 var _NavigationController = _interopRequireDefault(require("./components/NavigationController"));
@@ -56667,6 +56785,8 @@ var _LiquidImagesController = _interopRequireDefault(require("./components/Liqui
 var _RGBSplittingController = _interopRequireDefault(require("./components/RGBSplittingController"));
 
 var _TextDisplacemetController = _interopRequireDefault(require("./components/TextDisplacemetController"));
+
+var _VideoDisplacementController = _interopRequireDefault(require("./components/VideoDisplacementController"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56739,8 +56859,13 @@ ready(function () {
     var textDisplace = new _TextDisplacemetController.default();
     textDisplace.init();
   }
+
+  if (document.getElementById("video-displace") !== null) {
+    var videoDisplace = new _VideoDisplacementController.default();
+    videoDisplace.init();
+  }
 });
 
-},{"./components/BasicPixiExample":75,"./components/HotspotsController":76,"./components/LiquidImagesController":77,"./components/MagneticCtaController":78,"./components/NavigationController":79,"./components/PortfolioListController":80,"./components/RGBSplittingController":81,"./components/TextDisplacemetController":82,"./components/ThreeDImagesController":83}]},{},[84]);
+},{"./components/BasicPixiExample":75,"./components/HotspotsController":76,"./components/LiquidImagesController":77,"./components/MagneticCtaController":78,"./components/NavigationController":79,"./components/PortfolioListController":80,"./components/RGBSplittingController":81,"./components/TextDisplacemetController":82,"./components/ThreeDImagesController":83,"./components/VideoDisplacementController":84}]},{},[85]);
 
 //# sourceMappingURL=bundle.js.map

@@ -7,6 +7,7 @@ import ThreeDImagesController from "./components/ThreeDImagesController";
 import LiquidImagesController from "./components/LiquidImagesController";
 import RGBSplittingController from "./components/RGBSplittingController";
 import TextDisplacementController from "./components/TextDisplacemetController";
+import VideoDisplacementController from "./components/VideoDisplacementController";
 
 function ready(callbackFunc) {
     if (document.readyState !== "loading") {
@@ -87,5 +88,10 @@ ready(function () {
     if (document.getElementById("text-displace") !== null) {
         const textDisplace = new TextDisplacementController();
         textDisplace.init();
+    }
+
+    if (document.getElementById("video-displace") !== null) {
+        const videoDisplace = new VideoDisplacementController();
+        videoDisplace.init();
     }
 });

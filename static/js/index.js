@@ -8,6 +8,7 @@ import LiquidImagesController from "./components/LiquidImagesController";
 import RGBSplittingController from "./components/RGBSplittingController";
 import TextDisplacementController from "./components/TextDisplacemetController";
 import VideoDisplacementController from "./components/VideoDisplacementController";
+import DisplacementSliderController from "./components/DisplacementSliderController";
 
 function ready(callbackFunc) {
     if (document.readyState !== "loading") {
@@ -93,5 +94,10 @@ ready(function () {
     if (document.getElementById("video-displace") !== null) {
         const videoDisplace = new VideoDisplacementController();
         videoDisplace.init();
+    }
+
+    if (document.getElementById("slider") !== null) {
+        const slider = new DisplacementSliderController();
+        slider.init();
     }
 });

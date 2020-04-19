@@ -64,6 +64,7 @@
         "pixi.js": "^5.2.1",
         "poly-fluid-sizing": "^1.1.0",
         "scrollmagic": "^2.0.7",
-        "scrollscene": "0.0.15"
+        "scrollscene": "0.0.15",
+        "swiper": "^5.3.7"
     }
 }

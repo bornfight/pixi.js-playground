@@ -11,10 +11,23 @@ export default class GridHelper {
             gridWidth: 1440, // px
             columnCount: 24,
             gridColor: "rgb(255, 0, 255, 0.15)",
+            columnBgColor: "rgb(255, 0, 255, 0.025)",
             gutterWidth: 0, // px
             gutterFixed: false,
             initialDisplay: "none", //"flex" or "none"
         };
+
+        const consoleLogStyle = [
+            "background-color: #a6a6a6",
+            "color: black",
+            "display: block",
+            "line-height: 24px",
+            "text-align: center",
+            "border: 1px solid #ffffff",
+            "font-weight: bold",
+        ].join(";");
+
+        console.log("toggle grid: %c Alt/Option + G ", consoleLogStyle);
 
         this.grid = null;
 
@@ -56,6 +69,7 @@ export default class GridHelper {
             top: 0;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 999;
         `;
 
         if (!this.gridOptions.gutterWidth > 0) {
@@ -73,11 +87,14 @@ export default class GridHelper {
             column.style.cssText = `
                 height: auto;
                 flex-grow: 1;
+                background-color: ${this.gridOptions.columnBgColor};
                 border-left: 1px solid ${this.gridOptions.gridColor};
             `;
 
             if (this.gridOptions.gutterWidth > 0) {
                 column.style.borderRight = `1px solid ${this.gridOptions.gridColor}`;
+            } else {
+                this.grid.style.borderRight = `1px solid ${this.gridOptions.gridColor}`;
             }
 
             if (this.gridOptions.gutterFixed === true) {

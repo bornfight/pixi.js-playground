@@ -39,12 +39,6 @@ function ready(callbackFunc) {
  */
 ready(function () {
 
-    const gridHelper = new GridHelper();
-    gridHelper.init();
-
-    const navigation = new NavigationController();
-    navigation.init();
-
     var consoleLogStyle = [
         "background-color: #000000",
         "color: white",
@@ -56,6 +50,12 @@ ready(function () {
     ].join(";");
 
     console.log("dev by: %c Bornfight ", consoleLogStyle);
+
+    const gridHelper = new GridHelper();
+    gridHelper.init();
+
+    const navigation = new NavigationController();
+    navigation.init();
 
     if (document.getElementById("edu") !== null) {
         const pixiEdu = new BasicPixiExample();

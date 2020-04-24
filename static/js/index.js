@@ -1,3 +1,4 @@
+import GridHelper from "./components/GridHelper";
 import BasicPixiExample from "./components/BasicPixiExample";
 import NavigationController from "./components/NavigationController";
 import PortfolioListController from "./components/PortfolioListController";
@@ -37,6 +38,9 @@ function ready(callbackFunc) {
  * Document ready callback
  */
 ready(function () {
+
+    const gridHelper = new GridHelper();
+    gridHelper.init();
 
     const navigation = new NavigationController();
     navigation.init();

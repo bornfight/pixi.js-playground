@@ -71,10 +71,13 @@ export default class PortfolioListController {
         //PIXI stuff
         this.app = null;
         this.displacementFilter = null;
+        this.displacementMap = null;
         this.slidesContainer = null;
 
         //gsap stuff
         this.displacementTimeline = null;
+
+        this.direction = "";
     }
 
     //region methods
@@ -104,16 +107,19 @@ export default class PortfolioListController {
             },
         });
 
-        console.log(displacementSlider.realIndex);
-        console.log(displacementSlider.activeIndex);
-
         displacementSlider.on("init", () => {
             // console.log(displacementSlider.activeIndex);
+            this.setDirection(1);
             this.changeSlide(displacementSlider.activeIndex);
         });
 
-        displacementSlider.on("slideChange", () => {
-            // console.log(displacementSlider.activeIndex);
+        displacementSlider.on("slideNextTransitionStart", () => {
+            this.setDirection(1);
+            this.changeSlide(displacementSlider.activeIndex);
+        });
+
+        displacementSlider.on("slidePrevTransitionStart", () => {
+            this.setDirection(-1);
             this.changeSlide(displacementSlider.activeIndex);
         });
 
@@ -141,20 +147,21 @@ export default class PortfolioListController {
         );
 
         // create displacement texture
-        const displacementMap = new PIXI.Sprite.from(displacementMapFile);
+        this.displacementMap = new PIXI.Sprite.from(displacementMapFile);
 
         // create PIXI displacement filter and pass the texture
         this.displacementFilter = new PIXI.filters.DisplacementFilter(
-            displacementMap,
+            this.displacementMap,
         );
 
         // set displacement texture properties
-        displacementMap.name = displacementMapFile;
-        displacementMap.anchor.set(0.5);
-        displacementMap.scale.set(1);
-        displacementMap.width = canvasWidth;
-        displacementMap.height = canvasHeight;
-        displacementMap.position.set(canvasWidth / 2, canvasHeight / 2);
+        this.displacementMap.name = displacementMapFile;
+        this.displacementMap.anchor.set(0.5);
+        this.displacementMap.scale.set(1);
+        this.displacementMap.angle = 0;
+        this.displacementMap.width = canvasWidth;
+        this.displacementMap.height = canvasHeight;
+        this.displacementMap.position.set(canvasWidth / 2, canvasHeight / 2);
 
         this.slidesContainer = new PIXI.Container();
         // set stage properties for filter
@@ -162,7 +169,7 @@ export default class PortfolioListController {
         this.slidesContainer.filters = [this.displacementFilter];
 
         // add filter to root container/stage
-        this.app.stage.addChild(displacementMap);
+        this.app.stage.addChild(this.displacementMap);
         // add slides container root container/stage
         this.app.stage.addChild(this.slidesContainer);
 
@@ -189,6 +196,8 @@ export default class PortfolioListController {
         // DISPLACE TIMELINE
         this.displacementTimeline = gsap.timeline({
             paused: true,
+            onStart: () => {},
+            onUpdate: () => {},
         });
 
         const canvasElement = this.sliderCanvas.querySelector("canvas");
@@ -208,7 +217,7 @@ export default class PortfolioListController {
             .to(
                 canvasElement,
                 {
-                    scale: 1.05,
+                    scale: 1.15,
                     duration: this.options.transitionSpeed / 1000,
                     ease: "power3.out",
                 },
@@ -236,6 +245,14 @@ export default class PortfolioListController {
             );
     }
 
+    setDirection(direction) {
+        if (direction < 0) {
+            this.direction = "-=";
+        } else {
+            this.direction = "+=";
+        }
+    }
+
     changeSlide(currentIndex) {
         gsap.to(this.slidesContainer.children, {
             duration: (this.options.transitionSpeed * 2) / 1000,
@@ -245,6 +262,12 @@ export default class PortfolioListController {
                 this.displacementTimeline.restart().pause();
                 this.displacementTimeline.play();
             },
+        });
+
+        gsap.to(this.displacementMap, {
+            duration: (this.options.transitionSpeed * 2) / 1000,
+            rotation: `${this.direction + 0.5}`,
+            ease: "power3.out",
         });
 
         gsap.to(this.slidesContainer.children[currentIndex], {

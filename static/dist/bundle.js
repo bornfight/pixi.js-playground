@@ -64139,9 +64139,11 @@ var PortfolioListController = /*#__PURE__*/function () {
 
     this.app = null;
     this.displacementFilter = null;
+    this.displacementMap = null;
     this.slidesContainer = null; //gsap stuff
 
     this.displacementTimeline = null;
+    this.direction = "";
   } //region methods
 
 
@@ -64174,14 +64176,20 @@ var PortfolioListController = /*#__PURE__*/function () {
           crossFade: true
         }
       });
-      console.log(displacementSlider.realIndex);
-      console.log(displacementSlider.activeIndex);
       displacementSlider.on("init", function () {
         // console.log(displacementSlider.activeIndex);
+        _this.setDirection(1);
+
         _this.changeSlide(displacementSlider.activeIndex);
       });
-      displacementSlider.on("slideChange", function () {
-        // console.log(displacementSlider.activeIndex);
+      displacementSlider.on("slideNextTransitionStart", function () {
+        _this.setDirection(1);
+
+        _this.changeSlide(displacementSlider.activeIndex);
+      });
+      displacementSlider.on("slidePrevTransitionStart", function () {
+        _this.setDirection(-1);
+
         _this.changeSlide(displacementSlider.activeIndex);
       });
       displacementSlider.init();
@@ -64203,22 +64211,23 @@ var PortfolioListController = /*#__PURE__*/function () {
       this.sliderCanvas.appendChild(this.app.view);
       var displacementMapFile = this.sliderCanvas.getAttribute("data-displacement-map"); // create displacement texture
 
-      var displacementMap = new PIXI.Sprite.from(displacementMapFile); // create PIXI displacement filter and pass the texture
+      this.displacementMap = new PIXI.Sprite.from(displacementMapFile); // create PIXI displacement filter and pass the texture
 
-      this.displacementFilter = new PIXI.filters.DisplacementFilter(displacementMap); // set displacement texture properties
+      this.displacementFilter = new PIXI.filters.DisplacementFilter(this.displacementMap); // set displacement texture properties
 
-      displacementMap.name = displacementMapFile;
-      displacementMap.anchor.set(0.5);
-      displacementMap.scale.set(1);
-      displacementMap.width = canvasWidth;
-      displacementMap.height = canvasHeight;
-      displacementMap.position.set(canvasWidth / 2, canvasHeight / 2);
+      this.displacementMap.name = displacementMapFile;
+      this.displacementMap.anchor.set(0.5);
+      this.displacementMap.scale.set(1);
+      this.displacementMap.angle = 0;
+      this.displacementMap.width = canvasWidth;
+      this.displacementMap.height = canvasHeight;
+      this.displacementMap.position.set(canvasWidth / 2, canvasHeight / 2);
       this.slidesContainer = new PIXI.Container(); // set stage properties for filter
 
       this.slidesContainer.filterArea = this.app.screen;
       this.slidesContainer.filters = [this.displacementFilter]; // add filter to root container/stage
 
-      this.app.stage.addChild(displacementMap); // add slides container root container/stage
+      this.app.stage.addChild(this.displacementMap); // add slides container root container/stage
 
       this.app.stage.addChild(this.slidesContainer); // load images from DOM to PIXI container
 
@@ -64239,7 +64248,9 @@ var PortfolioListController = /*#__PURE__*/function () {
 
 
       this.displacementTimeline = _gsap.default.timeline({
-        paused: true
+        paused: true,
+        onStart: function onStart() {},
+        onUpdate: function onUpdate() {}
       });
       var canvasElement = this.sliderCanvas.querySelector("canvas");
       this.displacementTimeline.add("in").to(this.displacementFilter.scale, {
@@ -64248,7 +64259,7 @@ var PortfolioListController = /*#__PURE__*/function () {
         y: -200,
         ease: "power3.out"
       }, "in").to(canvasElement, {
-        scale: 1.05,
+        scale: 1.15,
         duration: this.options.transitionSpeed / 1000,
         ease: "power3.out"
       }, "in").add("out").to(canvasElement, {
@@ -64261,6 +64272,15 @@ var PortfolioListController = /*#__PURE__*/function () {
         y: 0,
         ease: "power3.out"
       }, "out");
+    }
+  }, {
+    key: "setDirection",
+    value: function setDirection(direction) {
+      if (direction < 0) {
+        this.direction = "-=";
+      } else {
+        this.direction = "+=";
+      }
     }
   }, {
     key: "changeSlide",
@@ -64276,6 +64296,12 @@ var PortfolioListController = /*#__PURE__*/function () {
 
           _this2.displacementTimeline.play();
         }
+      });
+
+      _gsap.default.to(this.displacementMap, {
+        duration: this.options.transitionSpeed * 2 / 1000,
+        rotation: "".concat(this.direction + 0.5),
+        ease: "power3.out"
       });
 
       _gsap.default.to(this.slidesContainer.children[currentIndex], {

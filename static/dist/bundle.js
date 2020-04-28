@@ -64365,7 +64365,7 @@ var GridHelper = /*#__PURE__*/function () {
   _createClass(GridHelper, [{
     key: "init",
     value: function init() {
-      console.log("GridHelper init()");
+      console.info("GridHelper init()");
       this.initGrid();
       this.keyboardShortcut();
     }
@@ -65903,7 +65903,7 @@ function ready(callbackFunc) {
 
 ready(function () {
   var consoleLogStyle = ["background-color: #000000", "color: white", "display: block", "line-height: 24px", "text-align: center", "border: 1px solid #ffffff", "font-weight: bold"].join(";");
-  console.log("dev by: %c Bornfight ", consoleLogStyle);
+  console.info("dev by: %c Bornfight ", consoleLogStyle);
   var gridHelper = new _GridHelper.default();
   gridHelper.init();
   var navigation = new _NavigationController.default();

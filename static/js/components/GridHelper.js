@@ -47,7 +47,7 @@ export default class GridHelper {
     }
 
     init() {
-        console.log("GridHelper init()");
+        console.info("GridHelper init()");
         this.initGrid();
         this.keyboardShortcut();
     }

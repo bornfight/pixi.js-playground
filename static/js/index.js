@@ -49,7 +49,7 @@ ready(function () {
         "font-weight: bold",
     ].join(";");
 
-    console.log("dev by: %c Bornfight ", consoleLogStyle);
+    console.info("dev by: %c Bornfight ", consoleLogStyle);
 
     const gridHelper = new GridHelper();
     gridHelper.init();

@@ -8,13 +8,13 @@ export default class GridHelper {
         };
 
         this.gridOptions = {
+            initialDisplay: "none", //"flex" or "none"
             gridWidth: 1440, // px
             columnCount: 24,
             gridColor: "rgb(255, 0, 255, 0.15)",
             columnBgColor: "rgb(255, 0, 255, 0.025)",
             gutterWidth: 0, // px
             gutterFixed: false,
-            initialDisplay: "none", //"flex" or "none"
         };
 
         const consoleLogStyle = [
@@ -27,7 +27,7 @@ export default class GridHelper {
             "font-weight: bold",
         ].join(";");
 
-        console.log("toggle grid: %c Alt/Option + G ", consoleLogStyle);
+        console.info("toggle grid: %c Alt/Option + G ", consoleLogStyle);
 
         this.grid = null;
 
@@ -47,7 +47,7 @@ export default class GridHelper {
     }
 
     init() {
-        console.info("GridHelper init()");
+        console.log("GridHelper init()");
         this.initGrid();
         this.keyboardShortcut();
     }

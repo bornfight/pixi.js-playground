@@ -33,7 +33,7 @@
         "@babel/register": "^7.9.0",
         "@namics/stylelint-bem": "^6.3.0",
         "babelify": "^10.0.0",
-        "browser-sync": "^2.26.7",
+        "browser-sync": "^2.27.10",
         "browserify": "^16.5.1",
         "del": "^5.1.0",
         "esdoc": "^1.1.0",
